@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* ══════════════════════════════════════════════════════════════
+   WRAPPER
+══════════════════════════════════════════════════════════════ */
+.vs-wrapper {
+    width: 100%;
+    background: #ffffff;
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+    padding-bottom: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   TEXTE CENTRÉ
+══════════════════════════════════════════════════════════════ */
+.vs-text {
+    text-align: center;
+    padding: 30px 24px 32px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.vs-title {
+    font-size: 29px;
+    font-weight: 700;
+    color: #1376F8;
+    line-height: 1.35;
+    margin: 0 0 14px;
+}
+
+/* Ligne rouge sous le titre */
+.vs-title-line {
+    width: 180px;
+    height: 1.5px;
+    background: linear-gradient(to right, transparent, #E31E24 50%, transparent);
+    margin: 0 auto 24px;
+}
+
+.vs-subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: #6B7280;
+    line-height: 1.75;
+    margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ZONE VIDÉO
+══════════════════════════════════════════════════════════════ */
+.vs-video-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 60px 80px;
+    /* Espace ajouté en bas */
+    box-sizing: border-box;
+}
+
+/* ── Décorations demi-cercles pointillés ── */
+.vs-deco {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 70px;
+    height: 140px;
+    border: 2px dashed #1376F8;
+    opacity: 0.25;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.vs-deco-left {
+    left: 0;
+    border-radius: 0 140px 140px 0;
+    border-left: none;
+}
+
+.vs-deco-right {
+    right: 0;
+    border-radius: 140px 0 0 140px;
+    border-right: none;
+}
+
+/* ── Video Box ── */
+.vs-video-box {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 820px;
+    border-radius: 22px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 8px 40px rgba(19, 118, 248, 0.18);
+    transition: box-shadow 0.3s ease;
+}
+
+.vs-video-box:hover {
+    box-shadow: 0 12px 50px rgba(19, 118, 248, 0.28);
+}
+
+.vs-video-thumb {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* ── Bouton play ── */
+.vs-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    z-index: 3;
+}
+
+.vs-play-btn:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.9;
+}
+
+.vs-play-btn svg {
+    width: 56px;
+    height: 56px;
+    filter: drop-shadow(0 4px 12px rgba(19, 118, 248, 0.4));
+}
+
+/* ── Fond dégradé bleu en bas ── */
+.vs-blue-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 52%;
+    background: linear-gradient(135deg, #1376F8 0%, #0A2E72 100%);
+    z-index: 0;
+    border-radius: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Tablette (≤ 900px)
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+    .vs-title {
+        font-size: 28px;
+    }
+
+    .vs-subtitle {
+        font-size: 13px;
+    }
+
+    .vs-text {
+        padding: 40px 24px 24px;
+    }
+
+    .vs-video-container {
+        padding: 0 32px;
+    }
+
+    .vs-deco {
+        width: 50px;
+        height: 100px;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Mobile (≤ 600px)
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+    .vs-title {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    .vs-subtitle {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+    .vs-text {
+        padding: 32px 16px 20px;
+    }
+
+    .vs-video-container {
+        padding: 0 16px 40px;
+    }
+
+    /* Cacher les décos sur petit écran */
+    .vs-deco {
+        display: none;
+    }
+
+    .vs-video-box {
+        border-radius: 14px;
+    }
+
+    .vs-play-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    .vs-play-btn svg {
+        width: 44px;
+        height: 44px;
+    }
+
+    .vs-blue-bg {
+        height: 48%;
+    }
+}

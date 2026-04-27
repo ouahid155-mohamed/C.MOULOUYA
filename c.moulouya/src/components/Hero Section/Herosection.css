@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* ══════════════════════════════════════════════════════════════
+   HERO WRAPPER
+══════════════════════════════════════════════════════════════ */
+.hero-wrapper {
+    position: relative;
+    width: calc(100% - 64px);
+    max-width: 1400px;
+    margin: 0 auto 24px;
+    height: 480px;
+    background: #ffffff;
+    border-radius: 0 0 32px 32px; /* Arrondi seulement en bas pour toucher le navbar en haut */
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+}
+
+/* ── Cadre dégradé 1.5px (Ouvert en haut) ── */
+.hero-wrapper::before {
+    content: "";
+    position: absolute;
+    /* On décale vers le haut pour cacher la bordure supérieure via le overflow:hidden du parent */
+    top: -5px; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0 0 32px 32px;
+    padding: 1.5px;
+    background: linear-gradient(82.26deg, #0088FF 1%, #0A2E72 99.38%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CERCLES ROSES — CSS pur
+══════════════════════════════════════════════════════════════ */
+.hero-circle-1,
+.hero-circle-2,
+.hero-circle-3 {
+    position: absolute;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero-circle-3 {
+    width: 860px;
+    height: 860px;
+    bottom: -430px;
+    background: #fce8e8;
+    opacity: 0.55;
+}
+
+.hero-circle-2 {
+    width: 660px;
+    height: 660px;
+    bottom: -330px;
+    background: #f8d0d0;
+    opacity: 0.6;
+}
+
+.hero-circle-1 {
+    width: 460px;
+    height: 460px;
+    bottom: -230px;
+    background: #f2b8b8;
+    opacity: 0.55;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BADGE 20 ANS
+══════════════════════════════════════════════════════════════ */
+.hero-badge {
+    position: absolute;
+    top: 28px;
+    left: 52px;
+    width: 130px;
+    z-index: 4;
+    filter: drop-shadow(0 4px 14px rgba(19, 118, 248, 0.18));
+}
+
+/* ══════════════════════════════════════════════════════════════
+   3 DOCTEURS
+══════════════════════════════════════════════════════════════ */
+.hero-doctors {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 390px;
+    width: auto;
+    object-fit: contain;
+    z-index: 3;
+    mix-blend-mode: multiply;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CARDS
+══════════════════════════════════════════════════════════════ */
+.hero-cards {
+    position: absolute;
+    top: 32px;
+    right: 52px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 5;
+}
+
+.hero-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #ffffff;
+    border: 1.5px solid #dce8ff;
+    border-radius: 14px;
+    padding: 14px 20px;
+    min-width: 250px;
+    box-shadow: 0 2px 16px rgba(19, 118, 248, 0.08);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.hero-card:hover {
+    box-shadow: 0 6px 24px rgba(19, 118, 248, 0.16);
+    transform: translateY(-2px);
+}
+
+.hero-card-icon-wrap {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.hero-card-icon-blue {
+    background: #eff6ff;
+}
+
+.hero-card-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.hero-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.hero-card-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1376F8;
+}
+
+.hero-card-value {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #1a1a2e;
+    line-height: 1.5;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CITATION
+══════════════════════════════════════════════════════════════ */
+.hero-quote {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #f0f7ff 0%, #f4f9ff 100%);
+    border: 1px solid #94c1ff;
+    border-radius: 999px;
+    padding: 14px 40px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #4B5563;
+    white-space: nowrap;
+    box-shadow: 0 4px 24px rgba(19, 118, 248, 0.12);
+    z-index: 5;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Tablette (≤ 1100px)
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+    .hero-wrapper {
+        height: 440px;
+    }
+
+    .hero-doctors {
+        height: 340px;
+        bottom: 52px;
+    }
+
+    .hero-badge {
+        width: 110px;
+        left: 28px;
+        top: 24px;
+    }
+
+    .hero-cards {
+        right: 24px;
+        top: 24px;
+    }
+
+    .hero-card {
+        min-width: 210px;
+        padding: 12px 16px;
+    }
+
+    .hero-circle-3 {
+        width: 700px;
+        height: 700px;
+        bottom: -350px;
+    }
+
+    .hero-circle-2 {
+        width: 530px;
+        height: 530px;
+        bottom: -265px;
+    }
+
+    .hero-circle-1 {
+        width: 370px;
+        height: 370px;
+        bottom: -185px;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Mobile (≤ 768px)
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .hero-wrapper {
+        height: auto;
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 16px 24px;
+        overflow: visible;
+        margin-top: 24px;
+        border-radius: 24px;
+    }
+
+    .hero-wrapper::before {
+        display: none;
+    }
+
+    .hero-circle-3 {
+        width: 420px;
+        height: 420px;
+        bottom: 120px;
+    }
+
+    .hero-circle-2 {
+        width: 310px;
+        height: 310px;
+        bottom: 165px;
+    }
+
+    .hero-circle-1 {
+        width: 210px;
+        height: 210px;
+        bottom: 205px;
+    }
+
+    .hero-badge {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100px;
+        margin-bottom: 12px;
+        align-self: flex-start;
+        margin-left: 8px;
+    }
+
+    .hero-doctors {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        height: 260px;
+        margin-bottom: 16px;
+    }
+
+    .hero-cards {
+        position: relative;
+        top: auto;
+        right: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        margin-bottom: 16px;
+    }
+
+    .hero-card {
+        min-width: 0;
+        flex: 1 1 150px;
+        max-width: 260px;
+        padding: 12px 14px;
+    }
+
+    .hero-quote {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        white-space: normal;
+        text-align: center;
+        border-radius: 16px;
+        padding: 12px 20px;
+        font-size: 12px;
+        width: 100%;
+        max-width: 500px;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Petit mobile (≤ 480px)
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+    .hero-doctors {
+        height: 220px;
+    }
+
+    .hero-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-card {
+        width: 100%;
+        max-width: 300px;
+        flex: none;
+    }
+
+    .hero-badge {
+        width: 88px;
+    }
+
+    .hero-quote {
+        font-size: 11.5px;
+    }
+
+    .hero-circle-3 {
+        width: 340px;
+        height: 340px;
+    }
+
+    .hero-circle-2 {
+        width: 250px;
+        height: 250px;
+    }
+
+    .hero-circle-1 {
+        width: 170px;
+        height: 170px;
+    }
+}

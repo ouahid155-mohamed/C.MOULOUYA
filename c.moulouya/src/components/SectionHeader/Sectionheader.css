@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.sh-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 24px 28px;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.sh-deco {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sh-deco-top {
+  margin-bottom: 16px;
+}
+
+.sh-deco-bottom {
+  margin-top: 20px;
+}
+
+.sh-deco-line {
+  display: block;
+  height: 1.5px;
+  border-radius: 999px;
+}
+
+.sh-deco-line.sh-long {
+  width: 32px;
+}
+
+.sh-deco-line.sh-medium {
+  width: 14px;
+}
+
+.sh-red {
+  background-color: #E31E24;
+}
+
+.sh-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1376F8;
+  line-height: 1;
+  margin: 0 0 14px;
+}
+
+.sh-subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6B7280;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 520px;
+}
+
+@media (max-width: 600px) {
+  .sh-title {
+    font-size: 26px;
+  }
+
+  .sh-subtitle {
+    font-size: 13px;
+  }
+
+  .sh-wrapper {
+    padding: 28px 16px 20px;
+  }
+
+  .sh-deco-line.sh-long {
+    width: 20px;
+  }
+
+  .sh-deco-line.sh-medium {
+    width: 10px;
+  }
+}

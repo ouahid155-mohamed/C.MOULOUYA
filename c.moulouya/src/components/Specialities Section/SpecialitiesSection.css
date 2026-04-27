@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* ══════════════════════════════════════════════════════════════
+   WRAPPER — espace gauche/droite visible
+══════════════════════════════════════════════════════════════ */
+.sp-wrapper {
+  width: 100%;
+  padding: 0 120px 80px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  background: #ffffff;
+}
+
+/* Inner centré avec max-width */
+.sp-inner {
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BANDEAU
+══════════════════════════════════════════════════════════════ */
+.sp-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to right, #0A2E72, #1357D8);
+  border-radius: 20px;
+  padding: 36px 40px 80px;
+  box-sizing: border-box;
+}
+
+.sp-banner-left  { max-width: 420px; }
+
+.sp-banner-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.sp-banner-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Boutons navigation ── */
+.sp-banner-nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.sp-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #0088FF;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 10px rgba(0, 136, 255, 0.35);
+}
+
+.sp-nav-btn:hover {
+  background: #006fd6;
+  transform: scale(1.08);
+}
+
+.sp-nav-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CARDS — débordent sur le bandeau
+══════════════════════════════════════════════════════════════ */
+.sp-cards {
+  display: flex;
+  gap: 16px;
+  margin-top: -56px;
+  position: relative;
+  z-index: 2;
+  /* Espace intérieur gauche/droite pour que les cards ne touchent pas le bord du bandeau */
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.sp-card {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px 20px 26px;
+  box-shadow: 0 4px 20px rgba(19, 118, 248, 0.1);
+  border: 1px solid #eaf1ff;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s;
+  min-height: 150px;
+}
+
+.sp-card:hover {
+  box-shadow: 0 8px 28px rgba(19, 118, 248, 0.18);
+  transform: translateY(-3px);
+}
+
+.sp-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1376F8;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.sp-card-line {
+  width: 100%;
+  height: 1.5px;
+  background: #1376F8;
+  opacity: 0.25;
+  margin-bottom: 12px;
+}
+
+.sp-card-desc {
+  font-size: 15px;
+  color: #4B5563;
+  line-height: 1.65;
+  margin: 0;
+  text-align: justify;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Tablette
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .sp-wrapper      { padding: 0 32px 72px; }
+  .sp-banner       { padding: 28px 28px 72px; }
+  .sp-banner-title { font-size: 20px; }
+  .sp-cards        { padding: 0 8px; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Mobile
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 700px) {
+  .sp-wrapper { padding: 0 16px 40px; }
+
+  .sp-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px 20px 80px;
+    border-radius: 16px;
+  }
+
+  .sp-banner-nav { align-self: flex-end; }
+
+  .sp-cards {
+    flex-direction: column;
+    margin-top: -48px;
+    padding: 0 4px;
+    gap: 12px;
+  }
+
+  .sp-card      { min-height: auto; }
+  .sp-banner-title { font-size: 17px; }
+}

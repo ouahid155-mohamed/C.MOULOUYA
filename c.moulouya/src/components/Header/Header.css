@@ -1,0 +1,285 @@
+/* ─── Wrapper ───────────────────────────────────────────────── */
+.topbar-wrapper {
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  padding: 12px 32px;
+  box-sizing: border-box;
+}
+
+/* ─── Container ─────────────────────────────────────────────── */
+.topbar-container {
+  width: 100%;
+  max-width: 1400px;
+  box-sizing: border-box;
+  border-radius: 14px;
+  background:
+    linear-gradient(white, white) padding-box,
+    linear-gradient(to right, #1376F8, #F6FCFF) border-box;
+  border: 1.13px solid transparent;
+  box-shadow: 0 2px 10px rgba(19, 118, 248, 0.06);
+  padding: 12px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   DESKTOP  (> 500px) — flex-wrap pour éviter le scroll
+══════════════════════════════════════════════════════════════ */
+.topbar-desktop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 32px;
+  padding: 12px 32px;
+  border-radius: 12px;
+  background: linear-gradient(to right, #eaf2fd, #F6FCFF);
+}
+
+.topbar-mobile {
+  display: none;
+}
+
+/* ─── Items ─────────────────────────────────────────────────── */
+.topbar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.topbar-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.topbar-text {
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  font-size: 14px;
+  color: #374151;
+  white-space: nowrap;
+}
+
+/* ─── Dividers ──────────────────────────────────────────────── */
+.topbar-divider {
+  width: 1px;
+  height: 20px;
+  background-color: #d1d5db;
+  flex-shrink: 0;
+}
+
+@media (max-width: 860px) {
+  .topbar-divider {
+    display: none;
+  }
+}
+
+/* ─── Langue ────────────────────────────────────────────────── */
+.topbar-lang-wrapper {
+  margin-left: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.topbar-lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 10px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.topbar-lang-btn:hover {
+  background: #f3f4f6;
+}
+
+.topbar-flag {
+  width: 26px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.topbar-lang-label {
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.topbar-chevron {
+  transition: transform 0.2s ease;
+}
+
+.topbar-chevron.open {
+  transform: rotate(180deg);
+}
+
+/* ─── Dropdown ──────────────────────────────────────────────── */
+.topbar-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 100;
+  min-width: 90px;
+  animation: fadeDown 0.15s ease;
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.topbar-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.12s ease;
+}
+
+.topbar-dropdown-item:hover {
+  background: #f9fafb;
+}
+
+.topbar-dropdown-item.active {
+  background: #eff6ff;
+  color: #1376F8;
+  font-weight: 500;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   MOBILE  (≤ 500px) — hamburger toggle
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 500px) {
+
+  .topbar-wrapper {
+    padding: 8px 12px;
+  }
+
+  /* Cacher desktop, afficher mobile */
+  .topbar-desktop {
+    display: none;
+  }
+
+  .topbar-mobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* Barre principale : hamburger + langue */
+  .topbar-mobile-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* ─── Icône hamburger ─────────────────────── */
+  .topbar-hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .topbar-hamburger:hover {
+    background: #eff6ff;
+  }
+
+  .ham-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #1376F8;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    transform-origin: center;
+  }
+
+  /* Animation X quand ouvert */
+  .ham-line.open:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .ham-line.open:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .ham-line.open:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Langue mobile */
+  .topbar-mobile .topbar-lang-wrapper {
+    margin-left: 0;
+  }
+
+  .topbar-lang-label {
+    font-size: 13px;
+  }
+
+  .topbar-flag {
+    width: 22px;
+    height: 15px;
+  }
+
+  /* ─── Menu déroulant des infos ────────────── */
+  .topbar-mobile-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 16px 14px;
+    border-top: 1px solid #e8f0fe;
+    animation: fadeDown 0.2s ease;
+  }
+
+  .topbar-mobile-menu .topbar-text {
+    font-size: 12px;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .topbar-mobile-menu .topbar-icon {
+    width: 16px;
+    height: 16px;
+  }
+}

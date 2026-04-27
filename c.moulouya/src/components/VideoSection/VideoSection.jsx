@@ -1,6 +1,6 @@
 import { useState } from "react";
 import videoBox from "../../assets/videos/Video Box.png";
-
+import "./VideoSection.css";
 
 export default function VideoSection() {
   const [playing, setPlaying] = useState(false);

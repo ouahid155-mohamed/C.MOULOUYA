@@ -1,12 +1,12 @@
 import Header from "../components/Header/Header";
 import Navbar from "../components/NavBar/NavBar";
-import HeroSection from "../components/Hero Section/HeroSection";
-import VideoSection from "../components/Video Section/Videosection";
-import SectionHeader from "../components/SectionHeader/Sectionheader";
-import InterventionsSection from "../components/Interventions Section/InterventionsSection";
-import DoctorsSection from "../components/Doctors Section/DoctorsSection";
-import SpecialitiesSection from '../components/Specialities Section/SpecialitiesSection';
-import ContactFooter from '../components/Contact Footer/ContactFooter';
+import HeroSection from "../components/HeroSection/HeroSection";
+import VideoSection from "../components/VideoSection/VideoSection";
+import SectionHeader from "../components/SectionHeader/SectionHeader";
+import InterventionsSection from "../components/InterventionsSection/InterventionsSection";
+import DoctorsSection from "../components/DoctorsSection/DoctorsSection";
+import SpecialitiesSection from '../components/SpecialitiesSection/SpecialitiesSection';
+import ContactFooter from '../components/ContactFooter/ContactFooter';
 
 function Home() {
     return (

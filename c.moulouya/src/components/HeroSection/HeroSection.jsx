@@ -1,6 +1,6 @@
-import doctors      from "../../assets/3 docteurs.png";
-import badge        from "../../assets/20ans d'existence.png";
-import calling      from "../../assets/Calling hero section.png";
+import doctors from "../../assets/3 docteurs.png";
+import badge from "../../assets/20ans d'existence.png";
+import calling from "../../assets/Calling hero section.png";
 import localisation from "../../assets/localisation hero section.png";
 import "./HeroSection.css";
 

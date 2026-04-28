@@ -14,21 +14,23 @@ export default function DoctorsSection() {
     <section className="ds-wrapper">
       <div className="ds-grid">
         {doctors.map((doc, i) => (
-          /* Wrapper pour la bordure dégradée */
-          <div className="ds-card-border" key={i}>
-            <div className="ds-card">
+          /* ── Cadre extérieur : bordure dégradée #1376F8 → #0B4592 ── */
+          <div className="ds-outer-border" key={i}>
+            <div className="ds-outer-card">
 
-              {/* Zone photo */}
-              <div className="ds-photo-area">
-                <img src={doc.img} alt={doc.name} className="ds-photo" />
-                <button className="ds-btn">
-                  <span className="ds-btn-label">Plus d'infos</span>
-                  <span className="ds-btn-circle">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M5 12h14M13 6l6 6-6 6" stroke="#1376F8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                </button>
+              {/* ── Cadre intérieur : contient la photo ── */}
+              <div className="ds-photo-border">
+                <div className="ds-photo-area">
+                  <img src={doc.img} alt={doc.name} className="ds-photo" />
+                  <button className="ds-btn">
+                    <span className="ds-btn-label">Plus d'infos</span>
+                    <span className="ds-btn-circle">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12h14M13 6l6 6-6 6" stroke="#1376F8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
+                  </button>
+                </div>
               </div>
 
               {/* Nom + spécialité */}

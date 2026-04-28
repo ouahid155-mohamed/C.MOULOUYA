@@ -8,4 +8,8 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
+  server: {
+    // Cette option permet à Vite d'accepter les requêtes venant de ngrok
+    allowedHosts: ['.ngrok-free.app'] 
+  }
 })

@@ -10,7 +10,8 @@
     margin: 0 auto 24px;
     height: 480px;
     background: #ffffff;
-    border-radius: 0 0 32px 32px; /* Arrondi seulement en bas pour toucher le navbar en haut */
+    border-radius: 0 0 32px 32px;
+    /* Arrondi seulement en bas pour toucher le navbar en haut */
     overflow: hidden;
     font-family: "Poppins", sans-serif;
 }
@@ -20,7 +21,7 @@
     content: "";
     position: absolute;
     /* On décale vers le haut pour cacher la bordure supérieure via le overflow:hidden du parent */
-    top: -5px; 
+    top: -5px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -90,10 +91,10 @@
 ══════════════════════════════════════════════════════════════ */
 .hero-doctors {
     position: absolute;
-    bottom: 48px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    height: 390px;
+    height: 460px;
     width: auto;
     object-fit: contain;
     z-index: 3;
@@ -139,10 +140,15 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+
+    /* Border Gradient */
+    border: 1.28px solid transparent;
+    background: linear-gradient(#eff6ff, #eff6ff) padding-box,
+        linear-gradient(135deg, #FF4949 32.4%, #F6FCFF 100%) border-box;
 }
 
 .hero-card-icon-blue {
-    background: #eff6ff;
+    /* Background handled in .hero-card-icon-wrap for gradient border */
 }
 
 .hero-card-icon {
@@ -199,8 +205,8 @@
     }
 
     .hero-doctors {
-        height: 340px;
-        bottom: 52px;
+        height: 410px;
+        bottom: 0;
     }
 
     .hero-badge {

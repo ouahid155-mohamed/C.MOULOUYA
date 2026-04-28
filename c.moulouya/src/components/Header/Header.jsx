@@ -7,8 +7,8 @@ import "./Header.css";
 
 const languages = [
   { code: "fr", label: "FR", flag: langue },
-  { code: "ar", label: "AR", flag: null },
-  { code: "en", label: "EN", flag: null },
+  { code: "ar", label: "AR", flag: "https://flagcdn.com/w40/ma.png" },
+  { code: "en", label: "EN", flag: "https://flagcdn.com/w40/gb.png" },
 ];
 
 export default function Header() {

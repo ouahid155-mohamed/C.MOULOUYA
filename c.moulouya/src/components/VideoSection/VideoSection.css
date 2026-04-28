@@ -55,33 +55,32 @@
     justify-content: center;
     align-items: flex-start;
     padding: 0 60px 80px;
-    /* Espace ajouté en bas */
     box-sizing: border-box;
 }
 
-/* ── Décorations demi-cercles pointillés ── */
+/* ── Décorations ellipses (images PNG) ── */
 .vs-deco {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 70px;
-    height: 140px;
-    border: 2px dashed #1376F8;
-    opacity: 0.25;
+    width: 320px;
+    height: 320px;
+    object-fit: contain;
     z-index: 1;
+    /* derrière la vidéo (z-index: 2) */
     pointer-events: none;
 }
 
 .vs-deco-left {
-    left: 0;
-    border-radius: 0 140px 140px 0;
-    border-left: none;
+    /* centre du cercle aligné sur le bord gauche de la vidéo */
+    left: calc(52% - 570px);
+    top: 50%;
+    transform: translateY(-50%) rotate(-17.86deg);
 }
 
 .vs-deco-right {
-    right: 0;
-    border-radius: 140px 0 0 140px;
-    border-right: none;
+    /* centre du cercle aligné sur le bord droit de la vidéo */
+    right: calc(52% - 570px);
+    top: 50%;
+    transform: translateY(-50%) rotate(-17.86deg);
 }
 
 /* ── Video Box ── */
@@ -93,12 +92,12 @@
     border-radius: 22px;
     overflow: hidden;
     cursor: pointer;
-    box-shadow: 0 8px 40px rgba(19, 118, 248, 0.18);
-    transition: box-shadow 0.3s ease;
+    box-shadow: none;
+    transition: none;
 }
 
 .vs-video-box:hover {
-    box-shadow: 0 12px 50px rgba(19, 118, 248, 0.28);
+    box-shadow: none;
 }
 
 .vs-video-thumb {
@@ -142,7 +141,7 @@
     left: 0;
     right: 0;
     height: 52%;
-    background: linear-gradient(135deg, #1376F8 0%, #0A2E72 100%);
+    background: linear-gradient(135deg, #1376F8 0%, #041f52 100%);
     z-index: 0;
     border-radius: 0;
 }
@@ -199,22 +198,22 @@
     .vs-deco {
         display: none;
     }
+}
 
-    .vs-video-box {
-        border-radius: 14px;
-    }
+.vs-video-box {
+    border-radius: 14px;
+}
 
-    .vs-play-btn {
-        width: 44px;
-        height: 44px;
-    }
+.vs-play-btn {
+    width: 44px;
+    height: 44px;
+}
 
-    .vs-play-btn svg {
-        width: 44px;
-        height: 44px;
-    }
+.vs-play-btn svg {
+    width: 44px;
+    height: 44px;
+}
 
-    .vs-blue-bg {
-        height: 48%;
-    }
+.vs-blue-bg {
+    height: 48%;
 }

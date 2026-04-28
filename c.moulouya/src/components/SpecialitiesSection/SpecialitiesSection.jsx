@@ -13,10 +13,24 @@ const allSpecialites = [
 const PER_PAGE = 3;
 
 export default function SpecialitiesSection() {
-  const [page, setPage] = useState(0);
+  const [page, setPage]           = useState(0);
+  const [animKey, setAnimKey]     = useState(0);
+  const [direction, setDirection] = useState("right");
+
   const totalPages = Math.ceil(allSpecialites.length / PER_PAGE);
-  const prev    = () => setPage((p) => (p - 1 + totalPages) % totalPages);
-  const next    = () => setPage((p) => (p + 1) % totalPages);
+
+  const prev = () => {
+    setDirection("left");
+    setPage((p) => (p - 1 + totalPages) % totalPages);
+    setAnimKey((k) => k + 1);
+  };
+
+  const next = () => {
+    setDirection("right");
+    setPage((p) => (p + 1) % totalPages);
+    setAnimKey((k) => k + 1);
+  };
+
   const visible = allSpecialites.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
 
   return (
@@ -32,13 +46,11 @@ export default function SpecialitiesSection() {
             </p>
           </div>
           <div className="sp-banner-nav">
-            {/* Flèche gauche — forme identique à l'image */}
             <button className="sp-nav-btn" onClick={prev} aria-label="Précédent">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
-            {/* Flèche droite */}
             <button className="sp-nav-btn" onClick={next} aria-label="Suivant">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -47,10 +59,17 @@ export default function SpecialitiesSection() {
           </div>
         </div>
 
-        {/* ── Cards ── */}
-        <div className="sp-cards">
+        {/* ── Cards avec animation ── */}
+        {/*
+          key={animKey} force le re-montage à chaque clic → relance l'animation CSS.
+          La classe sp-cards--right ou sp-cards--left détermine le sens du slide.
+        */}
+        <div
+          className={`sp-cards sp-cards--${direction}`}
+          key={animKey}
+        >
           {visible.map((item, i) => (
-            <div className="sp-card" key={i}>
+            <div className="sp-card" key={i} style={{ animationDelay: `${i * 60}ms` }}>
               <span className="sp-card-title">{item.title}</span>
               <div className="sp-card-line" />
               <p className="sp-card-desc">{item.desc}</p>

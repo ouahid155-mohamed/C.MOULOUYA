@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import logoM from "../../assets/logo M.png";
 import "./NavBar.css";
 
@@ -7,6 +7,24 @@ const navLinks = ["Accueil", "À Propos", "Spécialités", "Galerie", "Contact"]
 export default function Navbar() {
   const [activeLink, setActiveLink] = useState("Accueil");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+  const linksRef = useRef({});
+
+  useEffect(() => {
+    const updateIndicator = () => {
+      const activeEl = linksRef.current[activeLink];
+      if (activeEl) {
+        setIndicatorStyle({
+          left: activeEl.offsetLeft,
+          width: activeEl.offsetWidth,
+        });
+      }
+    };
+
+    updateIndicator();
+    window.addEventListener("resize", updateIndicator);
+    return () => window.removeEventListener("resize", updateIndicator);
+  }, [activeLink]);
 
   return (
     <>
@@ -32,27 +50,30 @@ export default function Navbar() {
         </div>
 
         {/* ── Nav links desktop — pilule blanche ── */}
-        <ul className="nb-nav-pill">
-          {navLinks.map((link, index) => (
-            <li key={link} className="nb-nav-item">
-              {index > 0 && <span className="nb-sep">|</span>}
-              <button
-                className={`nb-nav-link ${activeLink === link ? "active" : ""}`}
-                onClick={() => setActiveLink(link)}
-              >
-                {activeLink === link && <span className="nb-nav-dot" />}
-                <span className="nb-nav-text">{link}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div className="nb-nav-container">
+          <ul className="nb-nav-pill">
+            <span className="nb-nav-indicator" style={indicatorStyle} />
+            {navLinks.map((link, index) => (
+              <li key={link} className="nb-nav-item">
+                {index > 0 && <span className="nb-sep">|</span>}
+                <button
+                  ref={(el) => (linksRef.current[link] = el)}
+                  className={`nb-nav-link ${activeLink === link ? "active" : ""}`}
+                  onClick={() => setActiveLink(link)}
+                >
+                  <span className="nb-nav-text">{link}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         {/* ── CTA desktop ── */}
         <a href="tel:+212661267760" className="nb-cta">
           <span className="nb-cta-label">RENDEZ-VOUS</span>
           <span className="nb-cta-arrow">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 6l6 6-6 6" stroke="#0088FF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M10 6l6 6-6 6" stroke="#0088FF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
         </a>

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import videoBox from "../../assets/videos/Video Box.png";
+import ellipseLeft from "../../assets/Ellipse 1088.png";
+import ellipseRight from "../../assets/Ellipse 1833.png";
 import "./VideoSection.css";
 
 export default function VideoSection() {
@@ -24,11 +26,8 @@ export default function VideoSection() {
 
       {/* ── Zone vidéo ── */}
       <div className="vs-video-container">
-
-        {/* Décorations demi-cercles pointillés */}
-        <div className="vs-deco vs-deco-left" />
-        <div className="vs-deco vs-deco-right" />
-
+        <img src={ellipseLeft}  alt="" className="vs-deco vs-deco-left"  aria-hidden="true" />
+        <img src={ellipseRight} alt="" className="vs-deco vs-deco-right" aria-hidden="true" />
         {/* Box vidéo */}
         <div className="vs-video-box" onClick={() => setPlaying(!playing)}>
           <img src={videoBox} alt="Vidéo Clinique Moulouya" className="vs-video-thumb" />

@@ -12,9 +12,33 @@ const doctors = [
 
 export default function DoctorsSection() {
   const [current, setCurrent] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  // Seuil minimal pour considérer le geste comme un swipe (en pixels)
+  const minSwipeDistance = 50;
 
   const prev = () => setCurrent((c) => (c - 1 + doctors.length) % doctors.length);
   const next = () => setCurrent((c) => (c + 1) % doctors.length);
+
+  const onTouchStartHandler = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMoveHandler = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEndHandler = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    
+    if (isLeftSwipe) next();
+    if (isRightSwipe) prev();
+  };
 
   const doc = doctors[current];
 
@@ -48,8 +72,13 @@ export default function DoctorsSection() {
         ))}
       </div>
 
-      {/* ── Version Mobile (Un seul docteur avec flèches) ── */}
-      <div className="ds-mobile-container ds-mobile-only">
+      {/* ── Version Mobile (Un seul docteur avec flèches + Swipe) ── */}
+      <div 
+        className="ds-mobile-container ds-mobile-only"
+        onTouchStart={onTouchStartHandler}
+        onTouchMove={onTouchMoveHandler}
+        onTouchEnd={onTouchEndHandler}
+      >
         <div className="ds-outer-border">
           <div className="ds-outer-card">
             

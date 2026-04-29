@@ -44,6 +44,7 @@ html {
     width: 222px;
     position: relative;
     z-index: 1;
+    text-decoration: none; /* Enlève le souligné */
 }
 
 .nb-logo-icon {

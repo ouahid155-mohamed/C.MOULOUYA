@@ -25,6 +25,12 @@
     /* Espace net entre image et texte comme sur l'image */
 }
 
+@media (min-width: 1600px) {
+    .is-container {
+        max-width: 1300px;
+    }
+}
+
 /* ── Cadre décoratif dégradé arrondi ── */
 .is-container::before {
     content: "";
@@ -260,27 +266,25 @@
 ══════════════════════════════════════════════════════════════ */
 @media (max-width: 800px) {
 
-    /* Wrapper : laisse de l'espace en bas pour le débordement de l'image */
+    /* Wrapper : espace en bas pour le débordement */
     .is-wrapper {
-        padding: 16px 20px 200px;
-        overflow-x: hidden;
+        padding: 40px 20px 280px;
+        overflow: visible;
     }
 
-    /* Container : carte blanche arrondie, overflow visible pour le débordement */
+    /* Container : cadre transparent sans background blanc */
     .is-container {
         flex-direction: column;
         gap: 0;
-        background: #ffffff;
+        background: transparent;
         border-radius: 24px;
         padding: 32px 20px 0;
-        box-shadow: 0 4px 24px rgba(19, 118, 248, 0.08);
+        box-shadow: none;
         overflow: visible;
-        border: 1.5px solid transparent;
-        background-clip: padding-box;
         position: relative;
     }
 
-    /* Pseudo-élément pour la bordure dégradée */
+    /* Pseudo-élément pour la bordure dégradée (le cadre) */
     .is-container::before {
         content: "";
         position: absolute;
@@ -307,7 +311,7 @@
     .is-right {
         order: -1;
         border-radius: 0;
-        padding: 0 0 24px 0;
+        padding: 0 0 30px 0;
         min-height: auto;
         z-index: 1;
         background: transparent;
@@ -335,21 +339,24 @@
         font-size: 13px;
     }
 
-    /* Image : moitié dedans, moitié dehors (déborde en bas) */
+    /* Image : moitié dedans, moitié dehors (Une seule unité visuelle) */
     .is-left-wrapper {
         order: 1;
         width: 100%;
-        height: 300px;
-        margin-left: 0;
-        margin-bottom: -150px;
-        /* Moitié de la hauteur */
+        max-width: 420px;
+        height: 500px;
+        margin: 0 auto -250px;
         border-radius: 20px;
         z-index: 2;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        overflow: visible;
+        padding: 0; /* Suppression du padding qui créait le 2ème cadre */
+        box-shadow: none; /* Suppression de l'ombre extérieure */
+        background: transparent;
     }
 
     .is-left {
         border-radius: 20px;
+        height: 100%;
     }
 
     .is-bg-rect {
@@ -357,7 +364,7 @@
     }
 
     .is-controls {
-        bottom: 20px;
+        bottom: 40px;
         gap: 24px;
     }
 }

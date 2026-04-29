@@ -20,10 +20,31 @@ export default function SpecialitiesSection() {
 
   // Mobile logic
   const [currentIndex, setCurrentIndex] = useState(1); // Start with Urologie as per image
-  const item = allSpecialites[currentIndex];
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const minSwipeDistance = 50;
 
   const prevMobile = () => setCurrentIndex((c) => (c - 1 + allSpecialites.length) % allSpecialites.length);
   const nextMobile = () => setCurrentIndex((c) => (c + 1) % allSpecialites.length);
+
+  const onTouchStartHandler = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMoveHandler = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEndHandler = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    
+    if (isLeftSwipe) nextMobile();
+    if (isRightSwipe) prevMobile();
+  };
 
   return (
     <section className="sp-wrapper">
@@ -74,7 +95,12 @@ export default function SpecialitiesSection() {
             </p>
           </div>
           
-          <div className="sp-mobile-slider-container">
+          <div 
+            className="sp-mobile-slider-container"
+            onTouchStart={onTouchStartHandler}
+            onTouchMove={onTouchMoveHandler}
+            onTouchEnd={onTouchEndHandler}
+          >
             {/* Boutons de navigation flottants */}
             <button className="sp-mobile-nav-btn sp-prev" onClick={prevMobile}>
               <svg viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>

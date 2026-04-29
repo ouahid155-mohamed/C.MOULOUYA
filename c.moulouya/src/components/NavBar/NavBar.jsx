@@ -116,7 +116,7 @@ export default function Navbar() {
           </button>
 
           {/* Logo – centre */}
-          <Link to="/" className="nb-logo nb-logo-mobile" onClick={() => setMenuOpen(false)}>
+          <Link to="/" className="nb-logo nb-logo-mobile" onClick={() => setMenuOpen(false)} style={{ textDecoration: 'none' }}>
             <div className="nb-logo-icon">
               <img src={logoM} alt="Clinique Moulouya" />
             </div>

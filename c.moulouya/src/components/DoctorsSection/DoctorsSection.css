@@ -9,6 +9,9 @@
   background: #ffffff;
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
+  user-select: none; /* Empêche la sélection de texte au clic */
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent; /* Élimine le flash bleu sur mobile */
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -21,6 +24,12 @@
   max-width: 960px;
   margin: 0 auto;
   flex-wrap: wrap;
+}
+
+@media (min-width: 1600px) {
+  .ds-grid {
+    max-width: 1200px;
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -37,6 +46,9 @@
       #1376F8 100%);
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .ds-outer-border:hover {

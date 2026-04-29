@@ -71,14 +71,14 @@
 
 .vs-deco-left {
     /* centre du cercle aligné sur le bord gauche de la vidéo */
-    left: calc(52% - 570px);
+    left: calc(48% - 570px);
     top: 50%;
     transform: translateY(-50%) rotate(-17.86deg);
 }
 
 .vs-deco-right {
     /* centre du cercle aligné sur le bord droit de la vidéo */
-    right: calc(52% - 570px);
+    right: calc(48% - 570px);
     top: 50%;
     transform: translateY(-50%) rotate(-17.86deg);
 }
@@ -88,7 +88,7 @@
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 820px;
+    max-width: 960px;
     border-radius: 22px;
     overflow: hidden;
     cursor: pointer;

@@ -1,7 +1,5 @@
 import { useState } from "react";
 import interventionImg from "../../assets/videos/Vidéo 1.png";
-import thumb1 from "../../assets/Rectangle 1 .png";
-import thumb2 from "../../assets/Rectangle 2.png";
 import "./InterventionsSection.css";
 
 const slides = [

@@ -1,9 +1,16 @@
 import { useState, useRef, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import logoM from "../../assets/logo M.png";
 import langue from "../../assets/langue.png";
 import "./NavBar.css";
 
-const navLinks = ["Accueil", "À Propos", "Spécialités", "Galerie", "Contact"];
+const navLinks = [
+  { label: "Accueil", path: "/" },
+  { label: "À Propos", path: "/apropos" },
+  { label: "Spécialités", path: "/#specialities" },
+  { label: "Galerie", path: "/#galerie" },
+  { label: "Contact", path: "/#contact" }
+];
 
 const languages = [
   { code: "fr", label: "FR", flag: langue },
@@ -12,12 +19,21 @@ const languages = [
 ];
 
 export default function Navbar() {
+  const location = useLocation();
   const [activeLink, setActiveLink] = useState("Accueil");
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState(languages[0]);
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
   const linksRef = useRef({});
+
+  // Synchroniser l'onglet actif avec l'URL
+  useEffect(() => {
+    const currentLink = navLinks.find(l => l.path === location.pathname);
+    if (currentLink) {
+      setActiveLink(currentLink.label);
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     const updateIndicator = () => {
@@ -45,7 +61,7 @@ export default function Navbar() {
         </div>
 
         {/* ── Desktop: Logo ── */}
-        <div className="nb-logo nb-logo-desktop">
+        <Link to="/" className="nb-logo nb-logo-desktop" style={{ textDecoration: 'none' }}>
           <div className="nb-logo-icon">
             <img src={logoM} alt="Clinique Moulouya" />
           </div>
@@ -53,22 +69,23 @@ export default function Navbar() {
             <span className="nb-logo-main">CLINIQUE</span>
             <span className="nb-logo-sub">MOULOUYA</span>
           </div>
-        </div>
+        </Link>
 
         {/* ── Desktop: Nav links pill ── */}
         <div className="nb-nav-container">
           <ul className="nb-nav-pill">
             <span className="nb-nav-indicator" style={indicatorStyle} />
             {navLinks.map((link, index) => (
-              <li key={link} className="nb-nav-item">
+              <li key={link.label} className="nb-nav-item">
                 {index > 0 && <span className="nb-sep">|</span>}
-                <button
-                  ref={(el) => (linksRef.current[link] = el)}
-                  className={`nb-nav-link ${activeLink === link ? "active" : ""}`}
-                  onClick={() => setActiveLink(link)}
+                <Link
+                  to={link.path}
+                  ref={(el) => (linksRef.current[link.label] = el)}
+                  className={`nb-nav-link ${activeLink === link.label ? "active" : ""}`}
+                  onClick={() => setActiveLink(link.label)}
                 >
-                  <span className="nb-nav-text">{link}</span>
-                </button>
+                  <span className="nb-nav-text">{link.label}</span>
+                </Link>
               </li>
             ))}
           </ul>
@@ -99,7 +116,7 @@ export default function Navbar() {
           </button>
 
           {/* Logo – centre */}
-          <div className="nb-logo nb-logo-mobile">
+          <Link to="/" className="nb-logo nb-logo-mobile" onClick={() => setMenuOpen(false)}>
             <div className="nb-logo-icon">
               <img src={logoM} alt="Clinique Moulouya" />
             </div>
@@ -107,7 +124,7 @@ export default function Navbar() {
               <span className="nb-logo-main">CLINIQUE</span>
               <span className="nb-logo-sub">MOULOUYA</span>
             </div>
-          </div>
+          </Link>
 
           {/* Langue – right */}
           <div className="nb-mobile-lang-wrapper">
@@ -144,13 +161,14 @@ export default function Navbar() {
         {menuOpen && (
           <div className="nb-mobile-menu">
             {navLinks.map((link) => (
-              <button
-                key={link}
-                className={`nb-mobile-link ${activeLink === link ? "active" : ""}`}
-                onClick={() => { setActiveLink(link); setMenuOpen(false); }}
+              <Link
+                key={link.label}
+                to={link.path}
+                className={`nb-mobile-link ${activeLink === link.label ? "active" : ""}`}
+                onClick={() => { setActiveLink(link.label); setMenuOpen(false); }}
               >
-                {link}
-              </button>
+                {link.label}
+              </Link>
             ))}
             <a href="tel:+212661267760" className="nb-mobile-cta">
               RENDEZ-VOUS ›

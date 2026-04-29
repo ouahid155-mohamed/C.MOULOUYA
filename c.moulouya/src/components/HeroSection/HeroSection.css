@@ -98,7 +98,7 @@
     width: auto;
     object-fit: contain;
     z-index: 3;
-    mix-blend-mode: multiply;
+    mix-blend-mode: normal;
 }
 
 /* ══════════════════════════════════════════════════════════════

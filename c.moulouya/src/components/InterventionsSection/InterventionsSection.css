@@ -55,8 +55,10 @@
     flex-shrink: 0;
     z-index: 2;
     margin-left: 50px;
-    overflow: hidden;     /* vide les quatre angles */
-    border-radius: 32px;  /* arrondit les coins du panneau vidéo */
+    overflow: hidden;
+    /* vide les quatre angles */
+    border-radius: 32px;
+    /* arrondit les coins du panneau vidéo */
 }
 
 .is-bg-rect {
@@ -111,7 +113,8 @@
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: 30px; /* Espace augmenté entre les trois boutons */
+    gap: 30px;
+    /* Espace augmenté entre les trois boutons */
     z-index: 5;
 }
 
@@ -256,27 +259,105 @@
    RESPONSIVE — Mobile (≤ 800px)
 ══════════════════════════════════════════════════════════════ */
 @media (max-width: 800px) {
+
+    /* Wrapper : laisse de l'espace en bas pour le débordement de l'image */
+    .is-wrapper {
+        padding: 16px 20px 200px;
+        overflow-x: hidden;
+    }
+
+    /* Container : carte blanche arrondie, overflow visible pour le débordement */
     .is-container {
         flex-direction: column;
-        gap: 20px;
+        gap: 0;
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 32px 20px 0;
+        box-shadow: 0 4px 24px rgba(19, 118, 248, 0.08);
+        overflow: visible;
+        border: 1.5px solid transparent;
+        background-clip: padding-box;
+        position: relative;
     }
 
+    /* Pseudo-élément pour la bordure dégradée */
     .is-container::before {
-        display: none;
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 24px;
+        padding: 1.5px;
+        background: linear-gradient(82.26deg, #204BCF 1%, rgba(16, 38, 105, 0.4) 99.38%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: 0;
+        pointer-events: none;
+        width: auto;
+        height: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: none;
     }
 
+    /* Texte en haut */
+    .is-right {
+        order: -1;
+        border-radius: 0;
+        padding: 0 0 24px 0;
+        min-height: auto;
+        z-index: 1;
+        background: transparent;
+    }
+
+    .is-tag {
+        font-size: 20px;
+    }
+
+    .is-tag-line {
+        width: 90px;
+        margin-bottom: 16px;
+    }
+
+    .is-title {
+        font-size: 18px;
+        margin-bottom: 16px;
+    }
+
+    .is-list {
+        gap: 14px;
+    }
+
+    .is-list-item {
+        font-size: 13px;
+    }
+
+    /* Image : moitié dedans, moitié dehors (déborde en bas) */
     .is-left-wrapper {
+        order: 1;
         width: 100%;
-        height: 350px;
+        height: 300px;
+        margin-left: 0;
+        margin-bottom: -150px;
+        /* Moitié de la hauteur */
+        border-radius: 20px;
+        z-index: 2;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .is-left {
+        border-radius: 20px;
     }
 
     .is-bg-rect {
         display: none;
     }
 
-    .is-right {
-        border-radius: 30px;
-        padding: 30px 20px;
-        min-height: auto;
+    .is-controls {
+        bottom: 20px;
+        gap: 24px;
     }
 }

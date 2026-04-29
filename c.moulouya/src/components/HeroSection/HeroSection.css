@@ -248,90 +248,111 @@
    RESPONSIVE — Mobile (≤ 768px)
 ══════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
+
     .hero-wrapper {
-        height: auto;
-        min-height: 600px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px 16px 24px;
-        overflow: visible;
-        margin-top: 24px;
-        border-radius: 24px;
+        width: calc(100% - 32px);
+        height: 460px;
+        min-height: unset;
+        display: block;
+        padding: 0;
+        overflow: hidden;
+        margin: 0 auto 24px;
+        border-radius: 0 0 32px 32px;
     }
 
     .hero-wrapper::before {
-        display: none;
+        display: block;
+        top: -5px;
+        border-radius: 0 0 32px 32px;
     }
 
+    /* ── Cercles centrés sur la zone médiane-basse ── */
     .hero-circle-3 {
-        width: 420px;
-        height: 420px;
-        bottom: 120px;
+        width: 440px;
+        height: 440px;
+        bottom: -50px;
     }
 
     .hero-circle-2 {
-        width: 310px;
-        height: 310px;
-        bottom: 165px;
+        width: 320px;
+        height: 320px;
+        bottom: 10px;
     }
 
     .hero-circle-1 {
         width: 210px;
         height: 210px;
-        bottom: 205px;
+        bottom: 65px;
     }
 
     .hero-badge {
-        position: relative;
-        top: auto;
-        left: auto;
+        position: absolute;
+        top: 18px;
+        left: 18px;
         width: 100px;
-        margin-bottom: 12px;
-        align-self: flex-start;
-        margin-left: 8px;
+        margin: 0;
     }
 
     .hero-doctors {
-        position: relative;
-        bottom: auto;
-        left: auto;
-        transform: none;
-        height: 260px;
-        margin-bottom: 16px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 300px;
+        width: auto;
     }
 
     .hero-cards {
-        position: relative;
-        top: auto;
-        right: auto;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+        position: absolute;
+        top: 18px;
+        right: 14px;
+        flex-direction: column;
         gap: 10px;
-        width: 100%;
-        margin-bottom: 16px;
+        width: auto;
+        margin: 0;
     }
 
     .hero-card {
         min-width: 0;
-        flex: 1 1 150px;
-        max-width: 260px;
-        padding: 12px 14px;
+        width: 190px;
+        flex: none;
+        padding: 10px 12px;
+        gap: 10px;
+        border-radius: 12px;
+    }
+
+    .hero-card-icon-wrap {
+        width: 36px;
+        height: 36px;
+    }
+
+    .hero-card-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .hero-card-label {
+        font-size: 10.5px;
+    }
+
+    .hero-card-value {
+        font-size: 10px;
+        line-height: 1.4;
     }
 
     .hero-quote {
-        position: relative;
-        bottom: auto;
-        left: auto;
-        transform: none;
+        position: absolute;
+        bottom: 14px;
+        left: 50%;
+        transform: translateX(-50%);
         white-space: normal;
         text-align: center;
-        border-radius: 16px;
-        padding: 12px 20px;
-        font-size: 12px;
-        width: 100%;
-        max-width: 500px;
+        border-radius: 999px;
+        padding: 10px 22px;
+        font-size: 11px;
+        width: calc(100% - 40px);
+        max-width: 420px;
+        box-sizing: border-box;
     }
 }
 
@@ -339,41 +360,53 @@
    RESPONSIVE — Petit mobile (≤ 480px)
 ══════════════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
+    .hero-wrapper {
+        height: 420px;
+    }
+
     .hero-doctors {
-        height: 220px;
-    }
-
-    .hero-cards {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hero-card {
-        width: 100%;
-        max-width: 300px;
-        flex: none;
+        height: 270px;
     }
 
     .hero-badge {
-        width: 88px;
+        width: 90px;
+        top: 14px;
+        left: 12px;
     }
 
-    .hero-quote {
-        font-size: 11.5px;
+    .hero-cards {
+        right: 8px;
+        top: 14px;
+    }
+
+    .hero-card {
+        width: 168px;
+        padding: 9px 10px;
+    }
+
+    .hero-card-label {
+        font-size: 10.5px;
+    }
+
+    .hero-card-value {
+        font-size: 10.5px;
     }
 
     .hero-circle-3 {
-        width: 340px;
-        height: 340px;
+        width: 380px;
+        height: 380px;
+        bottom: -40px;
     }
 
     .hero-circle-2 {
-        width: 250px;
-        height: 250px;
+        width: 270px;
+        height: 270px;
+        bottom: 15px;
     }
 
     .hero-circle-1 {
-        width: 170px;
-        height: 170px;
+        width: 180px;
+        height: 180px;
+        bottom: 60px;
     }
 }

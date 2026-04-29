@@ -188,56 +188,131 @@
   color: #002964;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   RESPONSIVE — Tablette
-══════════════════════════════════════════════════════════════ */
-@media (max-width: 900px) {
-  .ds-wrapper {
-    padding: 16px 24px 48px;
-  }
+/* ── Affichage conditionnel ── */
+.ds-desktop-grid {
+  display: flex;
+}
 
-  .ds-grid {
-    gap: 14px;
-    max-width: 100%;
-  }
-
-  .ds-outer-border {
-    max-width: 220px;
-  }
-
-  .ds-photo-area {
-    height: 270px;
-  }
-
-  .ds-photo {
-    height: 290px;
-  }
+.ds-mobile-container {
+  display: none;
 }
 
 /* ══════════════════════════════════════════════════════════════
-   RESPONSIVE — Mobile
+   RESPONSIVE — Tablette / Mobile
+   C'est ici que l'on applique le design de l'image
 ══════════════════════════════════════════════════════════════ */
-@media (max-width: 600px) {
-  .ds-wrapper {
-    padding: 12px 16px 36px;
+@media (max-width: 800px) {
+  .ds-desktop-grid {
+    display: none;
   }
 
-  .ds-grid {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+  .ds-mobile-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+    /* Espace pour le docteur qui dépasse */
   }
 
-  .ds-outer-border {
-    max-width: 100%;
+  /* Cadre extérieur (Même structure que desktop : bordure dégradée) */
+  .ds-mobile-container .ds-outer-border {
+    flex: none;
     width: 100%;
+    max-width: 320px;
+    background: linear-gradient(180deg, rgba(11, 69, 146, 0) 0%, #1376F8 100%);
+    border-radius: 40px;
+    padding: 1.5px;
+    /* Épaisseur de la bordure extérieure */
+    overflow: visible;
+    box-shadow: 0 10px 40px rgba(19, 118, 248, 0.05);
+    border: none;
+    /* Supprime la bordure solide précédente */
   }
 
-  .ds-photo-area {
-    height: 250px;
+  .ds-mobile-container .ds-outer-card {
+    padding: 8px 8px 20px;
+    border-radius: 39px;
+    background: #ffffff;
+    position: relative;
   }
 
-  .ds-photo {
-    height: 265px;
+  /* Cadre intérieur photo (Bordure dégradée comme desktop) */
+  .ds-mobile-container .ds-photo-border {
+    border-radius: 32px;
+    padding: 1.5px;
+    background: linear-gradient(180deg, rgba(211, 234, 255, 0) 0%, #0088FF 100%);
+    overflow: visible;
+    /* Important pour que le docteur dépasse */
+  }
+
+  /* Zone Photo avec dégradé bleu */
+  .ds-mobile-container .ds-photo-area {
+    height: 360px;
+    border-radius: 31px;
+    background: linear-gradient(180deg, #E6F2FF 0%, #1376F8 100%);
+    overflow: visible;
+    position: relative;
+  }
+
+  /* Docteur qui dépasse en haut */
+  .ds-mobile-container .ds-photo {
+    height: 420px;
+    bottom: -1px;
+    top: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    mix-blend-mode: normal;
+  }
+
+  /* Flèches de navigation */
+  .ds-nav-arrow {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background: #ffffff;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a1a2e;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .ds-prev {
+    left: -10px;
+  }
+
+  .ds-next {
+    right: -10px;
+  }
+
+  /* Bouton Plus d'infos sur mobile */
+  .ds-mobile-container .ds-btn {
+    background: #ffffff;
+    color: #1376F8;
+    padding: 8px 8px 8px 18px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Infos en bas */
+  .ds-mobile-container .ds-info {
+    padding: 20px 10px 10px;
+  }
+
+  .ds-mobile-container .ds-name {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  .ds-mobile-container .ds-specialty {
+    font-size: 17px;
+    color: #4B5563;
   }
 }

@@ -220,9 +220,19 @@ html {
     height: 14px;
 }
 
-/* ── Hamburger (caché desktop) ────────────────────────────── */
-.nb-hamburger {
+/* ── Mobile bar (caché desktop, visible mobile) ──────────── */
+.nb-mobile-bar {
     display: none;
+}
+
+/* ── Logo desktop (visible desktop, caché mobile) ─────────── */
+.nb-logo-desktop {
+    display: flex;
+}
+
+/* ── Hamburger ───────────────────────────────────────────── */
+.nb-hamburger {
+    display: flex;
     flex-direction: column;
     gap: 5px;
     width: 38px;
@@ -232,6 +242,7 @@ html {
     background: transparent;
     border-radius: 8px;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .nb-ham-line {
@@ -356,30 +367,134 @@ html {
 }
 
 @media (max-width: 768px) {
-    .nb-nav-pill {
-        display: none;
+    /* ── Cacher les éléments desktop ── */
+    .nb-logo-desktop   { display: none; }
+    .nb-nav-container  { display: none; }
+    .nb-cta            { display: none; }
+    .nb-right-bg-wrapper { display: none; }
+
+    /* ── Navbar mobile ── */
+    .nb-navbar {
+        padding: 0 16px;
+        justify-content: flex-start;
     }
 
-    .nb-cta {
-        display: none;
-    }
-
-    .nb-right-bg-wrapper {
-        display: none;
-    }
-
-    .nb-hamburger {
+    /* ── Mobile bar : hamburger | logo centré | langue ── */
+    .nb-mobile-bar {
         display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    /* Logo centré en absolu */
+    .nb-logo-mobile {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        pointer-events: none;
+    }
+
+    .nb-logo-mobile .nb-logo-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .nb-logo-mobile .nb-logo-main,
+    .nb-logo-mobile .nb-logo-sub {
+        font-size: 13px;
+    }
+
+    /* ── Sélecteur de langue ── */
+    .nb-mobile-lang-wrapper {
+        position: relative;
+        flex-shrink: 0;
         z-index: 2;
     }
 
-    .nb-navbar {
-        padding: 0 20px;
-        justify-content: space-between;
+    .nb-mobile-lang-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 5px 5px 5px 10px;
+        border: none;
+        background: transparent;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: background 0.15s ease;
     }
 
-    .nb-logo {
-        width: auto;
+    .nb-mobile-lang-btn:hover {
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    .nb-mobile-flag {
+        width: 26px;
+        height: 18px;
+        object-fit: cover;
+        border-radius: 3px;
+        box-shadow: 0 0 0 1px rgba(0,0,0,0.12);
+    }
+
+    /* Cercle blanc avec flèche bleue — identique au nb-cta-arrow */
+    .nb-mobile-lang-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        background: #ffffff;
+        border-radius: 50%;
+        flex-shrink: 0;
+        transition: transform 0.2s ease;
+    }
+
+    .nb-mobile-lang-arrow.open {
+        transform: rotate(180deg);
+    }
+
+    .nb-lang-dropdown {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        z-index: 1000;
+        min-width: 95px;
+        animation: nbFadeDown 0.15s ease;
+    }
+
+    .nb-lang-dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 10px 14px;
+        border: none;
+        background: transparent;
+        font-family: "Poppins", sans-serif;
+        font-size: 13px;
+        color: #374151;
+        cursor: pointer;
+        text-align: left;
+        transition: background 0.12s ease;
+    }
+
+    .nb-lang-dropdown-item:hover {
+        background: #f9fafb;
+    }
+
+    .nb-lang-dropdown-item.active {
+        background: #eff6ff;
+        color: #1376F8;
+        font-weight: 600;
     }
 }
 

@@ -37,8 +37,8 @@ export default function HeroSection() {
             <img src={localisation} alt="Adresse" className="hero-card-icon" />
           </div>
           <div className="hero-card-body">
-            <span className="hero-card-value">7, Rue De La Paix, Berkane,</span>
-            <span className="hero-card-value">Morocco, Oriental 63300</span>
+            <span className="hero-card-value">7, Rue De La Paix,</span>
+            <span className="hero-card-value">Berkane, Morocco 63300</span>
           </div>
         </div>
 

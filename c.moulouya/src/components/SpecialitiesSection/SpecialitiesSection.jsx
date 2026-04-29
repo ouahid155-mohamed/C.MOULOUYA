@@ -13,68 +13,94 @@ const allSpecialites = [
 const PER_PAGE = 3;
 
 export default function SpecialitiesSection() {
-  const [page, setPage]           = useState(0);
-  const [animKey, setAnimKey]     = useState(0);
-  const [direction, setDirection] = useState("right");
-
+  // Desktop logic
+  const [page, setPage] = useState(0);
   const totalPages = Math.ceil(allSpecialites.length / PER_PAGE);
+  const visibleDesktop = allSpecialites.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
 
-  const prev = () => {
-    setDirection("left");
-    setPage((p) => (p - 1 + totalPages) % totalPages);
-    setAnimKey((k) => k + 1);
-  };
+  // Mobile logic
+  const [currentIndex, setCurrentIndex] = useState(1); // Start with Urologie as per image
+  const item = allSpecialites[currentIndex];
 
-  const next = () => {
-    setDirection("right");
-    setPage((p) => (p + 1) % totalPages);
-    setAnimKey((k) => k + 1);
-  };
-
-  const visible = allSpecialites.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
+  const prevMobile = () => setCurrentIndex((c) => (c - 1 + allSpecialites.length) % allSpecialites.length);
+  const nextMobile = () => setCurrentIndex((c) => (c + 1) % allSpecialites.length);
 
   return (
     <section className="sp-wrapper">
       <div className="sp-inner">
 
-        {/* ── Bandeau bleu ── */}
-        <div className="sp-banner">
-          <div className="sp-banner-left">
-            <h2 className="sp-banner-title">Nos Spécialités Médicales</h2>
-            <p className="sp-banner-desc">
-              Des soins adaptés, assurés par des professionnels qualifiés dans plusieurs disciplines.
-            </p>
+        {/* ── Version Desktop ── */}
+        <div className="sp-desktop-only">
+          <div className="sp-banner">
+            <div className="sp-banner-left">
+              <h2 className="sp-banner-title">Nos Spécialités Médicales</h2>
+              <p className="sp-banner-desc">
+                Des soins adaptés, assurés par des professionnels qualifiés dans plusieurs disciplines.
+              </p>
+            </div>
+            <div className="sp-banner-nav">
+              <button className="sp-nav-btn" onClick={() => setPage((p) => (p - 1 + totalPages) % totalPages)}>
+                <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
+              <button className="sp-nav-btn" onClick={() => setPage((p) => (p + 1) % totalPages)}>
+                <svg viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
+            </div>
           </div>
-          <div className="sp-banner-nav">
-            <button className="sp-nav-btn" onClick={prev} aria-label="Précédent">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-            <button className="sp-nav-btn" onClick={next} aria-label="Suivant">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
+          <div className="sp-cards-container">
+            <div 
+              className="sp-cards-track" 
+              style={{ transform: `translateX(-${page * 100}%)` }}
+            >
+              {allSpecialites.map((item, i) => (
+                <div className="sp-card-wrapper" key={i}>
+                  <div className="sp-card">
+                    <span className="sp-card-title">{item.title}</span>
+                    <div className="sp-card-line" />
+                    <p className="sp-card-desc">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* ── Cards avec animation ── */}
-        {/*
-          key={animKey} force le re-montage à chaque clic → relance l'animation CSS.
-          La classe sp-cards--right ou sp-cards--left détermine le sens du slide.
-        */}
-        <div
-          className={`sp-cards sp-cards--${direction}`}
-          key={animKey}
-        >
-          {visible.map((item, i) => (
-            <div className="sp-card" key={i} style={{ animationDelay: `${i * 60}ms` }}>
-              <span className="sp-card-title">{item.title}</span>
-              <div className="sp-card-line" />
-              <p className="sp-card-desc">{item.desc}</p>
+        {/* ── Version Mobile (Slider avec "peeking" des cartes adjacentes) ── */}
+        <div className="sp-mobile-only">
+          <div className="sp-mobile-header">
+            <h2 className="sp-mobile-title">Nos Spécialités Médicales</h2>
+            <p className="sp-mobile-subtitle">
+              Des soins adaptés, assurés par des professionnels qualifiés dans plusieurs disciplines.
+            </p>
+          </div>
+          
+          <div className="sp-mobile-slider-container">
+            {/* Boutons de navigation flottants */}
+            <button className="sp-mobile-nav-btn sp-prev" onClick={prevMobile}>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </button>
+            <button className="sp-mobile-nav-btn sp-next" onClick={nextMobile}>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </button>
+
+            {/* Track des cartes */}
+            <div className="sp-mobile-track-wrapper">
+              <div 
+                className="sp-mobile-track" 
+                style={{ transform: `translateX(calc(-${currentIndex * 82}% + 9%))` }}
+              >
+                {allSpecialites.map((item, i) => (
+                  <div className={`sp-mobile-card-slot ${i === currentIndex ? "active" : ""}`} key={i}>
+                    <div className="sp-card sp-mobile-card">
+                      <span className="sp-card-title">{item.title}</span>
+                      <div className="sp-card-line" />
+                      <p className="sp-card-desc">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+          </div>
         </div>
 
       </div>

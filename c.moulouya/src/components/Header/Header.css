@@ -179,11 +179,18 @@
 /* ══════════════════════════════════════════════════════════════
    MOBILE  (≤ 500px) — hamburger toggle
 ══════════════════════════════════════════════════════════════ */
-@media (max-width: 500px) {
-
+/* ── Sur mobile : bande blanche visible en haut, contenu caché ── */
+@media (max-width: 768px) {
   .topbar-wrapper {
     padding: 8px 12px;
   }
+
+  .topbar-container {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
 
   /* Cacher desktop, afficher mobile */
   .topbar-desktop {

@@ -108,11 +108,12 @@
 }
 
 .cf-scroll-top {
-    position: absolute;
-    top: -37px;
-    right: 0;
-    width: 58px;
-    height: 58px;
+    position: fixed;
+    /* Suivra le scroll */
+    bottom: 30px;
+    right: 30px;
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
     background: #FF4949;
     border: none;
@@ -120,18 +121,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 16px rgba(255, 73, 73, 0.4);
-    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 4px 20px rgba(255, 73, 73, 0.45);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cf-scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
 }
 
 .cf-scroll-top:hover {
-    transform: translateY(-2px);
     background: #e03535;
+    transform: scale(1.1);
 }
 
 .cf-scroll-top svg {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
 }
 
 .cf-info-title {
@@ -346,9 +357,12 @@
         padding-left: 0;
     }
 
+    /* Le bouton est géré en fixed au niveau global */
     .cf-scroll-top {
-        top: -60px;
-        right: 0;
+        bottom: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
     }
 
     .cf-info-title {

@@ -108,37 +108,42 @@
 /* ══════════════════════════════════════════════════════════════
    CARDS — débordent sur le bandeau
 ══════════════════════════════════════════════════════════════ */
-.sp-cards {
-  display: flex;
-  gap: 16px;
-  margin-top: -56px;
-  position: relative;
-  z-index: 2;
-  padding: 0 16px;
-  box-sizing: border-box;
+/* ── Grille de cartes Desktop (Slider) ── */
+.sp-cards-container {
+  width: 100%;
   overflow: hidden;
+  margin-top: -65px; /* Chevauchement sur le bleu */
+  position: relative;
+  z-index: 5;
+  padding-bottom: 40px;
 }
 
-/* Chaque card hérite de l'animation du conteneur parent */
-.sp-cards--right .sp-card {
-  animation: slideInFromRight 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+.sp-cards-track {
+  display: flex;
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  width: 100%;
 }
 
-.sp-cards--left .sp-card {
-  animation: slideInFromLeft 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+.sp-card-wrapper {
+  flex: 0 0 33.333%; /* 3 cartes par vue */
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0 12px;
 }
 
 .sp-card {
-  flex: 1;
+  width: 100%;
+  max-width: 380px;
   background: #ffffff;
-  border-radius: 14px;
-  padding: 22px 20px 26px;
-  box-shadow: 0 4px 20px rgba(19, 118, 248, 0.1);
-  border: 1px solid #eaf1ff;
+  border-radius: 20px;
+  padding: 32px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f0f4ff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  transition: box-shadow 0.2s, transform 0.2s;
-  min-height: 150px;
+  min-height: 180px;
 }
 
 .sp-card:hover {
@@ -170,39 +175,131 @@
   text-align: justify;
 }
 
+/* ── Affichage conditionnel ── */
+.sp-desktop-only { display: block; }
+.sp-mobile-only  { display: none; }
+
 /* ══════════════════════════════════════════════════════════════
-   RESPONSIVE — Tablette
+   RESPONSIVE — Mobile (≤ 800px)
 ══════════════════════════════════════════════════════════════ */
+@media (max-width: 800px) {
+  .sp-desktop-only { display: none; }
+  .sp-mobile-only  { display: block; }
+
+  .sp-wrapper {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+    background: #ffffff; /* Fond blanc pour la partie basse */
+  }
+
+  .sp-inner {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Header mobile bleu foncé plus haut */
+  .sp-mobile-header {
+    background: linear-gradient(to bottom, #0A2E72, #1357D8);
+    padding: 45px 24px 100px; 
+    text-align: left;
+  }
+
+  .sp-mobile-title {
+    font-size: 23px; /* Plus petit pour réduire les lignes */
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 10px;
+    line-height: 1.2;
+  }
+
+  .sp-mobile-subtitle {
+    font-size: 13.5px; /* Plus compact */
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+    margin: 0;
+    max-width: 90%; /* Pour éviter que ça s'étale trop sur les bords */
+  }
+
+  /* Slider Container */
+  .sp-mobile-slider-container {
+    position: relative;
+    width: 100%;
+    margin-top: -70px;
+    padding: 0;
+    overflow: visible;
+  }
+
+  /* Wrapper qui cache le débordement seulement en dehors de la zone slider */
+  .sp-mobile-track-wrapper {
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0 40px;
+  }
+
+  /* Track qui contient toutes les cartes en ligne */
+  .sp-mobile-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+  }
+
+  /* Slot pour chaque carte (définit la largeur relative) */
+  .sp-mobile-card-slot {
+    flex: 0 0 82%; /* Chaque carte prend 82% de la largeur */
+    display: flex;
+    justify-content: center;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0.4; /* Les cartes sur les côtés sont plus sombres */
+    transform: scale(0.9);
+  }
+
+  .sp-mobile-card-slot.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Carte mobile */
+  .sp-mobile-card {
+    width: 90%; /* Un peu d'espace entre les cartes */
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 36px 45px; 
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f0f4ff;
+    text-align: center;
+    min-height: 200px;
+  }
+
+  /* Boutons de navigation repositionnés pour rester par-dessus le track */
+  .sp-mobile-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: #1376F8;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(19, 118, 248, 0.4);
+    cursor: pointer;
+    z-index: 20;
+  }
+
+  .sp-prev { left: 15px; }
+  .sp-next { right: 15px; }
+}
+
 @media (max-width: 1024px) {
   .sp-wrapper      { padding: 0 32px 72px; }
   .sp-banner       { padding: 28px 28px 72px; }
   .sp-banner-title { font-size: 20px; }
   .sp-cards        { padding: 0 8px; }
-}
-
-/* ══════════════════════════════════════════════════════════════
-   RESPONSIVE — Mobile
-══════════════════════════════════════════════════════════════ */
-@media (max-width: 700px) {
-  .sp-wrapper { padding: 0 16px 40px; }
-
-  .sp-banner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 24px 20px 80px;
-    border-radius: 16px;
-  }
-
-  .sp-banner-nav { align-self: flex-end; }
-
-  .sp-cards {
-    flex-direction: column;
-    margin-top: -48px;
-    padding: 0 4px;
-    gap: 12px;
-  }
-
-  .sp-card      { min-height: auto; }
-  .sp-banner-title { font-size: 17px; }
 }

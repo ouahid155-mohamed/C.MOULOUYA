@@ -15,23 +15,23 @@
    TEXTE CENTRÉ
 ══════════════════════════════════════════════════════════════ */
 .vs-container {
-  display: flex;
-  align-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
-  gap: 40px;
+    display: flex;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 40px;
 }
 
 @media (min-width: 1600px) {
-  .vs-container {
-    max-width: 1300px;
-  }
+    .vs-container {
+        max-width: 1400px;
+    }
 }
 
 .vs-text {
     text-align: center;
-    padding: 30px 24px 32px;
-    max-width: 800px;
+    padding: 10px 24px 32px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -85,14 +85,14 @@
 
 .vs-deco-left {
     /* centre du cercle aligné sur le bord gauche de la vidéo */
-    left: calc(48% - 570px);
+    left: calc(43% - 570px);
     top: 50%;
     transform: translateY(-50%) rotate(-17.86deg);
 }
 
 .vs-deco-right {
     /* centre du cercle aligné sur le bord droit de la vidéo */
-    right: calc(48% - 570px);
+    right: calc(43% - 570px);
     top: 50%;
     transform: translateY(-50%) rotate(-17.86deg);
 }
@@ -102,16 +102,16 @@
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 960px;
+    max-width: 1100px;
     border-radius: 22px;
     overflow: hidden;
     cursor: pointer;
-    box-shadow: none;
-    transition: none;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .vs-video-box:hover {
-    box-shadow: none;
+    transform: scale(1.01);
 }
 
 .vs-video-thumb {
@@ -119,6 +119,7 @@
     height: auto;
     display: block;
     object-fit: cover;
+    border-radius: 0;
 }
 
 /* ── Bouton play ── */
@@ -157,7 +158,6 @@
     height: 52%;
     background: linear-gradient(135deg, #1376F8 0%, #041f52 100%);
     z-index: 0;
-    border-radius: 0;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -179,11 +179,6 @@
     .vs-video-container {
         padding: 0 32px;
     }
-
-    .vs-deco {
-        width: 50px;
-        height: 100px;
-    }
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -193,6 +188,11 @@
     .vs-title {
         font-size: 18px;
         line-height: 1.4;
+        margin: 0 0 8px;
+    }
+
+    .vs-title-line {
+        margin: 0 auto 16px;
     }
 
     .vs-subtitle {
@@ -201,33 +201,50 @@
     }
 
     .vs-text {
-        padding: 32px 16px 20px;
+        padding: 15px 16px 15px;
+    }
+
+    .vs-text br {
+        display: none;
     }
 
     .vs-video-container {
-        padding: 0 16px 40px;
+        padding: 30px 16px 15px;
     }
 
-    /* Cacher les décos sur petit écran */
     .vs-deco {
-        display: none;
+        display: block;
+        width: 140px;
+        height: 140px;
     }
-}
 
-.vs-video-box {
-    border-radius: 14px;
-}
+    .vs-deco-left {
+        left: -40px;
+        top: 45%;
+    }
 
-.vs-play-btn {
-    width: 44px;
-    height: 44px;
-}
+    .vs-deco-right {
+        right: -40px;
+        top: 45%;
+    }
 
-.vs-play-btn svg {
-    width: 44px;
-    height: 44px;
-}
+    .vs-video-box {
+        border-radius: 0;
+        box-shadow: none;
+        overflow: visible;
+    }
 
-.vs-blue-bg {
-    height: 48%;
+    .vs-video-thumb {
+        border-radius: 0;
+    }
+
+    .vs-play-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    .vs-play-btn svg {
+        width: 44px;
+        height: 44px;
+    }
 }

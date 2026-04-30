@@ -5,13 +5,19 @@
 ══════════════════════════════════════════════════════════════ */
 .ds-wrapper {
   width: 100%;
-  padding: 16px 48px 60px;
+  padding: 30px 48px;
   background: #ffffff;
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
-  user-select: none; /* Empêche la sélection de texte au clic */
+  user-select: none;
   -webkit-user-select: none;
-  -webkit-tap-highlight-color: transparent; /* Élimine le flash bleu sur mobile */
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 800px) {
+  .ds-wrapper {
+    padding: 15px 20px;
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -21,15 +27,9 @@
   display: flex;
   justify-content: center;
   gap: 20px;
-  max-width: 960px;
+  max-width: 1200px;
   margin: 0 auto;
   flex-wrap: wrap;
-}
-
-@media (min-width: 1600px) {
-  .ds-grid {
-    max-width: 1200px;
-  }
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -221,7 +221,7 @@
   .ds-mobile-container {
     display: flex;
     justify-content: center;
-    padding-top: 60px;
+    padding-top: 25px;
     /* Espace pour le docteur qui dépasse */
   }
 

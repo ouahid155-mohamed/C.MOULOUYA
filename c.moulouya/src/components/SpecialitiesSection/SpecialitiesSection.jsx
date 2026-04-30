@@ -10,22 +10,28 @@ const allSpecialites = [
   { title: "Cardiologie",            desc: "Suivi des maladies cardiovasculaires et examens spécialisés." },
 ];
 
-const PER_PAGE = 3;
 
 export default function SpecialitiesSection() {
   // Desktop logic
-  const [page, setPage] = useState(0);
-  const totalPages = Math.ceil(allSpecialites.length / PER_PAGE);
-  const visibleDesktop = allSpecialites.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const totalCards = allSpecialites.length;
+  const maxIndex = totalCards - 3; // Show 3 cards at a time
+
+  const nextDesktop = () => {
+    setCurrentIndex((prev) => (prev + 1) % (maxIndex + 1));
+  };
+  const prevDesktop = () => {
+    setCurrentIndex((prev) => (prev - 1 + (maxIndex + 1)) % (maxIndex + 1));
+  };
 
   // Mobile logic
-  const [currentIndex, setCurrentIndex] = useState(1); // Start with Urologie as per image
+  const [mobileIndex, setMobileIndex] = useState(1); // Start with Urologie as per image
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const minSwipeDistance = 50;
 
-  const prevMobile = () => setCurrentIndex((c) => (c - 1 + allSpecialites.length) % allSpecialites.length);
-  const nextMobile = () => setCurrentIndex((c) => (c + 1) % allSpecialites.length);
+  const prevMobile = () => setMobileIndex((c) => (c - 1 + allSpecialites.length) % allSpecialites.length);
+  const nextMobile = () => setMobileIndex((c) => (c + 1) % allSpecialites.length);
 
   const onTouchStartHandler = (e) => {
     setTouchEnd(null);
@@ -60,10 +66,10 @@ export default function SpecialitiesSection() {
               </p>
             </div>
             <div className="sp-banner-nav">
-              <button className="sp-nav-btn" onClick={() => setPage((p) => (p - 1 + totalPages) % totalPages)}>
+              <button className="sp-nav-btn" onClick={prevDesktop}>
                 <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </button>
-              <button className="sp-nav-btn" onClick={() => setPage((p) => (p + 1) % totalPages)}>
+              <button className="sp-nav-btn" onClick={nextDesktop}>
                 <svg viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </button>
             </div>
@@ -71,7 +77,7 @@ export default function SpecialitiesSection() {
           <div className="sp-cards-container">
             <div 
               className="sp-cards-track" 
-              style={{ transform: `translateX(-${page * 100}%)` }}
+              style={{ transform: `translateX(-${currentIndex * 33.333}%)` }}
             >
               {allSpecialites.map((item, i) => (
                 <div className="sp-card-wrapper" key={i}>
@@ -113,10 +119,10 @@ export default function SpecialitiesSection() {
             <div className="sp-mobile-track-wrapper">
               <div 
                 className="sp-mobile-track" 
-                style={{ transform: `translateX(calc(-${currentIndex * 82}% + 9%))` }}
+                style={{ transform: `translateX(calc(-${mobileIndex * 82}% + 9%))` }}
               >
                 {allSpecialites.map((item, i) => (
-                  <div className={`sp-mobile-card-slot ${i === currentIndex ? "active" : ""}`} key={i}>
+                  <div className={`sp-mobile-card-slot ${i === mobileIndex ? "active" : ""}`} key={i}>
                     <div className="sp-card sp-mobile-card">
                       <span className="sp-card-title">{item.title}</span>
                       <div className="sp-card-line" />

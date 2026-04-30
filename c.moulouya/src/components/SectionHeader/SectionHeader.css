@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 80px 24px;
+  padding: 50px 24px;
   font-family: "Poppins", sans-serif;
   text-align: center;
   box-sizing: border-box;
@@ -27,8 +27,10 @@
 
 .sh-deco-line {
   display: block;
-  height: 1.5px;
+  height: 2px;
   border-radius: 999px;
+  background-color: #FF4949 !important;
+  opacity: 1 !important;
 }
 
 .sh-deco-line.sh-long {
@@ -40,7 +42,7 @@
 }
 
 .sh-red {
-  background-color: #E31E24;
+  background-color: #FF4949 !important;
 }
 
 .sh-title {
@@ -57,24 +59,38 @@
   color: #6B7280;
   line-height: 1.75;
   margin: 0;
-  max-width: 520px;
+  max-width: 800px;
 }
 
 @media (max-width: 600px) {
+  .sh-wrapper {
+    padding: 30px 13px; /* Espacement minimal et symétrique */
+  }
+
   .sh-title {
     font-size: 26px;
+    margin-bottom: 12px;
   }
 
   .sh-subtitle {
-    font-size: 13px;
+    font-size: 12.5px;
+    max-width: 100%;
+    line-height: 1.5;
+    margin: 0;
   }
 
-  .sh-wrapper {
-    padding: 40px 16px;
+  .sh-deco-top {
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+
+  .sh-deco-bottom {
+    margin-top: 10px;
+    margin-bottom: 0;
   }
 
   .sh-deco-line.sh-long {
-    width: 20px;
+    width: 22px;
   }
 
   .sh-deco-line.sh-medium {

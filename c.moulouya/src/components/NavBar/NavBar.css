@@ -44,7 +44,8 @@ html {
     width: 222px;
     position: relative;
     z-index: 1;
-    text-decoration: none; /* Enlève le souligné */
+    text-decoration: none;
+    /* Enlève le souligné */
 }
 
 .nb-logo-icon {
@@ -154,14 +155,16 @@ html {
     background: transparent;
     font-family: "Poppins", sans-serif;
     font-size: 13.5px;
-    font-weight: 400; /* Regular */
+    font-weight: 400;
+    /* Regular */
     color: #9CA3AF;
     cursor: pointer;
     border-radius: 999px;
     transition: color 0.2s;
     white-space: nowrap;
     position: relative;
-    text-decoration: none; /* Pas de souligné */
+    text-decoration: none;
+    /* Pas de souligné */
 }
 
 .nb-nav-link:hover {
@@ -171,7 +174,8 @@ html {
 
 .nb-nav-link.active {
     color: #0088FF;
-    font-weight: 600; /* Semi-Bold */
+    font-weight: 600;
+    /* Semi-Bold */
     text-decoration: none;
 }
 
@@ -296,7 +300,8 @@ html {
     background: transparent;
     font-family: "Poppins", sans-serif;
     font-size: 14px;
-    font-weight: 400; /* Regular */
+    font-weight: 400;
+    /* Regular */
     color: rgba(255, 255, 255, 0.8);
     text-align: left;
     border-radius: 8px;
@@ -309,7 +314,8 @@ html {
 .nb-mobile-link.active {
     background: rgba(255, 255, 255, 0.15);
     color: #ffffff;
-    font-weight: 600; /* Semi-Bold */
+    font-weight: 600;
+    /* Semi-Bold */
     text-decoration: none;
 }
 
@@ -373,11 +379,23 @@ html {
 }
 
 @media (max-width: 768px) {
+
     /* ── Cacher les éléments desktop ── */
-    .nb-logo-desktop   { display: none; }
-    .nb-nav-container  { display: none; }
-    .nb-cta            { display: none; }
-    .nb-right-bg-wrapper { display: none; }
+    .nb-logo-desktop {
+        display: none;
+    }
+
+    .nb-nav-container {
+        display: none;
+    }
+
+    .nb-cta {
+        display: none;
+    }
+
+    .nb-right-bg-wrapper {
+        display: none;
+    }
 
     /* ── Navbar mobile ── */
     .nb-navbar {
@@ -444,7 +462,7 @@ html {
         height: 18px;
         object-fit: cover;
         border-radius: 3px;
-        box-shadow: 0 0 0 1px rgba(0,0,0,0.12);
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
     }
 
     /* Cercle blanc avec flèche bleue — identique au nb-cta-arrow */

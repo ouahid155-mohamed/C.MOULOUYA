@@ -20,7 +20,6 @@ function Home() {
                 subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet rcus nunc. Duis egestas ac ante sed tincidunt."
             />
             <InterventionsSection />
-            <div style={{ marginBottom: "-20px" }}></div>
             <SectionHeader
                 title="Nos Docteurs"
                 subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet rcus nunc. Duis egestas ac ante sed tincidunt."

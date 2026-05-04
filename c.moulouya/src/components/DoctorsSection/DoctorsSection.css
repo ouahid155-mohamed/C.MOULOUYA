@@ -210,9 +210,79 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
-   RESPONSIVE — Tablette / Mobile
-   C'est ici que l'on applique le design de l'image
+   RESPONSIVE — Desktop Fluide (Adaptation aux dimensions PC)
 ══════════════════════════════════════════════════════════════ */
+
+/* ── Grands écrans (Full HD / 2K) ── */
+@media (min-width: 1600px) {
+  .ds-grid {
+    max-width: 1400px;
+    gap: 30px;
+  }
+
+  .ds-outer-border {
+    max-width: 310px;
+  }
+
+  .ds-photo-area {
+    height: 360px;
+  }
+
+  .ds-photo {
+    height: 380px;
+  }
+
+  .ds-name {
+    font-size: 22px;
+  }
+
+  .ds-specialty {
+    font-size: 17px;
+  }
+}
+
+/* ── Laptops (1024px - 1440px) ── */
+@media (max-width: 1440px) and (min-width: 1025px) {
+  .ds-grid {
+    max-width: 1000px;
+    gap: 15px;
+  }
+
+  .ds-outer-border {
+    max-width: 230px;
+  }
+
+  .ds-photo-area {
+    height: 270px;
+  }
+
+  .ds-photo {
+    height: 290px;
+  }
+
+  .ds-name {
+    font-size: 16px;
+  }
+
+  .ds-specialty {
+    font-size: 14px;
+  }
+
+  .ds-btn {
+    font-size: 11px;
+    padding: 6px 6px 6px 12px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Tablette / Mobile
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .ds-wrapper {
+    padding: 24px 32px;
+  }
+}
+
 @media (max-width: 800px) {
   .ds-desktop-grid {
     display: none;

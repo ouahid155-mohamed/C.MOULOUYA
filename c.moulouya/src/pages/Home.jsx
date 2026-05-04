@@ -1,5 +1,4 @@
-import Header from "../components/Header/Header";
-import Navbar from "../components/NavBar/NavBar";
+
 import HeroSection from "../components/HeroSection/HeroSection";
 import VideoSection from "../components/VideoSection/VideoSection";
 import SectionHeader from "../components/SectionHeader/SectionHeader";
@@ -11,8 +10,7 @@ import ContactFooter from '../components/ContactFooter/ContactFooter';
 function Home() {
     return (
         <>
-            <Header />
-            <Navbar />
+
             <HeroSection />
             <VideoSection />
             <SectionHeader

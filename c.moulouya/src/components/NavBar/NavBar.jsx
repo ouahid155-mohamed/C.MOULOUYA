@@ -20,20 +20,34 @@ const languages = [
 
 export default function Navbar() {
   const location = useLocation();
-  const [activeLink, setActiveLink] = useState("Accueil");
+  const [activeLink, setActiveLink] = useState(() => {
+    // Initialiser l'onglet actif en fonction de l'URL actuelle au chargement
+    const currentPath = window.location.pathname + window.location.hash;
+    const matched = navLinks.find(l => l.path === currentPath) || navLinks.find(l => l.path === window.location.pathname);
+    return matched ? matched.label : "Accueil";
+  });
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState(languages[0]);
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
   const linksRef = useRef({});
 
-  // Synchroniser l'onglet actif avec l'URL
+  // Synchroniser l'onglet actif avec l'URL (incluant les ancres)
   useEffect(() => {
-    const currentLink = navLinks.find(l => l.path === location.pathname);
-    if (currentLink) {
-      setActiveLink(currentLink.label);
+    const currentPath = location.pathname + location.hash;
+    
+    // 1. Chercher un match exact (path + hash)
+    let matchedLink = navLinks.find(l => l.path === currentPath);
+    
+    // 2. Si pas de match exact, chercher par pathname uniquement
+    if (!matchedLink) {
+      matchedLink = navLinks.find(l => l.path === location.pathname);
     }
-  }, [location.pathname]);
+
+    if (matchedLink) {
+      setActiveLink(matchedLink.label);
+    }
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     const updateIndicator = () => {

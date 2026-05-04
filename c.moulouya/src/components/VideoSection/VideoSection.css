@@ -85,14 +85,14 @@
 
 .vs-deco-left {
     /* centre du cercle aligné sur le bord gauche de la vidéo */
-    left: calc(43% - 570px);
+    left: calc(48% - 570px);
     top: 50%;
     transform: translateY(-50%) rotate(-17.86deg);
 }
 
 .vs-deco-right {
     /* centre du cercle aligné sur le bord droit de la vidéo */
-    right: calc(43% - 570px);
+    right: calc(48% - 570px);
     top: 50%;
     transform: translateY(-50%) rotate(-17.86deg);
 }
@@ -102,7 +102,7 @@
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 1100px;
+    max-width: 950px;
     border-radius: 22px;
     overflow: hidden;
     cursor: pointer;
@@ -158,6 +158,26 @@
     height: 52%;
     background: linear-gradient(135deg, #1376F8 0%, #041f52 100%);
     z-index: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Desktop Fluide (Adaptation aux dimensions PC)
+══════════════════════════════════════════════════════════════ */
+
+/* ── Grands écrans (Full HD / 2K) ── */
+@media (min-width: 1600px) {
+    .vs-container { max-width: 1600px; }
+    .vs-video-box { max-width: 1200px; }
+    .vs-title { font-size: 42px; }
+    .vs-subtitle { font-size: 18px; }
+}
+
+/* ── Laptops (1024px - 1440px) ── */
+@media (max-width: 1440px) and (min-width: 1025px) {
+    .vs-container { max-width: 1100px; }
+    .vs-video-box { max-width: 850px; }
+    .vs-title { font-size: 24px; }
+    .vs-subtitle { font-size: 13px; }
 }
 
 /* ══════════════════════════════════════════════════════════════

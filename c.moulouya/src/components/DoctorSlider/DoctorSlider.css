@@ -1,0 +1,485 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* ══════════════════════════════════════════════════════════════
+   WRAPPER
+══════════════════════════════════════════════════════════════ */
+.dsl-wrapper {
+    width: 100%;
+    padding: 20px 80px 30px 170px;
+    background: #ffffff;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   INNER — flex row
+══════════════════════════════════════════════════════════════ */
+.dsl-inner {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   COLONNE GAUCHE
+══════════════════════════════════════════════════════════════ */
+.dsl-photo-col {
+    position: relative;
+    flex-shrink: 0;
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Points décoratifs en haut à gauche */
+.dsl-dots {
+    position: absolute;
+    top: 50px;
+    left: -32px;
+    width: 140px;
+    height: auto;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* ── Arche bleue dégradée ── */
+.dsl-arch-wrap {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 1;
+}
+
+/* Fond arche — demi-ellipse bleue dégradée */
+.dsl-arch-bg {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 362px;
+    height: 371px;
+    background: linear-gradient(180deg, #0088FF 0%, #D3EAFF 100%);
+    border-radius: 160px 160px 24px 24px;
+    z-index: -1;
+}
+
+/* Photo du docteur */
+.dsl-photo {
+    position: relative;
+    z-index: 10;
+    height: 479px;
+    width: auto;
+    object-fit: contain;
+    object-position: bottom;
+    display: block;
+    margin-bottom: 0px;
+}
+
+/* ── Boutons nav ── */
+.dsl-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dsl-nav-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: #1376F8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 14px rgba(19, 118, 248, 0.35);
+    padding: 0;
+}
+
+.dsl-nav-btn:hover {
+    background: #0A2E72;
+    transform: scale(1.08);
+}
+
+.dsl-nav-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   COLONNE DROITE — contenu
+══════════════════════════════════════════════════════════════ */
+.dsl-content {
+    flex: 0 0 630px;
+    width: 630px;
+    height: 478px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+}
+
+/* Nom */
+.dsl-name {
+    font-size: 25px;
+    font-weight: bold;
+    color: #1376F8;
+    margin: 0 0 4px;
+    line-height: 1.2;
+}
+
+/* Spécialité */
+.dsl-specialty {
+    font-size: 18px;
+    font-weight: 500;
+    color: #002964;
+    margin: 0 0 12px;
+}
+
+/* Description */
+.dsl-desc {
+    font-size: 16px;
+    font-weight: 00;
+    color: #5C5C5C;
+    line-height: 1.6;
+    margin: 0 0 15px;
+}
+
+/* Séparateur */
+.dsl-divider {
+    border: none;
+    border-top: 1px solid #E5E7EB;
+    margin: 0 0 15px;
+}
+
+/* ── Liste spécialités ── */
+.dsl-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 74px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.dsl-list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dsl-list-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Cercle rouge creux */
+.dsl-list-dot {
+    width: 14px;
+    height: 13px;
+    border-radius: 50%;
+    border: 2px solid #E31E24;
+    background: transparent;
+    flex-shrink: 0;
+}
+
+.dsl-list-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #444444;
+}
+
+.dsl-list-detail {
+    font-size: 15px;
+    font-weight: 400;
+    color: #788094;
+    margin: 0;
+    padding-left: 24px;
+    max-width: 450px;
+    line-height: 1.4;
+}
+
+/* ── Dots indicateurs ── */
+/* ── Footer Nav (Row) ── */
+.dsl-footer-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: -15px auto 0;
+    max-width: 1100px;
+    padding: 0 150px 0 120px;
+}
+
+.dsl-dots-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dsl-dot-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: #1376F8;
+    opacity: 0.35;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.dsl-dot-btn.active {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.dsl-dot-btn:hover {
+    opacity: 0.7;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Desktop Fluide (Adaptation aux dimensions PC)
+══════════════════════════════════════════════════════════════ */
+
+/* ── Grands écrans (Full HD / 2K) ── */
+@media (min-width: 1600px) {
+
+    .dsl-inner,
+    .dsl-footer-nav {
+        max-width: 1300px;
+        gap: 100px;
+    }
+
+    .dsl-photo-col {
+        width: 420px;
+    }
+
+    .dsl-arch-bg {
+        width: 420px;
+        height: 430px;
+    }
+
+    .dsl-photo {
+        height: 560px;
+    }
+
+    .dsl-content {
+        flex: 0 0 750px;
+        width: 750px;
+        height: 560px;
+        padding-top: 100px;
+    }
+
+    .dsl-name {
+        font-size: 38px;
+    }
+
+    .dsl-specialty {
+        font-size: 24px;
+    }
+
+    .dsl-desc {
+        font-size: 20px;
+        max-width: 650px;
+    }
+
+    .dsl-list-title {
+        font-size: 22px;
+    }
+
+    .dsl-list-detail {
+        font-size: 18px;
+        max-width: 550px;
+    }
+}
+
+/* ── Laptops (1024px - 1440px) ── */
+@media (max-width: 1440px) and (min-width: 1025px) {
+    .dsl-wrapper {
+        padding: 20px 60px 30px 130px;
+    }
+
+    .dsl-inner,
+    .dsl-footer-nav {
+        max-width: 980px;
+        gap: 40px;
+    }
+
+    .dsl-photo-col {
+        width: 320px;
+    }
+
+    .dsl-arch-bg {
+        width: 310px;
+        height: 320px;
+    }
+
+    .dsl-photo {
+        height: 410px;
+    }
+
+    .dsl-content {
+        flex: 0 0 580px;
+        width: 580px;
+        height: auto;
+        padding-top: 70px;
+    }
+
+    .dsl-name {
+        font-size: 24px;
+    }
+
+    .dsl-specialty {
+        font-size: 17px;
+    }
+
+    .dsl-desc {
+        font-size: 15px;
+    }
+
+    .dsl-list {
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    .dsl-list-title {
+        font-size: 16px;
+    }
+
+    .dsl-list-detail {
+        font-size: 14px;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Tablette (≤ 1024px)
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+    .dsl-wrapper {
+        padding: 32px 40px 48px;
+    }
+
+    .dsl-inner {
+        gap: 48px;
+    }
+
+    .dsl-photo-col {
+        width: 300px;
+    }
+
+    .dsl-arch-wrap {
+        height: 380px;
+    }
+
+    .dsl-arch-bg {
+        width: 260px;
+        height: 310px;
+    }
+
+    .dsl-photo {
+        height: 360px;
+    }
+
+    .dsl-name {
+        font-size: 24px;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Mobile (≤ 768px)
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .dsl-wrapper {
+        padding: 24px 16px 40px;
+    }
+
+    .dsl-inner {
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+    }
+
+    .dsl-photo-col {
+        width: 100%;
+        align-items: center;
+    }
+
+    .dsl-dots {
+        left: 0;
+        top: -8px;
+        width: 90px;
+    }
+
+    .dsl-arch-wrap {
+        height: 300px;
+    }
+
+    .dsl-arch-bg {
+        width: 220px;
+        height: 260px;
+    }
+
+    .dsl-photo {
+        height: 290px;
+    }
+
+    .dsl-footer-nav {
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 24px;
+        padding: 0;
+    }
+
+    .dsl-nav {
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    .dsl-dots-nav {
+        justify-content: center;
+    }
+
+    .dsl-content {
+        width: 100%;
+    }
+
+    .dsl-name {
+        font-size: 22px;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Petit mobile (≤ 420px)
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 420px) {
+    .dsl-arch-wrap {
+        height: 260px;
+    }
+
+    .dsl-arch-bg {
+        width: 190px;
+        height: 220px;
+    }
+
+    .dsl-photo {
+        height: 250px;
+    }
+
+    .dsl-name {
+        font-size: 20px;
+    }
+
+    .dsl-desc {
+        font-size: 12.5px;
+    }
+}

@@ -111,3 +111,14 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+/* ── Nettoyage mobile standard ── */
+* {
+  -webkit-tap-highlight-color: transparent;
+  outline: none !important;
+}
+
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}

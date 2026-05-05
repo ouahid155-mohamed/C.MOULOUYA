@@ -5,7 +5,7 @@
 ══════════════════════════════════════════════════════════════ */
 .cf-wrapper {
     width: 100%;
-    padding: 20px 64px 48px;
+    padding: 20px 0 48px;
     box-sizing: border-box;
     background: #ffffff;
     font-family: "Poppins", sans-serif;
@@ -18,11 +18,12 @@
     gap: 60px;
     background: linear-gradient(135deg, #0A2E72 0%, #1357D6 60%, #1376F8 100%);
     border-radius: 24px;
-    padding: 48px 52px;
+    padding: 48px 30px;
     position: relative;
     box-sizing: border-box;
-    max-width: 1400px;
+    max-width: 1250px;
     margin: 0 auto;
+    justify-content: center;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -101,10 +102,11 @@
    INFOS DE CONTACT (DROITE)
 ══════════════════════════════════════════════════════════════ */
 .cf-info {
-    flex: 1;
+    flex: 0 1 auto;
+    max-width: 500px;
     position: relative;
     color: #ffffff;
-    padding-left: 50px;
+    padding-left: 20px;
 }
 
 .cf-scroll-top {
@@ -253,7 +255,7 @@
     background: #ffffff;
     padding: 20px 48px;
     box-sizing: border-box;
-    border-top: 1px solid #f0f0f0;
+    border-top: none;
 }
 
 .cf-footer-inner {
@@ -310,6 +312,72 @@
     font-size: 13px;
     color: #6B7280;
     margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Desktop Fluide (Adaptation aux dimensions PC)
+══════════════════════════════════════════════════════════════ */
+
+/* ── Grands écrans (Full HD / 2K) ── */
+@media (min-width: 1600px) {
+    .cf-inner {
+        max-width: 1600px;
+        gap: 120px;
+        padding: 80px 100px;
+    }
+
+    .cf-form-box {
+        width: 440px;
+        padding: 48px 40px;
+    }
+
+    .cf-info-title {
+        font-size: 48px;
+    }
+
+    .cf-info-desc {
+        font-size: 18px;
+        max-width: 500px;
+    }
+
+    .cf-info-label {
+        font-size: 26px;
+    }
+
+    .cf-contact-item {
+        font-size: 18px;
+    }
+}
+
+/* ── Laptops (1024px - 1440px) ── */
+@media (max-width: 1440px) and (min-width: 1025px) {
+    .cf-wrapper {
+        padding: 20px 0 40px;
+    }
+
+    .cf-inner {
+        max-width: 1100px;
+        gap: 40px;
+        padding: 40px 48px;
+    }
+
+    .cf-form-box {
+        width: 320px;
+        padding: 32px 28px;
+    }
+
+    .cf-info-title {
+        font-size: 28px;
+    }
+
+    .cf-info-desc {
+        font-size: 13px;
+        max-width: 340px;
+    }
+
+    .cf-info-label {
+        font-size: 18px;
+    }
 }
 
 /* ══════════════════════════════════════════════════════════════

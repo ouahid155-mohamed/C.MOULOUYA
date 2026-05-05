@@ -1,167 +1,181 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700&display=swap');
 
 /* ══════════════════════════════════════════════════════════════
    WRAPPER — fond blanc avec padding pour centrer la carte bleue
 ══════════════════════════════════════════════════════════════ */
 .ss-wrapper {
-  width: 100%;
-  padding: 40px 55px;
-  background: #ffffff;
-  font-family: "Poppins", sans-serif;
-  box-sizing: border-box;
+    width: 100%;
+    padding: 0 55px 15px 25px;
+    margin-top: 0px;
+    background: #ffffff;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
 }
 
 /* ══════════════════════════════════════════════════════════════
    INNER — carte bleue arrondie
 ══════════════════════════════════════════════════════════════ */
 .ss-inner {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 48px;
-  max-width: 1150px;
-  margin: 0 auto;
-  background: #1376F8;
-  border-radius: 24px;
-  padding: 55px 60px;
-  overflow: hidden;
-  box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    max-width: 1120px;
+    margin: 0 auto;
+    background: #1376F8;
+    border-radius: 24px;
+    padding: 25px 60px;
+    justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 /* ── Motif Vector en arrière-plan ── */
 .ss-vector {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-  z-index: 0;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* ══════════════════════════════════════════════════════════════
    COLONNE GAUCHE
 ══════════════════════════════════════════════════════════════ */
 .ss-left {
-  position: relative;
-  z-index: 1;
-  flex: 0 0 380px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+    position: relative;
+    z-index: 1;
+    flex: 0 0 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 /* Tag + icône wave */
 .ss-tag-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .ss-tag {
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  white-space: nowrap;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .ss-wave {
-  width: 40px;
-  height: 16px;
-  flex-shrink: 0;
-  opacity: 0.8;
+    width: 52.56px;
+    height: 9.97px;
+    flex-shrink: 0;
+    opacity: 0.8;
 }
 
 /* Titre */
 .ss-title {
-  font-size: 38px;
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.25;
-  margin: 0;
+    font-size: 38px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.25;
+    margin: 0;
 }
 
 /* Description */
 .ss-desc {
-  font-size: 11.5px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.7;
-  margin: 0;
+    font-size: 12.5px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin: 0;
 }
 
 /* ══════════════════════════════════════════════════════════════
    GRILLE 2×2 DROITE
 ══════════════════════════════════════════════════════════════ */
 .ss-grid {
-  position: relative;
-  z-index: 1;
-  flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
 /* Card individuelle */
 .ss-card {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  background: transparent;
-  border: 1.01px solid rgba(255, 255, 255, 0.5);
-  border-radius: 20.22px;
-  width: 303.26px;
-  height: 156.68px;
-  padding: 0 28px;
-  box-sizing: border-box;
-  transition: transform 0.2s ease, background 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: transparent;
+    border: 1.01px solid #FFFFFF;
+    border-radius: 20.22px;
+    width: 275px;
+    height: 135px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .ss-card:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 /* Icône dans un cercle blanc */
 .ss-card-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
-.ss-card-icon svg, .ss-card-icon img {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
+.ss-card-icon svg,
+.ss-card-icon img {
+    width: 28px;
+    height: 34px;
+    object-fit: contain;
+}
+
+/* Ajustement spécifique pour les icônes de droite qui paraissent plus petites */
+.ss-grid .ss-card:nth-child(2) .ss-card-icon img,
+.ss-grid .ss-card:nth-child(4) .ss-card-icon img {
+    width: 44px;
+    height: 44px;
 }
 
 /* Contenu texte */
 .ss-card-content {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    width: 120px;
+    height: 90px;
 }
 
 .ss-card-value {
-  font-size: 26px;
-  font-weight: 800;
-  color: #ffffff;
-  line-height: 1;
-  letter-spacing: -0.01em;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 50px;
+    letter-spacing: 0;
 }
 
 .ss-card-label {
-  font-size: 11.5px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.4;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.2;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -170,82 +184,146 @@
 
 /* ── Grands écrans (Full HD / 2K) ── */
 @media (min-width: 1600px) {
-  .ss-inner {
-    max-width: 1400px;
-    gap: 80px;
-    padding: 70px 90px;
-  }
-  .ss-title { font-size: 48px; }
-  .ss-grid { gap: 24px; }
-  .ss-card { width: 340px; height: 180px; }
+    .ss-inner {
+        max-width: 1400px;
+        gap: 80px;
+        padding: 50px 90px;
+    }
+
+    .ss-title {
+        font-size: 48px;
+    }
+
+    .ss-grid {
+        gap: 24px;
+    }
+
+    .ss-card {
+        width: 340px;
+        height: 180px;
+    }
 }
 
 /* ── Laptops (1024px - 1440px) ── */
 @media (max-width: 1440px) and (min-width: 1025px) {
-  .ss-inner {
-    max-width: 1000px;
-    gap: 30px;
-    padding: 40px 45px;
-  }
-  .ss-left { flex: 0 0 300px; }
-  .ss-title { font-size: 30px; }
-  .ss-grid { gap: 12px; }
-  .ss-card { 
-    width: 270px; 
-    height: 140px; 
-    padding: 0 20px; 
-  }
-  .ss-card-value { font-size: 22px; }
+    .ss-inner {
+        max-width: 1000px;
+        gap: 30px;
+        padding: 40px 45px;
+    }
+
+    .ss-left {
+        flex: 0 0 300px;
+    }
+
+    .ss-title {
+        font-size: 30px;
+    }
+
+    .ss-grid {
+        gap: 12px;
+    }
+
+    .ss-card {
+        width: 270px;
+        height: 140px;
+        padding: 0 20px;
+    }
+
+    .ss-card-value {
+        font-size: 29px;
+    }
 }
 
 /* ══════════════════════════════════════════════════════════════
    RESPONSIVE — Tablette (≤ 1024px)
 ══════════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  .ss-wrapper { padding: 24px 28px; }
-  .ss-inner   { gap: 32px; padding: 36px 36px; }
-  .ss-left    { flex: 0 0 260px; }
-  .ss-title   { font-size: 24px; }
-  .ss-card-value { font-size: 22px; }
+    .ss-wrapper {
+        padding: 16px 28px;
+    }
+
+    .ss-inner {
+        gap: 32px;
+        padding: 28px 36px;
+    }
+
+    .ss-left {
+        flex: 0 0 260px;
+    }
+
+    .ss-title {
+        font-size: 24px;
+    }
+
+    .ss-card-value {
+        font-size: 22px;
+    }
 }
 
 /* ══════════════════════════════════════════════════════════════
    RESPONSIVE — Mobile (≤ 768px)
 ══════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  .ss-wrapper { padding: 16px 16px; }
+    .ss-wrapper {
+        padding: 24px 16px;
+    }
 
-  .ss-inner {
-    flex-direction: column;
-    padding: 32px 24px;
-    gap: 28px;
-    border-radius: 16px;
-  }
+    .ss-inner {
+        flex-direction: column;
+        padding: 32px 24px;
+        gap: 28px;
+        border-radius: 24px;
+    }
 
-  .ss-left {
-    flex: none;
-    width: 100%;
-  }
+    .ss-left {
+        flex: none;
+        width: 100%;
+    }
 
-  .ss-title { font-size: 22px; }
+    .ss-title {
+        font-size: 22px;
+    }
 
-  .ss-grid {
-    width: 100%;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
+    .ss-grid {
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
 
-  .ss-card { padding: 14px 14px; gap: 10px; }
-  .ss-card-icon { width: 38px; height: 38px; }
-  .ss-card-icon svg { width: 18px; height: 18px; }
-  .ss-card-value { font-size: 20px; }
-  .ss-card-label { font-size: 10.5px; }
+    .ss-card {
+        padding: 14px 14px;
+        gap: 10px;
+    }
+
+    .ss-card-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .ss-card-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .ss-card-value {
+        font-size: 20px;
+    }
+
+    .ss-card-label {
+        font-size: 10.5px;
+    }
 }
 
 /* ══════════════════════════════════════════════════════════════
    RESPONSIVE — Petit mobile (≤ 420px)
 ══════════════════════════════════════════════════════════════ */
 @media (max-width: 420px) {
-  .ss-grid { grid-template-columns: 1fr; }
-  .ss-card-value { font-size: 22px; }
+    .ss-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ss-card-value {
+        font-size: 22px;
+    }
 }

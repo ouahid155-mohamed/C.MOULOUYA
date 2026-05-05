@@ -1,7 +1,9 @@
 
-import SectionHeader   from '../components/SectionHeader/SectionHeader'
+import SectionHeader from '../components/SectionHeader/SectionHeader'
 import HistoireSection from '../components/HistoireSection/HistoireSection'
-import StatsSection    from '../components/StatsSection/StatsSection'
+import StatsSection from '../components/StatsSection/StatsSection'
+import DoctorSlider from '../components/Doctorslider/Doctorslider'
+import ContactFooter from '../components/ContactFooter/ContactFooter'
 
 export default function APropos() {
   return (
@@ -14,8 +16,14 @@ export default function APropos() {
       />
       <HistoireSection />
       <StatsSection />
+      <SectionHeader
+        title="Nos Docteurs"
+        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet rcus nunc. Duis egestas ac ante sed tincidunt."
+      />
+      <DoctorSlider />
+      <ContactFooter />
 
-      
+
     </>
   )
 }

@@ -1,6 +1,6 @@
-import aboutMain  from "../../assets/about_1_3.png";
+import aboutMain from "../../assets/about_1_3.png";
 import aboutSmall from "../../assets/Background+Shadow.png";
-import callIcon   from "../../assets/Tel.png";
+import callIcon from "../../assets/Tel.png";
 import "./HistoireSection.css";
 
 export default function HistoireSection() {
@@ -47,7 +47,7 @@ export default function HistoireSection() {
 
       </div>
 
-      <div className="hs-bottom-line" />
+
     </section>
   );
 }

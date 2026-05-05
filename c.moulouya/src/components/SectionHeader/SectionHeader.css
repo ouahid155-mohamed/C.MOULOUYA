@@ -62,9 +62,28 @@
   max-width: 800px;
 }
 
-@media (max-width: 600px) {
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Desktop Fluide (Adaptation aux dimensions PC)
+══════════════════════════════════════════════════════════════ */
+
+/* ── Grands écrans (Full HD / 2K) ── */
+@media (min-width: 1600px) {
+    .sh-title { font-size: 52px; }
+    .sh-subtitle { font-size: 18px; max-width: 1000px; }
+}
+
+/* ── Laptops (1024px - 1440px) ── */
+@media (max-width: 1440px) and (min-width: 1025px) {
+    .sh-title { font-size: 32px; }
+    .sh-subtitle { font-size: 13px; max-width: 700px; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
   .sh-wrapper {
-    padding: 30px 13px; /* Espacement minimal et symétrique */
+    padding: 24px 16px; /* Espacement standard mobile */
   }
 
   .sh-title {

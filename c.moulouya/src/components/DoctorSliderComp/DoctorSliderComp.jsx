@@ -3,7 +3,7 @@ import doc1 from "../../assets/cheerful-male-doctor-white-gown-por4534trait 3 1.
 import doc2 from "../../assets/ewrgt 1.png";
 import doc3 from "../../assets/qwre 1.png";
 import vector2 from "../../assets/Vector2.png";
-import "./DoctorSlider.css";
+import "./DoctorSliderComp.css";
 
 const doctors = [
     {

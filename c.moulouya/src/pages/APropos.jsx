@@ -2,7 +2,7 @@
 import SectionHeader from '../components/SectionHeader/SectionHeader'
 import HistoireSection from '../components/HistoireSection/HistoireSection'
 import StatsSection from '../components/StatsSection/StatsSection'
-import DoctorSlider from '../components/Doctorslider/Doctorslider'
+import DoctorSlider from '../components/DoctorSliderComp/DoctorSliderComp'
 import ContactFooter from '../components/ContactFooter/ContactFooter'
 
 export default function APropos() {

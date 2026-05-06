@@ -88,7 +88,8 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 600px; /* Assez haut pour ne pas couper le haut de la photo */
+    height: 600px;
+    /* Assez haut pour ne pas couper le haut de la photo */
     overflow: hidden;
     z-index: 10;
 }
@@ -453,19 +454,20 @@
         width: 120px;
     }
 
-    /* Arche proportionnelle au desktop (ratio 300/362 ≈ 0.83) */
+    /* Arche proportionnelle et dimensionnée pour s'adapter même aux très petits écrans */
     .dsl-arch-wrap {
-        height: 360px;
+        height: 350px;
     }
 
     .dsl-arch-bg {
-        width: 300px;
-        height: 328px;
+        width: 280px;
+        height: 310px;
     }
 
     /* Photo agrandie pour correspondre au desktop */
     .dsl-photo {
-        height: 400px;
+        height: 380px;
+        bottom: 0;
     }
 
     /* Boutons flèches — affichés sur les côtés de l'image */
@@ -491,8 +493,8 @@
         height: 18px;
     }
 
-    .dsl-mobile-prev { left: 15px; }
-    .dsl-mobile-next { right: 15px; }
+    .dsl-mobile-prev { left: 10px; }
+    .dsl-mobile-next { right: 10px; }
 
     /* Cacher les flèches du footer sur mobile */
     .dsl-nav {
@@ -531,31 +533,5 @@
     .dsl-list {
         gap: 15px;
         margin-bottom: 10px;
-    }
-}
-
-/* ══════════════════════════════════════════════════════════════
-   RESPONSIVE — Petit mobile (≤ 420px)
-══════════════════════════════════════════════════════════════ */
-@media (max-width: 420px) {
-    .dsl-arch-wrap {
-        height: 260px;
-    }
-
-    .dsl-arch-bg {
-        width: 190px;
-        height: 220px;
-    }
-
-    .dsl-photo {
-        height: 250px;
-    }
-
-    .dsl-name {
-        font-size: 20px;
-    }
-
-    .dsl-desc {
-        font-size: 12.5px;
     }
 }

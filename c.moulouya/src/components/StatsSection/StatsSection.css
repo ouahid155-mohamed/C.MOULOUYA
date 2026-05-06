@@ -110,13 +110,13 @@
 .ss-card {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
     background: transparent;
     border: 1.01px solid #FFFFFF;
     border-radius: 20.22px;
-    width: 275px;
-    height: 135px;
-    padding: 0 20px;
+    width: 245px;
+    height: 110px;
+    padding: 0 15px;
     box-sizing: border-box;
     transition: transform 0.2s ease, background 0.2s ease;
 }
@@ -128,8 +128,8 @@
 
 /* Icône dans un cercle blanc */
 .ss-card-icon {
-    width: 50px;
-    height: 50px;
+    width: 58px;
+    height: 58px;
     border-radius: 50%;
     background: #ffffff;
     display: flex;
@@ -141,11 +141,18 @@
 .ss-card-icon svg,
 .ss-card-icon img {
     width: 28px;
-    height: 34px;
+    height: 28px;
     object-fit: contain;
 }
 
-/* Ajustement spécifique pour les icônes de droite qui paraissent plus petites */
+/* Les icônes de gauche ont peu de marge dans l'image, on les réduit */
+.ss-grid .ss-card:nth-child(1) .ss-card-icon img,
+.ss-grid .ss-card:nth-child(3) .ss-card-icon img {
+    width: 28px;
+    height: 28px;
+}
+
+/* Les icônes de droite ont beaucoup de marge transparente, on les agrandit */
 .ss-grid .ss-card:nth-child(2) .ss-card-icon img,
 .ss-grid .ss-card:nth-child(4) .ss-card-icon img {
     width: 44px;
@@ -157,7 +164,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 2px;
+    gap: 0;
     width: 120px;
     height: 90px;
 }
@@ -167,8 +174,9 @@
     font-size: 42px;
     font-weight: 700;
     color: #ffffff;
-    line-height: 50px;
+    line-height: 1;
     letter-spacing: 0;
+    margin-bottom: 2px;
 }
 
 .ss-card-label {
@@ -225,9 +233,10 @@
     }
 
     .ss-card {
-        width: 270px;
-        height: 140px;
-        padding: 0 20px;
+        width: 235px;
+        height: 100px;
+        padding: 0 15px;
+        gap: 12px;
     }
 
     .ss-card-value {
@@ -266,7 +275,7 @@
 ══════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
     .ss-wrapper {
-        padding: 24px 16px;
+        padding: 8px 0;
     }
 
     .ss-inner {
@@ -292,18 +301,39 @@
     }
 
     .ss-card {
-        padding: 14px 14px;
+        width: 100%;
+        height: auto;
+        padding: 14px;
         gap: 10px;
+        box-sizing: border-box;
+    }
+
+    .ss-card-content {
+        width: auto;
+        height: auto;
     }
 
     .ss-card-icon {
-        width: 38px;
-        height: 38px;
+        width: 44px;
+        height: 44px;
     }
 
-    .ss-card-icon svg {
+    .ss-card-icon svg,
+    .ss-card-icon img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .ss-grid .ss-card:nth-child(1) .ss-card-icon img,
+    .ss-grid .ss-card:nth-child(3) .ss-card-icon img {
         width: 18px;
         height: 18px;
+    }
+
+    .ss-grid .ss-card:nth-child(2) .ss-card-icon img,
+    .ss-grid .ss-card:nth-child(4) .ss-card-icon img {
+        width: 32px;
+        height: 32px;
     }
 
     .ss-card-value {

@@ -9,7 +9,7 @@
     background: #ffffff;
     font-family: "Poppins", sans-serif;
     padding: 40px 64px 0;
-    margin-top: -30px;
+    margin-top: 0;
     position: relative;
     z-index: 2;
     box-sizing: border-box;
@@ -294,10 +294,12 @@
 
     .hs-inner {
         flex-direction: column;
-        gap: 32px;
+        gap: 24px;
     }
 
+    /* Container proportionnel — conserve le ratio exact du design */
     .hs-images {
+        position: relative;
         width: 100%;
         max-width: 558px;
         height: auto;
@@ -305,36 +307,47 @@
         margin: 0 auto;
     }
 
+    /* Grande image — remplit tout le container */
     .hs-img-main {
-        width: 100%;
-        height: 100%;
         position: absolute;
         inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
 
+    /* Petite image overlay — positionnement % identique au desktop */
     .hs-img-small {
-        width: 44.8%;
-        /* 250/558 */
-        height: 46.5%;
-        /* 217/466 */
-        top: 57.3%;
-        /* 267/466 */
-        left: 58.2%;
-        /* 325/558 */
+        position: absolute;
+        width: 44.8%;    /* 250 / 558 */
+        height: 46.5%;   /* 217 / 466 */
+        top: 57.3%;      /* 267 / 466 */
+        left: 58.2%;     /* 325 / 558 */
+        object-fit: contain;
+        z-index: 2;
         display: block;
+    }
+
+    .hs-tag {
+        margin-bottom: 6px;
     }
 
     .hs-title {
         font-size: 22px;
+        line-height: 1.3;
+        margin-bottom: 8px;
     }
 
     .hs-desc {
-        font-size: 13px;
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 14px;
     }
 
     .hs-actions {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
         gap: 16px;
     }
 }
@@ -343,22 +356,19 @@
    RESPONSIVE — Petit mobile (≤ 480px)
 ══════════════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
-    .hs-images {
-        height: 240px;
-    }
+    /* Les images restent proportionnelles via aspect-ratio — pas de hauteur fixe */
 
-    .hs-img-main {
-        width: 75%;
-        height: 220px;
-    }
-
-    .hs-img-small {
-        width: 50%;
-        height: 125px;
+    .hs-tag {
+        font-size: 14px;
     }
 
     .hs-title {
         font-size: 20px;
+        line-height: 1.3;
+    }
+
+    .hs-desc {
+        font-size: 13px;
     }
 
     .hs-btn {

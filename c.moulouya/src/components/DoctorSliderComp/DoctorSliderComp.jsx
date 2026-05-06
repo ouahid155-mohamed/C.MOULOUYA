@@ -58,25 +58,39 @@ const doctors = [
 
 export default function DoctorSlider() {
     const [current, setCurrent] = useState(0);
-    const [touchStart, setTouchStart] = useState(null);
-    const [touchEnd, setTouchEnd] = useState(null);
+    const [touchStart, setTouchStart] = useState({ x: null, y: null });
+    const [touchEnd, setTouchEnd] = useState({ x: null, y: null });
 
     const minSwipeDistance = 50;
 
     const onTouchStart = (e) => {
-        setTouchEnd(null);
-        setTouchStart(e.targetTouches[0].clientX);
+        setTouchEnd({ x: null, y: null });
+        setTouchStart({
+            x: e.targetTouches[0].clientX,
+            y: e.targetTouches[0].clientY,
+        });
     };
 
-    const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+    const onTouchMove = (e) => {
+        setTouchEnd({
+            x: e.targetTouches[0].clientX,
+            y: e.targetTouches[0].clientY,
+        });
+    };
 
     const onTouchEnd = () => {
-        if (!touchStart || !touchEnd) return;
-        const distance = touchStart - touchEnd;
-        const isLeftSwipe = distance > minSwipeDistance;
-        const isRightSwipe = distance < -minSwipeDistance;
-        if (isLeftSwipe) next();
-        if (isRightSwipe) prev();
+        if (touchStart.x === null || touchEnd.x === null) return;
+        const distanceX = touchStart.x - touchEnd.x;
+        const distanceY = touchStart.y - touchEnd.y;
+        
+        const isLeftSwipe = distanceX > minSwipeDistance;
+        const isRightSwipe = distanceX < -minSwipeDistance;
+        
+        // Ensure the swipe is mostly horizontal
+        if (Math.abs(distanceX) > Math.abs(distanceY)) {
+            if (isLeftSwipe) next();
+            if (isRightSwipe) prev();
+        }
     };
 
     const prev = () => setCurrent((c) => (c - 1 + doctors.length) % doctors.length);
@@ -101,8 +115,30 @@ export default function DoctorSlider() {
                     {/* Arche bleue dégradée + photo */}
                     <div className="dsl-arch-wrap">
                         <div className="dsl-arch-bg" />
-                        <img src={doc.img} alt={doc.name} className="dsl-photo" />
+                        <div className="dsl-photo-viewport">
+                            <div className="dsl-photo-track" style={{ transform: `translateX(-${current * 100}%)` }}>
+                                {doctors.map((d, i) => (
+                                    <div className="dsl-photo-slide" key={i}>
+                                        <img src={d.img} alt={d.name} className="dsl-photo" draggable="false" />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
+
+                    {/* Flèches mobiles — gauche et droite de l'image */}
+                    <button className="dsl-mobile-btn dsl-mobile-prev" onClick={prev} aria-label="Précédent">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </button>
+                    <button className="dsl-mobile-btn dsl-mobile-next" onClick={next} aria-label="Suivant">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
 
                 </div>
 

@@ -355,6 +355,7 @@
   .sds-tabs-row {
     gap: 8px;
     margin-bottom: 20px;
+    touch-action: pan-y;
   }
 
   .sds-tab-inactive {

@@ -40,12 +40,41 @@ export default function SpecialitesDetailSection() {
   const prevIdx = (active - 1 + total) % total;
   const nextIdx = (active + 1) % total;
 
+  // ── Swipe logic ──
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) next();
+    if (isRightSwipe) prev();
+  };
+
   return (
     <section className="sds-wrapper">
       <div className="sds-inner">
 
         {/* ── Tab slider ── */}
-        <div className="sds-tabs-row">
+        <div 
+          className="sds-tabs-row"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
 
           {/* Arrow left */}
           <button className="sds-arrow-btn" onClick={prev} aria-label="Précédent">

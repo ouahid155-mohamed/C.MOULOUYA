@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import doc1 from "../../assets/cheerful-male-doctor-white-gown-por4534trait 3 1.png";
 import doc2 from "../../assets/ewrgt 1.png";
 import doc3 from "../../assets/qwre 1.png";
@@ -57,7 +58,19 @@ const doctors = [
 ];
 
 export default function DoctorSlider() {
+    const location = useLocation();
     const [current, setCurrent] = useState(0);
+
+    useEffect(() => {
+        if (location.state && typeof location.state.doctorIndex === 'number') {
+            setCurrent(location.state.doctorIndex);
+            // Optionnel : scroller vers le slider si besoin
+            const element = document.querySelector('.dsl-wrapper');
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }, [location.state]);
     const [touchStart, setTouchStart] = useState({ x: null, y: null });
     const [touchEnd, setTouchEnd] = useState({ x: null, y: null });
 

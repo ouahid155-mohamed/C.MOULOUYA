@@ -193,22 +193,26 @@
 /* ── Grands écrans (Full HD / 2K) ── */
 @media (min-width: 1600px) {
     .ss-inner {
-        max-width: 1400px;
-        gap: 80px;
-        padding: 50px 90px;
+        max-width: 1280px;
+        gap: 60px;
+        padding: 40px 70px;
     }
 
     .ss-title {
-        font-size: 48px;
+        font-size: 42px;
     }
 
     .ss-grid {
-        gap: 24px;
+        gap: 20px;
     }
 
     .ss-card {
-        width: 340px;
-        height: 180px;
+        width: 280px;
+        height: 130px;
+    }
+
+    .ss-card-value {
+        font-size: 38px;
     }
 }
 

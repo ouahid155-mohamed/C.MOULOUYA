@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import doc1 from "../../assets/cheerful-male-doctor-white-gown-por4534trait 3 1.png";
 import doc2 from "../../assets/ewrgt 1.png";
 import doc3 from "../../assets/qwre 1.png";
@@ -11,7 +12,12 @@ const doctors = [
 ];
 
 export default function DoctorsSection() {
+  const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
+
+  const handleMoreInfos = (index) => {
+    navigate("/apropos", { state: { doctorIndex: index } });
+  };
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
 
@@ -53,7 +59,7 @@ export default function DoctorsSection() {
               <div className="ds-photo-border">
                 <div className="ds-photo-area">
                   <img src={d.img} alt={d.name} className="ds-photo" />
-                  <button className="ds-btn">
+                  <button className="ds-btn" onClick={() => handleMoreInfos(i)}>
                     <span className="ds-btn-label">Plus d'infos</span>
                     <span className="ds-btn-circle">
                       <svg viewBox="0 0 24 24" fill="none">
@@ -93,7 +99,7 @@ export default function DoctorsSection() {
             <div className="ds-photo-border">
               <div className="ds-photo-area">
                 <img src={doc.img} alt={doc.name} className="ds-photo" />
-                <button className="ds-btn">
+                <button className="ds-btn" onClick={() => handleMoreInfos(current)}>
                   <span className="ds-btn-label">Plus d'infos</span>
                   <span className="ds-btn-circle">
                     <svg viewBox="0 0 24 24" fill="none">

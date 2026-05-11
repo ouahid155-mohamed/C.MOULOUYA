@@ -29,17 +29,27 @@ export default function VideoSection() {
         <img src={ellipseLeft}  alt="" className="vs-deco vs-deco-left"  aria-hidden="true" />
         <img src={ellipseRight} alt="" className="vs-deco vs-deco-right" aria-hidden="true" />
         {/* Box vidéo */}
-        <div className="vs-video-box" onClick={() => setPlaying(!playing)}>
-          <img src={videoBox} alt="Vidéo Clinique Moulouya" className="vs-video-thumb" />
-
-          {/* Bouton play */}
-          {!playing && (
-            <button className="vs-play-btn" aria-label="Lire la vidéo">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="12" fill="white" fillOpacity="0.9" />
-                <path d="M10 8.5L16 12L10 15.5V8.5Z" fill="#1376F8" />
-              </svg>
-            </button>
+        <div className="vs-video-box" onClick={() => !playing && setPlaying(true)}>
+          {playing ? (
+            <video 
+              src="https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets@main/clinique%20moulouya%20youtube%20version(1)(1).mp4"
+              className="vs-video-thumb"
+              controls
+              autoPlay
+              playsInline
+              style={{ display: 'block', width: '100%' }}
+            />
+          ) : (
+            <>
+              <img src={videoBox} alt="Vidéo Clinique Moulouya" className="vs-video-thumb" />
+              {/* Bouton play */}
+              <button className="vs-play-btn" aria-label="Lire la vidéo">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="12" fill="white" fillOpacity="0.9" />
+                  <path d="M10 8.5L16 12L10 15.5V8.5Z" fill="#1376F8" />
+                </svg>
+              </button>
+            </>
           )}
         </div>
 

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import logoSoftCactus from "../../assets/Logo SoftCactus.png";
-import softCactusText from "../../assets/SoftCactus.png";
+import softCactusLogo from "../../assets/Group 1000010885.png";
 import urgenceIcon from "../../assets/UrgenceContact.png";
 import emailIcon from "../../assets/EmailContact.png";
 import callIcon from "../../assets/CallContact.png";
@@ -15,7 +14,14 @@ export default function ContactFooter() {
 
     useEffect(() => {
         const toggleVisibility = () => {
-            if (window.scrollY > 300) {
+            const scrollY = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+
+            // Masquer la flèche si on arrive tout en bas pour éviter l'overlap avec le texte
+            const isAtBottom = scrollY + windowHeight > documentHeight - 80;
+
+            if (scrollY > 300 && !isAtBottom) {
                 setIsVisible(true);
             } else {
                 setIsVisible(false);
@@ -128,14 +134,12 @@ export default function ContactFooter() {
             <footer className="cf-footer">
                 <div className="cf-footer-inner">
                     <div className="cf-footer-logo">
-                        <div className="cf-footer-logo-wrap">
-                            <img src={logoSoftCactus} alt="Soft Cactus" className="cf-footer-logo-img" />
-                            <span className="cf-footer-reg">®</span>
-                        </div>
-                        <img src={softCactusText} alt="Soft Cactus" className="cf-footer-logo-text-img" />
+                        <a href="https://softcactus.ma/" target="_blank" rel="noopener noreferrer">
+                            <img src={softCactusLogo} alt="Soft Cactus" className="cf-footer-logo-img" />
+                        </a>
                     </div>
                     <p className="cf-footer-copy">
-                        © 2026 Tous les droits sont réservés pour SOFT CACTUS
+                        © 2026 Tous les droits sont réservés pour <a href="https://softcactus.ma/" target="_blank" rel="noopener noreferrer" className="cf-cactus-link">SOFT CACTUS</a>
                     </p>
                 </div>
             </footer>

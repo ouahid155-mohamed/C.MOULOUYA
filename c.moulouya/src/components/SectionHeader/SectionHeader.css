@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50px 24px;
+  padding: 50px 24px 20px;
   font-family: "Poppins", sans-serif;
   text-align: center;
   box-sizing: border-box;
@@ -68,8 +68,8 @@
 
 /* ── Grands écrans (Full HD / 2K) ── */
 @media (min-width: 1600px) {
-    .sh-title { font-size: 52px; }
-    .sh-subtitle { font-size: 18px; max-width: 1000px; }
+    .sh-title { font-size: 42px; }
+    .sh-subtitle { font-size: 16px; max-width: 900px; }
 }
 
 /* ── Laptops (1024px - 1440px) ── */

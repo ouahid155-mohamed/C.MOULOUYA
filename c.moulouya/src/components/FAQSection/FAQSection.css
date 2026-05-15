@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* ══ WRAPPER ═══════════════════════════════════════════════════ */
+.faq-wrapper {
+  width: 100%;
+  background: #ffffff;
+  padding: 0 0 60px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  box-sizing: border-box;
+}
+
+.faq-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+/* ══ GROUPE ════════════════════════════════════════════════════ */
+.faq-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Titre du groupe ────────────────────────────────────────── */
+.faq-group-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+/* Plus Jakarta Sans 600, 30px, #1376F8 */
+.faq-group-heading {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: #1376F8;
+  margin: 0;
+  line-height: 1.25;
+  text-align: center;
+}
+
+/* ── Flèches SVG — la classe est directement sur le <svg> ──── */
+.faq-arrow-svg {
+  flex-shrink: 0;
+}
+
+/* ══ LISTE D'ITEMS ═════════════════════════════════════════════ */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Item (fermé) ───────────────────────────────────────────── */
+.faq-item {
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  background: #ffffff;
+  overflow: hidden;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+/* ── Item (ouvert) ──────────────────────────────────────────── */
+.faq-item--open {
+  background: #F3F4F6;
+  border-color: #D1D5DB;
+}
+
+/* ── Bouton question ────────────────────────────────────────── */
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 17px 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  box-sizing: border-box;
+  transition: background 0.15s ease;
+}
+
+.faq-question:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Plus Jakarta Sans 500, 16px, #565246 — FERMÉ */
+.faq-question-text {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #565246;
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* Plus Jakarta Sans 600, #000000 — OUVERT */
+.faq-item--open .faq-question-text {
+  font-weight: 600;
+  color: #000000;
+}
+
+/* ── Chevron ────────────────────────────────────────────────── */
+.faq-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.faq-chevron--up {
+  transform: rotate(180deg);
+}
+
+.faq-chevron svg path {
+  stroke: #9CA3AF;
+}
+
+.faq-item--open .faq-chevron svg path {
+  stroke: #374151;
+}
+
+/* ── Réponse ────────────────────────────────────────────────── */
+.faq-answer {
+  padding: 0 24px 16px;
+  animation: faqFadeIn 0.22s ease;
+}
+
+/* Plus Jakarta Sans 400, 14.5px, #606267, justifié */
+.faq-answer p {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14.5px;
+  font-weight: 400;
+  color: #606267;
+  line-height: 1.75;
+  text-align: justify;
+}
+
+@keyframes faqFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ══ RESPONSIVE ════════════════════════════════════════════════ */
+
+/* ── Grand desktop (≥ 1600px) ── */
+@media (min-width: 1600px) {
+  .faq-container {
+    max-width: 960px;
+  }
+
+  .faq-group-heading {
+    font-size: 28px;
+  }
+
+  .faq-question-text {
+    font-size: 15.5px;
+  }
+
+  .faq-answer p {
+    font-size: 14px;
+  }
+
+  .faq-arrow-svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* ── Laptop standard (1025px – 1440px) ── */
+@media (max-width: 1440px) and (min-width: 1025px) {
+  .faq-container {
+    max-width: 760px;
+  }
+
+  .faq-group-heading {
+    font-size: 22px;
+  }
+
+  .faq-question-text {
+    font-size: 13.5px;
+  }
+
+  .faq-answer p {
+    font-size: 12.5px;
+  }
+}
+
+/* ── Tablette (769px – 1024px) ── */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .faq-container {
+    max-width: 100%;
+    padding: 0 32px;
+  }
+
+  .faq-group-heading {
+    font-size: 20px;
+  }
+
+  .faq-question-text {
+    font-size: 13px;
+  }
+
+  .faq-answer p {
+    font-size: 12px;
+  }
+}
+
+/* ── Mobile (≤ 768px) ── */
+@media (max-width: 768px) {
+  .faq-wrapper {
+    padding: 0 0 40px;
+  }
+
+  .faq-container {
+    padding: 0 16px;
+    gap: 36px;
+  }
+
+  .faq-group-title {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .faq-group-heading {
+    font-size: 17px;
+    white-space: normal;
+  }
+
+  /* Réduire les flèches SVG sur mobile */
+  .faq-arrow-svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .faq-question {
+    padding: 13px 16px;
+    gap: 10px;
+  }
+
+  .faq-question-text {
+    font-size: 13px;
+  }
+
+  .faq-answer {
+    padding: 0 16px 13px;
+  }
+
+  .faq-answer p {
+    font-size: 12.5px;
+    line-height: 1.65;
+  }
+
+  .faq-chevron svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* ── Très petit mobile (≤ 400px) ── */
+@media (max-width: 400px) {
+  .faq-group-heading {
+    font-size: 15px;
+  }
+
+  .faq-question-text {
+    font-size: 12px;
+  }
+
+  .faq-answer p {
+    font-size: 12px;
+  }
+
+  .faq-arrow-svg {
+    width: 18px;
+    height: 18px;
+  }
+}

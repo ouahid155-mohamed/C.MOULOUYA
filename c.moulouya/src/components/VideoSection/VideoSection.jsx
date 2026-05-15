@@ -26,20 +26,11 @@ export default function VideoSection() {
 
       {/* ── Zone vidéo ── */}
       <div className="vs-video-container">
-        <img src={ellipseLeft}  alt="" className="vs-deco vs-deco-left"  aria-hidden="true" />
+        <img src={ellipseLeft} alt="" className="vs-deco vs-deco-left" aria-hidden="true" />
         <img src={ellipseRight} alt="" className="vs-deco vs-deco-right" aria-hidden="true" />
         {/* Box vidéo */}
-        <div className="vs-video-box" onClick={() => !playing && setPlaying(true)}>
-          {playing ? (
-            <video 
-              src="https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets@main/clinique%20moulouya%20youtube%20version(1)(1).mp4"
-              className="vs-video-thumb"
-              controls
-              autoPlay
-              playsInline
-              style={{ display: 'block', width: '100%' }}
-            />
-          ) : (
+        <div className={`vs-video-box ${playing ? "vs-video-playing" : ""}`} onClick={() => !playing && setPlaying(true)}>
+          {!playing && (
             <>
               <img src={videoBox} alt="Vidéo Clinique Moulouya" className="vs-video-thumb" />
               {/* Bouton play */}
@@ -50,6 +41,16 @@ export default function VideoSection() {
                 </svg>
               </button>
             </>
+          )}
+
+          {playing && (
+            <video
+              src="https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets@main/clinique%20moulouya%20youtube%20version(1)(1).mp4"
+              className="vs-video-active"
+              controls
+              autoPlay
+              playsInline
+            />
           )}
         </div>
 

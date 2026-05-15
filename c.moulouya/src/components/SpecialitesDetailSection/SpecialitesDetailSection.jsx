@@ -29,6 +29,7 @@ const specialites = [
 
 export default function SpecialitesDetailSection() {
   const [active, setActive] = useState(1);
+  const [playing, setPlaying] = useState(false);
   const total = specialites.length;
 
   const prev = () => setActive((c) => (c - 1 + total) % total);
@@ -83,35 +84,49 @@ export default function SpecialitesDetailSection() {
             </svg>
           </button>
 
-          {/* Tab gauche (inactive) */}
-          <button className="sds-tab sds-tab-inactive" onClick={prev}>
-            <span className="sds-tab-label">{specialites[prevIdx].label}</span>
-            <span className="sds-tab-arrow-icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </span>
-          </button>
+          <div className="sds-tabs-container">
+            {specialites.map((item, index) => {
+              let posClass = "";
+              let activeClass = "";
+              
+              if (index === active) {
+                posClass = "sds-tab-pos-center";
+                activeClass = "sds-tab-active";
+              } else if (index === prevIdx) {
+                posClass = "sds-tab-pos-left";
+                activeClass = "sds-tab-inactive";
+              } else if (index === nextIdx) {
+                posClass = "sds-tab-pos-right";
+                activeClass = "sds-tab-inactive";
+              }
 
-          {/* Tab centrale (active) */}
-          <div className="sds-tab sds-tab-active">
-            <span className="sds-tab-label">{current.label}</span>
-            <span className="sds-tab-down-icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 5v14M5 12l7 7 7-7" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </span>
+              return (
+                <button 
+                  key={item.id}
+                  className={`sds-tab sds-tab-absolute ${posClass} ${activeClass}`}
+                  onClick={() => {
+                    if (index === prevIdx) prev();
+                    if (index === nextIdx) next();
+                  }}
+                >
+                  <span className="sds-tab-label">{item.label}</span>
+                  {index === active ? (
+                    <span className="sds-tab-down-icon">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 5v14M5 12l7 7 7-7" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                  ) : (
+                    <span className="sds-tab-arrow-icon">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
-
-          {/* Tab droite (inactive) */}
-          <button className="sds-tab sds-tab-inactive" onClick={next}>
-            <span className="sds-tab-label">{specialites[nextIdx].label}</span>
-            <span className="sds-tab-arrow-icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M7 17L17 7M17 7H7M17 7v10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </span>
-          </button>
 
           {/* Arrow right */}
           <button className="sds-arrow-btn" onClick={next} aria-label="Suivant">
@@ -122,59 +137,82 @@ export default function SpecialitesDetailSection() {
         </div>
 
         {/* ── Contenu principal ── */}
-        <div className="sds-content">
+        <div className={`sds-content ${playing ? "sds-playing" : ""}`}>
 
           {/* Image à gauche avec bouton play centré */}
           <div className="sds-media-block">
-            <div className="sds-video-container">
-              <img src={surgeryImg} alt="Chirurgie" className="sds-surgery-img" />
-              {/* Bouton play centré avec anneau blanc */}
-              <button className="sds-play-btn" aria-label="Lire la vidéo">
-                <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* Anneau extérieur */}
-                  <circle cx="36" cy="36" r="34" stroke="white" strokeWidth="1.2" />
-                  {/* Cercle plein intérieur */}
-                  <circle cx="36" cy="36" r="29" fill="white" fillOpacity="0.92" />
-                  {/* Triangle rouge arrondi raffiné */}
-                  <path
-                    d="M33.1,26.5 L44.6,34.2 C45.9,35.1 45.9,36.9 44.6,37.8 L33.1,45.5 C31.8,46.4 30.1,45.4 30.1,43.8 L30.1,28.2 C30.1,26.6 31.8,25.6 33.1,26.5 Z"
-                    fill="#E53E3E"
-                  />
-                </svg>
-              </button>
+            <div className="sds-video-container" onClick={() => !playing && setPlaying(true)}>
+              {playing ? (
+                <video
+                  src="https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-3--@main/Clinique%20Moulouya%208.mp4"
+                  className="sds-surgery-img"
+                  controls
+                  autoPlay
+                  playsInline
+                />
+              ) : (
+                <>
+                  <img src={surgeryImg} alt="Chirurgie" className="sds-surgery-img" />
+                  {/* Bouton play centré avec anneau blanc */}
+                  <button className="sds-play-btn" aria-label="Lire la vidéo">
+                    <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      {/* Anneau extérieur */}
+                      <circle cx="36" cy="36" r="34" stroke="white" strokeWidth="1.2" />
+                      {/* Cercle plein intérieur */}
+                      <circle cx="36" cy="36" r="29" fill="white" fillOpacity="0.92" />
+                      {/* Triangle rouge arrondi raffiné */}
+                      <path
+                        d="M33.1,26.5 L44.6,34.2 C45.9,35.1 45.9,36.9 44.6,37.8 L33.1,45.5 C31.8,46.4 30.1,45.4 30.1,43.8 L30.1,28.2 C30.1,26.6 31.8,25.6 33.1,26.5 Z"
+                        fill="#E53E3E"
+                      />
+                    </svg>
+                  </button>
+                </>
+              )}
             </div>
           </div>
 
           {/* Carte info à droite */}
           <div className="sds-card-block">
-            <div
-              className="sds-info-card"
-              style={{ backgroundImage: `url(${groupDeco})` }}
-            >
-              <h3 className="sds-card-title">{current.title}</h3>
-              <div className="sds-card-divider" />
-              <p className="sds-card-bold">{current.bold}</p>
-              <p className="sds-card-desc">{current.desc}</p>
+            <div className="sds-card-viewport">
+              <div 
+                className="sds-card-track"
+                style={{ transform: `translateX(-${active * 100}%)` }}
+              >
+                {specialites.map((item) => (
+                  <div className="sds-card-slot" key={item.id}>
+                    <div
+                      className="sds-info-card"
+                      style={{ backgroundImage: `url(${groupDeco})` }}
+                    >
+                      <h3 className="sds-card-title">{item.title}</h3>
+                      <div className="sds-card-divider" />
+                      <p className="sds-card-bold">{item.bold}</p>
+                      <p className="sds-card-desc">{item.desc}</p>
 
-              <div className="sds-card-footer">
-                <div className="sds-card-nav">
-                  {/* Flèche gauche — outline */}
-                  <button className="sds-card-nav-btn" onClick={prevCard} aria-label="Précédent">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M15 18l-6-6 6-6" stroke="#374151" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </button>
-                  {/* Flèche droite — fond bleu */}
-                  <button className="sds-card-nav-btn sds-card-nav-btn--blue" onClick={nextCard} aria-label="Suivant">
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path d="M9 18l6-6-6-6" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </button>
-                </div>
+                      <div className="sds-card-footer">
+                        <div className="sds-card-nav">
+                          {/* Flèche gauche — outline */}
+                          <button className="sds-card-nav-btn" onClick={prevCard} aria-label="Précédent">
+                            <svg viewBox="0 0 24 24" fill="none">
+                              <path d="M15 18l-6-6 6-6" stroke="#374151" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </button>
+                          {/* Flèche droite — fond bleu */}
+                          <button className="sds-card-nav-btn sds-card-nav-btn--blue" onClick={nextCard} aria-label="Suivant">
+                            <svg viewBox="0 0 24 24" fill="none">
+                              <path d="M9 18l6-6-6-6" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </button>
+                        </div>
 
-                <button className="sds-contact-btn">
-                  Contact us &nbsp;→
-                </button>
+                        <button className="sds-contact-btn">
+                          Contact us &nbsp;→
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

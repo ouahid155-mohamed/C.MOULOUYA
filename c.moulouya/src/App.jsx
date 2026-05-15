@@ -4,6 +4,7 @@ import APropos from './pages/APropos'
 import Header from './components/Header/Header'
 import Navbar from './components/NavBar/NavBar'
 import Specialites from './pages/Specialites'
+import FAQ from './pages/FAQ'
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
         <Route path="/"        element={<Home />} />
         <Route path="/apropos" element={<APropos />} />
         <Route path="/specialites" element={<Specialites/>} />
+        <Route path="/faq" element={<FAQ/>} />
+        
       </Routes>
     </BrowserRouter>
   )

@@ -108,10 +108,21 @@
     cursor: pointer;
     box-shadow: none;
     transition: all 0.3s ease;
+    background: transparent;
 }
 
 .vs-video-box:hover {
     transform: scale(1.01);
+}
+
+.vs-video-box.vs-video-playing {
+    background: #ffffff;
+    padding: 16px; /* Recrée le cadre blanc autour de la vidéo */
+    cursor: default;
+}
+
+.vs-video-box.vs-video-playing:hover {
+    transform: none; /* Désactive le zoom au hover pendant la lecture */
 }
 
 .vs-video-thumb {
@@ -120,6 +131,15 @@
     display: block;
     object-fit: cover;
     border-radius: 0;
+}
+
+.vs-video-active {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    border-radius: 12px; /* Coins arrondis internes pour la vidéo */
+    background: #000;
 }
 
 /* ── Bouton play ── */
@@ -166,18 +186,40 @@
 
 /* ── Grands écrans (Full HD / 2K) ── */
 @media (min-width: 1600px) {
-    .vs-container { max-width: 1600px; }
-    .vs-video-box { max-width: 1200px; }
-    .vs-title { font-size: 42px; }
-    .vs-subtitle { font-size: 18px; }
+    .vs-container {
+        max-width: 1600px;
+    }
+
+    .vs-video-box {
+        max-width: 1200px;
+    }
+
+    .vs-title {
+        font-size: 42px;
+    }
+
+    .vs-subtitle {
+        font-size: 18px;
+    }
 }
 
 /* ── Laptops (1024px - 1440px) ── */
 @media (max-width: 1440px) and (min-width: 1025px) {
-    .vs-container { max-width: 1100px; }
-    .vs-video-box { max-width: 850px; }
-    .vs-title { font-size: 24px; }
-    .vs-subtitle { font-size: 13px; }
+    .vs-container {
+        max-width: 1100px;
+    }
+
+    .vs-video-box {
+        max-width: 850px;
+    }
+
+    .vs-title {
+        font-size: 24px;
+    }
+
+    .vs-subtitle {
+        font-size: 13px;
+    }
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -249,13 +291,22 @@
     }
 
     .vs-video-box {
-        border-radius: 0;
+        border-radius: 16px;
         box-shadow: none;
         overflow: visible;
     }
 
+    .vs-video-box.vs-video-playing {
+        padding: 8px; /* Cadre plus fin sur mobile */
+        border-radius: 16px;
+    }
+
     .vs-video-thumb {
-        border-radius: 0;
+        border-radius: 16px;
+    }
+
+    .vs-video-active {
+        border-radius: 12px;
     }
 
     .vs-play-btn {

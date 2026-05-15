@@ -23,7 +23,8 @@ const textContent = {
 export default function InterventionsSection() {
   const [videoIndex, setVideoIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(false);
+  const videoRefs = useRef([]);
 
   // Swipe logic
   const [touchStart, setTouchStart] = useState({ x: null, y: null });
@@ -59,12 +60,18 @@ export default function InterventionsSection() {
     }
   };
 
-  // Quand l'index de vidéo change → charger la nouvelle vidéo et mettre en pause
+  // Quand l'index de vidéo change → mettre en pause
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.pause();
-    video.load();
+    videoRefs.current.forEach((video, i) => {
+      if (video) {
+        if (i === videoIndex) {
+          video.currentTime = 0;
+          video.pause();
+        } else {
+          video.pause();
+        }
+      }
+    });
     setIsPlaying(false);
   }, [videoIndex]);
 
@@ -72,7 +79,7 @@ export default function InterventionsSection() {
   const next = () => setVideoIndex((i) => (i + 1) % videos.length);
 
   const togglePlay = () => {
-    const video = videoRef.current;
+    const video = videoRefs.current[videoIndex];
     if (!video) return;
     if (video.paused) {
       video.play();
@@ -82,6 +89,8 @@ export default function InterventionsSection() {
       setIsPlaying(false);
     }
   };
+
+  const toggleMute = () => setIsMuted(!isMuted);
 
   const handleEnded = () => setIsPlaying(false);
 
@@ -97,14 +106,40 @@ export default function InterventionsSection() {
         {/* ── Gauche : vidéo + contrôles ── */}
         <div className="is-left-wrapper">
           <div className="is-left">
-            <video
-              ref={videoRef}
-              className="is-image"
-              src={videos[videoIndex]}
-              onEnded={handleEnded}
-              playsInline
-              preload="metadata"
-            />
+            <div 
+              className="is-video-track" 
+              style={{ transform: `translateX(-${videoIndex * 100}%)` }}
+            >
+              {videos.map((src, i) => (
+                <div className="is-video-slot" key={i}>
+                  <video
+                    ref={(el) => (videoRefs.current[i] = el)}
+                    className="is-image"
+                    src={src}
+                    onEnded={handleEnded}
+                    playsInline
+                    preload="metadata"
+                    muted={isMuted}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Bouton Silence (Mute) */}
+            <button className="is-btn-mute" onClick={toggleMute} aria-label={isMuted ? "Activer le son" : "Mettre en sourdine"}>
+              {isMuted ? (
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1376F8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                  <line x1="23" y1="9" x2="17" y2="15" />
+                  <line x1="17" y1="9" x2="23" y2="15" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1376F8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+                </svg>
+              )}
+            </button>
 
             {/* Boutons slider */}
             <div className="is-controls">

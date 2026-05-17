@@ -109,6 +109,8 @@
     box-shadow: none;
     transition: all 0.3s ease;
     background: transparent;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .vs-video-box:hover {
@@ -117,12 +119,12 @@
 
 .vs-video-box.vs-video-playing {
     background: #ffffff;
-    padding: 16px; /* Recrée le cadre blanc autour de la vidéo */
+    padding: 12px;
     cursor: default;
 }
 
 .vs-video-box.vs-video-playing:hover {
-    transform: none; /* Désactive le zoom au hover pendant la lecture */
+    transform: none;
 }
 
 .vs-video-thumb {
@@ -130,7 +132,7 @@
     height: auto;
     display: block;
     object-fit: cover;
-    border-radius: 0;
+    border-radius: 22px;
 }
 
 .vs-video-active {
@@ -138,7 +140,7 @@
     height: auto;
     display: block;
     object-fit: contain;
-    border-radius: 12px; /* Coins arrondis internes pour la vidéo */
+    border-radius: 12px;
     background: #000;
 }
 
@@ -290,23 +292,12 @@
         top: 45%;
     }
 
-    .vs-video-box {
-        border-radius: 16px;
-        box-shadow: none;
-        overflow: visible;
+    .vs-video-box, .vs-video-box.vs-video-playing {
+        border-radius: 10px; /* Les coins rétrécissent proportionnellement comme l'image */
     }
 
-    .vs-video-box.vs-video-playing {
-        padding: 8px; /* Cadre plus fin sur mobile */
-        border-radius: 16px;
-    }
-
-    .vs-video-thumb {
-        border-radius: 16px;
-    }
-
-    .vs-video-active {
-        border-radius: 12px;
+    .vs-video-thumb, .vs-video-active {
+        border-radius: 6px;
     }
 
     .vs-play-btn {
@@ -319,3 +310,6 @@
         height: 44px;
     }
 }
+
+
+

@@ -5,6 +5,7 @@ import Header from './components/Header/Header'
 import Navbar from './components/NavBar/NavBar'
 import Specialites from './pages/Specialites'
 import FAQ from './pages/FAQ'
+import Contact from './pages/Contact'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/apropos" element={<APropos />} />
         <Route path="/specialites" element={<Specialites/>} />
         <Route path="/faq" element={<FAQ/>} />
+        <Route path="/contact" element={<Contact/>} />
         
       </Routes>
     </BrowserRouter>

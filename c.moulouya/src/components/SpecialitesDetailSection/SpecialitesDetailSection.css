@@ -413,7 +413,7 @@
   .sds-tabs-container {
     flex: 1;
     width: auto;
-    height: 80px;
+    height: 110px;
     margin: 0;
     overflow: hidden;
   }
@@ -482,12 +482,15 @@
     flex: none;
     width: 90%;
     margin: -80px auto 0;
+    margin-bottom: 0;
     position: relative;
     z-index: 2;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), margin-bottom 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
   .sds-content.sds-playing .sds-card-block {
     transform: translateY(100px); /* Déplace vers le bas sur mobile pour dégager la vidéo */
+    margin-bottom: 100px; /* Ajoute de l'espace pour ne pas chevaucher le footer */
   }
 
   .sds-info-card {

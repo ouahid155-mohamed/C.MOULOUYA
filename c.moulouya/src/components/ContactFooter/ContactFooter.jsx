@@ -5,7 +5,7 @@ import emailIcon from "../../assets/EmailContact.png";
 import callIcon from "../../assets/CallContact.png";
 import "./ContactFooter.css";
 
-export default function ContactFooter() {
+export default function ContactFooter({ hideForm = false }) {
     const [form, setForm] = useState({ nom: "", email: "", tel: "", message: "" });
     const [isVisible, setIsVisible] = useState(false);
 
@@ -47,6 +47,7 @@ export default function ContactFooter() {
             </button>
 
             {/* ══ SECTION CONTACT ══════════════════════════════════════ */}
+            {!hideForm && (
             <section className="cf-wrapper">
                 <div className="cf-inner">
 
@@ -129,6 +130,7 @@ export default function ContactFooter() {
                     </div>
                 </div>
             </section>
+            )}
 
             {/* ══ FOOTER ═══════════════════════════════════════════════ */}
             <footer className="cf-footer">

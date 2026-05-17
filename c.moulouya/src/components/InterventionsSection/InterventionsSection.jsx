@@ -26,37 +26,29 @@ export default function InterventionsSection() {
   const [isMuted, setIsMuted] = useState(false);
   const videoRefs = useRef([]);
 
-  // Swipe logic
-  const [touchStart, setTouchStart] = useState({ x: null, y: null });
-  const [touchEnd, setTouchEnd] = useState({ x: null, y: null });
-  const minSwipeDistance = 50;
+  const trackRef = useRef(null);
+  const isProgrammaticScroll = useRef(false);
 
-  const onTouchStart = (e) => {
-    setTouchEnd({ x: null, y: null });
-    setTouchStart({
-      x: e.targetTouches[0].clientX,
-      y: e.targetTouches[0].clientY,
-    });
+  const scrollToSlide = (index) => {
+    if (trackRef.current) {
+      isProgrammaticScroll.current = true;
+      trackRef.current.scrollTo({
+        left: index * trackRef.current.clientWidth,
+        behavior: "smooth",
+      });
+      setVideoIndex(index);
+      setTimeout(() => {
+        isProgrammaticScroll.current = false;
+      }, 500);
+    }
   };
 
-  const onTouchMove = (e) => {
-    setTouchEnd({
-      x: e.targetTouches[0].clientX,
-      y: e.targetTouches[0].clientY,
-    });
-  };
-
-  const onTouchEnd = () => {
-    if (touchStart.x === null || touchEnd.x === null) return;
-    const distanceX = touchStart.x - touchEnd.x;
-    const distanceY = touchStart.y - touchEnd.y;
-
-    const isLeftSwipe = distanceX > minSwipeDistance;
-    const isRightSwipe = distanceX < -minSwipeDistance;
-
-    if (Math.abs(distanceX) > Math.abs(distanceY)) {
-      if (isLeftSwipe) next();
-      if (isRightSwipe) prev();
+  const handleScroll = () => {
+    if (!trackRef.current || isProgrammaticScroll.current) return;
+    const track = trackRef.current;
+    const index = Math.round(track.scrollLeft / track.clientWidth);
+    if (index !== videoIndex) {
+      setVideoIndex(index);
     }
   };
 
@@ -75,8 +67,8 @@ export default function InterventionsSection() {
     setIsPlaying(false);
   }, [videoIndex]);
 
-  const prev = () => setVideoIndex((i) => (i - 1 + videos.length) % videos.length);
-  const next = () => setVideoIndex((i) => (i + 1) % videos.length);
+  const prev = () => scrollToSlide((videoIndex - 1 + videos.length) % videos.length);
+  const next = () => scrollToSlide((videoIndex + 1) % videos.length);
 
   const togglePlay = () => {
     const video = videoRefs.current[videoIndex];
@@ -95,12 +87,7 @@ export default function InterventionsSection() {
   const handleEnded = () => setIsPlaying(false);
 
   return (
-    <section 
-      className="is-wrapper"
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}
-    >
+    <section className="is-wrapper">
       <div className="is-container">
 
         {/* ── Gauche : vidéo + contrôles ── */}
@@ -108,7 +95,8 @@ export default function InterventionsSection() {
           <div className="is-left">
             <div 
               className="is-video-track" 
-              style={{ transform: `translateX(-${videoIndex * 100}%)` }}
+              ref={trackRef}
+              onScroll={handleScroll}
             >
               {videos.map((src, i) => (
                 <div className="is-video-slot" key={i}>
@@ -175,7 +163,7 @@ export default function InterventionsSection() {
                 <button
                   key={i}
                   className={`is-dot${i === videoIndex ? " is-dot-active" : ""}`}
-                  onClick={() => setVideoIndex(i)}
+                  onClick={() => scrollToSlide(i)}
                   aria-label={`Vidéo ${i + 1}`}
                 />
               ))}

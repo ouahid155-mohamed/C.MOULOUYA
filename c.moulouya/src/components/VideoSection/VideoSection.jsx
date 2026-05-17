@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import videoBox from "../../assets/videos/Video Box.png";
 import ellipseLeft from "../../assets/Ellipse 1088.png";
 import ellipseRight from "../../assets/Ellipse 1833.png";
@@ -6,6 +6,7 @@ import "./VideoSection.css";
 
 export default function VideoSection() {
   const [playing, setPlaying] = useState(false);
+  const videoRef = useRef(null);
 
   return (
     <section className="vs-wrapper">
@@ -45,11 +46,21 @@ export default function VideoSection() {
 
           {playing && (
             <video
+              ref={videoRef}
               src="https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets@main/clinique%20moulouya%20youtube%20version(1)(1).mp4"
               className="vs-video-active"
               controls
               autoPlay
               playsInline
+              onClick={() => {
+                if (videoRef.current) {
+                  if (videoRef.current.paused) {
+                    videoRef.current.play();
+                  } else {
+                    videoRef.current.pause();
+                  }
+                }
+              }}
             />
           )}
         </div>

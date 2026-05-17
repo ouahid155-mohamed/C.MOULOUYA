@@ -434,7 +434,7 @@
 
     .cf-inner {
         flex-direction: column;
-        padding: 32px 24px 40px;
+        padding: 32px 40px;
         gap: 32px;
         border-radius: 16px;
     }

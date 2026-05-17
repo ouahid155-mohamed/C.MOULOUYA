@@ -9,7 +9,7 @@ const navLinks = [
   { label: "À Propos", path: "/apropos" },
   { label: "Spécialités", path: "/specialites" },
   { label: "FAQ", path: "/faq" },
-  { label: "Contact", path: "/#contact" }
+  { label: "Contact", path: "/contact" }
 ];
 
 const languages = [

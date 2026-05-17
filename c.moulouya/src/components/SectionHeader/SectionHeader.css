@@ -95,8 +95,8 @@
 ══════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   .sh-wrapper {
-    padding: 24px 16px;
-    /* Espacement standard mobile */
+    padding: 24px 16px 12px;
+    /* Espacement standard mobile avec espace bas réduit */
   }
 
   .sh-title {

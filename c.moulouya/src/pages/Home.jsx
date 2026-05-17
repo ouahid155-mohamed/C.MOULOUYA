@@ -1,5 +1,5 @@
 import HeroSection from "../components/HeroSection/HeroSection";
-import VideoSection from "../components/Videosection/Videosection";
+import VideoSection from "../components/VideoSection/VideoSection";
 import SectionHeader from "../components/SectionHeader/SectionHeader";
 import InterventionsSection from "../components/InterventionsSection/InterventionsSection";
 import DoctorsSection from "../components/DoctorsSection/DoctorsSection";

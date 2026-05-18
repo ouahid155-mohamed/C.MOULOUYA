@@ -1,17 +1,19 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import "./SpecialitiesSection.css";
 
 const allSpecialites = [
-  { title: "Chirurgie viscérale",    desc: "Traitement des pathologies digestives avec expertise chirurgicale." },
-  { title: "Urologie",               desc: "Soins spécialisés pour les maladies urinaires et génitales." },
-  { title: "Chirurgie oncologique",  desc: "Interventions chirurgicales pour le traitement des cancers." },
-  { title: "Orthopédie",             desc: "Prise en charge des fractures et pathologies des articulations." },
-  { title: "Anesthésiologie",        desc: "Accompagnement et sécurité du patient avant et pendant l'opération." },
-  { title: "Cardiologie",            desc: "Suivi des maladies cardiovasculaires et examens spécialisés." },
+  { key: "specialties.items.visceral", defaultTitle: "Chirurgie viscérale",    defaultDesc: "Traitement des pathologies digestives avec expertise chirurgicale." },
+  { key: "specialties.items.urology", defaultTitle: "Urologie",               defaultDesc: "Soins spécialisés pour les maladies urinaires et génitales." },
+  { key: "specialties.items.oncology", defaultTitle: "Chirurgie oncologique",  defaultDesc: "Interventions chirurgicales pour le traitement des cancers." },
+  { key: "specialties.items.orthopedics", defaultTitle: "Orthopédie",             defaultDesc: "Prise en charge des fractures et pathologies des articulations." },
+  { key: "specialties.items.anesthesiology", defaultTitle: "Anesthésiologie",        defaultDesc: "Accompagnement et sécurité du patient avant et pendant l'opération." },
+  { key: "specialties.items.cardiology", defaultTitle: "Cardiologie",            defaultDesc: "Suivi des maladies cardiovasculaires et examens spécialisés." },
 ];
 
 
 export default function SpecialitiesSection() {
+  const { t } = useTranslation();
   // Desktop logic
   const [currentIndex, setCurrentIndex] = useState(0);
   const totalCards = allSpecialites.length;
@@ -60,9 +62,9 @@ export default function SpecialitiesSection() {
         <div className="sp-desktop-only">
           <div className="sp-banner">
             <div className="sp-banner-left">
-              <h2 className="sp-banner-title">Nos Spécialités Médicales</h2>
+              <h2 className="sp-banner-title">{t("specialties.title", "Nos Spécialités")}</h2>
               <p className="sp-banner-desc">
-                Des soins adaptés, assurés par des professionnels qualifiés dans plusieurs disciplines.
+                {t("specialties.desc", "Une prise en charge complète réalisée par des experts médicaux dans plusieurs disciplines.")}
               </p>
             </div>
             <div className="sp-banner-nav">
@@ -82,9 +84,9 @@ export default function SpecialitiesSection() {
               {allSpecialites.map((item, i) => (
                 <div className="sp-card-wrapper" key={i}>
                   <div className="sp-card">
-                    <span className="sp-card-title">{item.title}</span>
+                    <span className="sp-card-title">{t(`${item.key}.title`, item.defaultTitle)}</span>
                     <div className="sp-card-line" />
-                    <p className="sp-card-desc">{item.desc}</p>
+                    <p className="sp-card-desc">{t(`${item.key}.desc`, item.defaultDesc)}</p>
                   </div>
                 </div>
               ))}
@@ -95,9 +97,9 @@ export default function SpecialitiesSection() {
         {/* ── Version Mobile (Slider avec "peeking" des cartes adjacentes) ── */}
         <div className="sp-mobile-only">
           <div className="sp-mobile-header">
-            <h2 className="sp-mobile-title">Nos Spécialités Médicales</h2>
+            <h2 className="sp-mobile-title">{t("specialties.mobile_title", "Nos Spécialités Médicales")}</h2>
             <p className="sp-mobile-subtitle">
-              Des soins adaptés, assurés par des professionnels qualifiés dans plusieurs disciplines.
+              {t("specialties.mobile_desc", "Des soins adaptés, assurés par des professionnels qualifiés dans plusieurs disciplines.")}
             </p>
           </div>
           
@@ -124,9 +126,9 @@ export default function SpecialitiesSection() {
                 {allSpecialites.map((item, i) => (
                   <div className={`sp-mobile-card-slot ${i === mobileIndex ? "active" : ""}`} key={i}>
                     <div className="sp-card sp-mobile-card">
-                      <span className="sp-card-title">{item.title}</span>
+                      <span className="sp-card-title">{t(`${item.key}.title`, item.defaultTitle)}</span>
                       <div className="sp-card-line" />
-                      <p className="sp-card-desc">{item.desc}</p>
+                      <p className="sp-card-desc">{t(`${item.key}.desc`, item.defaultDesc)}</p>
                     </div>
                   </div>
                 ))}

@@ -34,27 +34,102 @@
     height: 466px;
 }
 
-/* Grande image — prend toute la zone, décalée vers le bas-droite */
-.hs-img-main {
+/* Grande image centrale */
+.hs-img-main-wrapper {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    display: block;
+    border-radius: 32px;
+    -webkit-border-radius: 32px;
+    overflow: hidden;
+    will-change: transform;
+    z-index: 1;
 }
 
-/* Petite image — haut gauche, par-dessus la grande */
-.hs-img-small {
+.hs-img-main {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Wrappers pour positionnement */
+.hs-img-tl-wrapper {
     position: absolute;
-    top: 267px;
-    left: 325px;
-    width: 250px;
-    height: 217px;
-    object-fit: contain;
+    top: -12px;
+    left: -12px;
+    width: 38%;
+    height: 42%;
     z-index: 2;
+    background-color: #ffffff;
+    border-radius: 32px 0 32px 0;
+}
+
+.hs-img-br-wrapper {
+    position: absolute;
+    bottom: -12px;
+    right: -12px;
+    width: 38%;
+    height: 42%;
+    z-index: 2;
+    background-color: #ffffff;
+    border-radius: 32px 0 32px 0;
+}
+
+/* Petites images */
+.hs-img-tl,
+.hs-img-br {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 32px;
+    border: 12px solid #ffffff;
+    box-sizing: border-box;
     display: block;
+    background-color: #ffffff;
+}
+
+/* Fillets pour les coins convexes parfaits de la grande image */
+.hs-fillet {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.fillet-tl-top {
+    width: 34px;
+    /* Fix sub-pixel gap by overlapping left */
+    top: 12px;
+    right: -32px;
+    background: radial-gradient(circle at bottom right, transparent 32px, #ffffff 32.5px);
+}
+
+.fillet-tl-left {
+    height: 34px;
+    /* Fix sub-pixel gap by overlapping top */
+    bottom: -32px;
+    left: 12px;
+    background: radial-gradient(circle at bottom right, transparent 32px, #ffffff 32.5px);
+}
+
+.fillet-br-bottom {
+    width: 34px;
+    /* Fix sub-pixel gap by overlapping right */
+    bottom: 12px;
+    left: -32px;
+    background: radial-gradient(circle at top left, transparent 32px, #ffffff 32.5px);
+}
+
+.fillet-br-right {
+    height: 34px;
+    /* Fix sub-pixel gap by overlapping bottom */
+    top: -32px;
+    right: 12px;
+    background: radial-gradient(circle at top left, transparent 32px, #ffffff 32.5px);
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -88,12 +163,12 @@
 .hs-title {
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
-    font-size: 43px;
-    line-height: 54.4px;
+    font-size: 37px;
+    line-height: 48px;
     letter-spacing: 0;
     vertical-align: middle;
     text-transform: capitalize;
-    max-width: 535px;
+    width: 100%;
     color: #5C5C5C;
     margin: 0 0 17px;
 }
@@ -213,13 +288,6 @@
         height: 485px;
     }
 
-    .hs-img-small {
-        top: 278px;
-        left: 338px;
-        width: 260px;
-        height: 225px;
-    }
-
     .hs-title {
         font-size: 46px;
         max-width: 580px;
@@ -241,13 +309,6 @@
     .hs-images {
         width: 480px;
         height: 400px;
-    }
-
-    .hs-img-small {
-        top: 230px;
-        left: 280px;
-        width: 210px;
-        height: 180px;
     }
 
     .hs-title {
@@ -278,16 +339,6 @@
         height: 310px;
     }
 
-    .hs-img-main {
-        width: 341px;
-        height: 285px;
-    }
-
-    .hs-img-small {
-        width: 141px;
-        height: 135px;
-    }
-
     .hs-title {
         font-size: 26px;
     }
@@ -314,27 +365,8 @@
         height: auto;
         aspect-ratio: 558 / 466;
         margin: 0 auto;
-    }
-
-    /* Grande image — remplit tout le container */
-    .hs-img-main {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-
-    /* Petite image overlay — positionnement % identique au desktop */
-    .hs-img-small {
-        position: absolute;
-        width: 44.8%;    /* 250 / 558 */
-        height: 46.5%;   /* 217 / 466 */
-        top: 57.3%;      /* 267 / 466 */
-        left: 58.2%;     /* 325 / 558 */
-        object-fit: contain;
-        z-index: 2;
-        display: block;
+        /* Sur mobile, on applique un scale pour garder les bordures proportionnelles sans casser le math des offsets */
+        transform-origin: center;
     }
 
     .hs-tag {

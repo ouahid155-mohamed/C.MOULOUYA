@@ -1,118 +1,141 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import "./FAQSection.css";
 
 // ── Données des 3 groupes ──────────────────────────────────────
 const faqGroups = [
   {
     id: "clinique",
-    title: "À Propos De La Clinique",
+    titleKey: "faq.group_clinique.title",
+    defaultTitle: "À Propos De La Clinique",
     items: [
       {
-        question: "Quels services médicaux propose la clinique ?",
-        answer:
-          "La Clinique Moulouya propose une large gamme de services médicaux couvrant la chirurgie urologique, viscérale, orthopédique et traumatologique, ainsi que des consultations spécialisées dans de nombreux domaines.",
+        questionKey: "faq.group_clinique.q1",
+        defaultQuestion: "Quels services médicaux propose la clinique ?",
+        answerKey: "faq.group_clinique.a1",
+        defaultAnswer: "La clinique propose une prise en charge complète avec des services d’urgences et plusieurs spécialités médicales et chirurgicales, dont la chirurgie viscérale, l’urologie, l’oncologie, l’orthopédie-traumatologie, la gynécologie-obstétrique, l’anesthésie-réanimation, l’ORL, la gastro-entérologie, l’endoscopie digestive et la médecine interne.",
       },
       {
-        question: "Qui sont les médecins de la clinique ?",
-        answer:
-          "Notre équipe est composée de médecins spécialistes reconnus, expérimentés et dévoués à la santé de leurs patients. Chaque praticien est sélectionné pour son expertise et son engagement envers des soins de qualité.",
+        questionKey: "faq.group_clinique.q2",
+        defaultQuestion: "Qui sont les médecins de la clinique ?",
+        answerKey: "faq.group_clinique.a2",
+        defaultAnswer: "La clinique dispose d’une équipe de médecins spécialistes, dont le Dr Aziz LAARBI en chirurgie urologique et le Dr Kamal ADNANI en chirurgie orthopédique et traumatologique, assurant une prise en charge experte et spécialisée des patients.",
       },
       {
-        question: "Depuis quand la clinique est-elle en activité ?",
-        answer:
-          "Notre clinique est implantée à Berkane depuis plus de 20 ans. Forte de cette expérience, elle accompagne ses patients avec un savoir-faire reconnu, en alliant expertise médicale, technologies modernes et un engagement constant envers la qualité des soins et le bien-être de chacun.",
+        questionKey: "faq.group_clinique.q3",
+        defaultQuestion: "Depuis quand la clinique est-elle en activité ?",
+        answerKey: "faq.group_clinique.a3",
+        defaultAnswer: "La clinique est en activité depuis plus de 20 ans, avec une expérience confirmée dans la prise en charge médicale et chirurgicale des patients, garantissant des soins de qualité et une expertise reconnue dans la région.",
       },
       {
-        question: "Quelles spécialités sont disponibles ?",
-        answer:
-          "Nous couvrons de nombreuses spécialités : urologie, chirurgie viscérale, orthopédie, traumatologie, gynécologie, pédiatrie, médecine interne et bien d'autres. Consultez notre page Spécialités pour la liste complète.",
+        questionKey: "faq.group_clinique.q4",
+        defaultQuestion: "Quelles spécialités sont disponibles ?",
+        answerKey: "faq.group_clinique.a4",
+        defaultAnswer: "La clinique propose plusieurs spécialités médicales et chirurgicales, notamment les urgences, la chirurgie viscérale, l’urologie, la chirurgie oncologique, l’orthopédie-traumatologie, la gynécologie-obstétrique, l’anesthésie-réanimation, l’ORL, la gastro-entérologie, l’endoscopie digestive et la médecine interne.",
       },
       {
-        question: "La clinique est-elle équipée de matériel moderne ?",
-        answer:
-          "Oui, la Clinique Moulouya dispose d'équipements médicaux de dernière génération pour assurer des diagnostics précis et des interventions dans les meilleures conditions de sécurité.",
+        questionKey: "faq.group_clinique.q5",
+        defaultQuestion: "La clinique est-elle équipée de matériel moderne ?",
+        answerKey: "faq.group_clinique.a5",
+        defaultAnswer: "Oui, la clinique dispose d’un plateau technique moderne et d’équipements médicaux de pointe, permettant des diagnostics précis et une prise en charge sûre et efficace des patients.",
       },
       {
-        question: "La clinique accueille-t-elle tous les âges ?",
-        answer:
-          "Absolument. Nous accueillons les patients de tous âges, du nourrisson à la personne âgée, avec des services adaptés à chaque tranche d'âge et des équipes spécialisées pour chaque profil.",
+        questionKey: "faq.group_clinique.q6",
+        defaultQuestion: "La clinique accueille-t-elle tous les âges ?",
+        answerKey: "faq.group_clinique.a6",
+        defaultAnswer: "Oui, la clinique accueille des patients de tous âges et assure une prise en charge adaptée à chaque étape de la vie, de l’enfant à l’adulte, avec des soins personnalisés et sécurisés.",
       },
       {
-        question: "La clinique respecte-t-elle les normes d'hygiène ?",
-        answer:
-          "La Clinique Moulouya respecte strictement les protocoles d'hygiène et de stérilisation en vigueur. Nos équipes sont formées et nos équipements régulièrement contrôlés pour garantir un environnement sain et sécurisé.",
+        questionKey: "faq.group_clinique.q7",
+        defaultQuestion: "La clinique respecte-t-elle les normes d'hygiène ?",
+        answerKey: "faq.group_clinique.a7",
+        defaultAnswer: "Oui, la clinique applique des protocoles stricts d’hygiène et de sécurité, conformes aux normes médicales en vigueur, afin de garantir des soins sûrs et un environnement sain pour tous les patients.",
       },
     ],
   },
   {
     id: "consultation",
-    title: "Préparer Votre Consultation",
+    titleKey: "faq.group_consultation.title",
+    defaultTitle: "Préparer Votre Consultation",
     items: [
       {
-        question: "Que faut-il apporter lors de la consultation ?",
-        answer:
-          "Veuillez apporter votre carte d'identité, votre carnet de santé ou de vaccination, tout document médical pertinent (analyses, ordonnances, imageries), ainsi que votre carte CNSS ou mutuelle le cas échéant.",
+        questionKey: "faq.group_consultation.q1",
+        defaultQuestion: "Que faut-il apporter lors de la consultation ?",
+        answerKey: "faq.group_consultation.a1",
+        defaultAnswer: "Lors de votre consultation, il est recommandé d’apporter vos documents médicaux (ordonnances, analyses, comptes rendus), votre carte d’identité et tout résultat d’examen récent pour faciliter une prise en charge complète et efficace.",
       },
       {
-        question: "Puis-je apporter mes anciens rapports médicaux ?",
-        answer:
-          "Oui, nous vous encourageons à apporter tous vos anciens rapports médicaux, analyses et imageries. Ces documents permettent au médecin de mieux cerner votre historique de santé et de vous proposer un suivi personnalisé.",
+        questionKey: "faq.group_consultation.q2",
+        defaultQuestion: "Puis-je apporter mes anciens rapports médicaux ?",
+        answerKey: "faq.group_consultation.a2",
+        defaultAnswer: "Oui, il est fortement recommandé d’apporter vos anciens rapports médicaux, analyses et examens afin d’aider le médecin à mieux comprendre votre historique et assurer une prise en charge plus précise et adaptée.",
       },
       {
-        question: "Comment prendre rendez-vous ?",
-        answer:
-          "Vous pouvez prendre rendez-vous par téléphone en contactant directement notre équipe, ou en vous rendant à l'accueil de la clinique où notre personnel se fera un plaisir de vous assister. Nous veillons à vous proposer un créneau adapté à vos disponibilités dans les meilleurs délais.",
+        questionKey: "faq.group_consultation.q3",
+        defaultQuestion: "Comment prendre rendez-vous ?",
+        answerKey: "faq.group_consultation.a3",
+        defaultAnswer: "Vous pouvez prendre rendez-vous par téléphone ou directement à l’accueil de la clinique. Notre équipe vous accompagne pour vous proposer un créneau adapté dans les meilleurs délais.",
       },
       {
-        question: "Puis-je venir accompagné(e) ?",
-        answer:
-          "Bien sûr. Vous êtes libre de venir accompagné(e) d'un proche. Dans certains cas (pédiatrie, chirurgie, etc.), la présence d'un accompagnant est même recommandée ou requise.",
+        questionKey: "faq.group_consultation.q4",
+        defaultQuestion: "Puis-je venir accompagné(e) ?",
+        answerKey: "faq.group_consultation.a4",
+        defaultAnswer: "Oui, vous pouvez venir accompagné(e) lors de votre consultation. Cela est même encouragé si nécessaire pour votre confort et votre accompagnement médical.",
       },
       {
-        question: "Que faire en cas de retard ?",
-        answer:
-          "En cas de retard, veuillez nous prévenir par téléphone dès que possible. Nous ferons notre possible pour maintenir votre rendez-vous selon la disponibilité du médecin et le planning de la journée.",
+        questionKey: "faq.group_consultation.q5",
+        defaultQuestion: "Que faire en cas de retard ?",
+        answerKey: "faq.group_consultation.a5",
+        defaultAnswer: "En cas de retard, il est recommandé de prévenir la clinique dès que possible afin de réorganiser votre rendez-vous. Notre équipe fera de son mieux pour vous proposer un nouveau créneau adapté.",
       },
       {
-        question: "Puis-je annuler ou reporter mon rendez-vous ?",
-        answer:
-          "Oui, vous pouvez annuler ou reporter votre rendez-vous en nous contactant au moins 24 heures à l'avance. Cela nous permet de libérer le créneau pour d'autres patients.",
+        questionKey: "faq.group_consultation.q6",
+        defaultQuestion: "Puis-je annuler ou reporter mon rendez-vous ?",
+        answerKey: "faq.group_consultation.a6",
+        defaultAnswer: "Oui, vous pouvez annuler ou reporter votre rendez-vous en contactant la clinique par téléphone ou en vous présentant à l’accueil. Nous vous invitons à prévenir à l’avance afin de mieux organiser les consultations.",
       },
       {
-        question: "Dois-je préparer des informations avant la consultation ?",
-        answer:
-          "Il est conseillé de noter vos symptômes, leur durée, les médicaments que vous prenez actuellement et toute allergie connue. Plus le médecin dispose d'informations précises, plus la consultation sera efficace.",
+        questionKey: "faq.group_consultation.q7",
+        defaultQuestion: "Dois-je préparer des informations avant la consultation ?",
+        answerKey: "faq.group_consultation.a7",
+        defaultAnswer: "Oui, il est conseillé de préparer vos antécédents médicaux, traitements en cours et anciens examens afin de faciliter le diagnostic et assurer une prise en charge plus précise et adaptée.",
       },
     ],
   },
   {
     id: "services",
-    title: "Services & Soins",
+    titleKey: "faq.group_services.title",
+    defaultTitle: "Services & Soins",
     items: [
       {
-        question: "Proposez-vous des soins à domicile ?",
-        answer:
-          "Actuellement, nos soins sont dispensés au sein de la clinique. Nous disposons toutefois d'un service de suivi post-opératoire et d'orientations vers des prestataires à domicile si nécessaire.",
+        questionKey: "faq.group_services.q1",
+        defaultQuestion: "Proposez-vous des soins à domicile ?",
+        answerKey: "faq.group_services.a1",
+        defaultAnswer: "Actuellement, la clinique ne propose pas de soins à domicile, mais assure une prise en charge complète et adaptée au sein de ses services.",
       },
       {
-        question: "Disposez-vous de services d'analyses ou de diagnostic ?",
-        answer:
-          "Oui, la clinique dispose d'un plateau technique complet incluant un laboratoire d'analyses médicales, des services d'imagerie (radiologie, échographie) et d'autres équipements diagnostiques modernes.",
+        questionKey: "faq.group_services.q2",
+        defaultQuestion: "La clinique réalise-t-elle des interventions chirurgicales ?",
+        answerKey: "faq.group_services.a2",
+        defaultAnswer: "Oui, la clinique réalise différentes interventions chirurgicales grâce à une équipe de chirurgiens spécialisés et des équipements modernes, assurant une prise en charge sûre et efficace des patients.",
       },
       {
-        question: "Quels types de traitements proposez-vous ?",
-        answer:
-          "Notre clinique est implantée à Berkane depuis plus de 20 ans. Forte de cette expérience, elle accompagne ses patients avec un savoir-faire reconnu, en alliant expertise médicale, technologies modernes et un engagement constant envers la qualité des soins et le bien-être de chacun.",
+        questionKey: "faq.group_services.q3",
+        defaultQuestion: "Quels types de traitements proposez-vous ?",
+        answerKey: "faq.group_services.a3",
+        defaultAnswer: "La clinique propose des traitements médicaux et chirurgicaux adaptés à chaque patient, incluant la prise en charge des pathologies aiguës et chroniques, avec un suivi personnalisé assuré par des spécialistes.",
       },
       {
-        question: "Proposez-vous des soins en urgence ?",
-        answer:
-          "Oui, nous disposons d'une unité de prise en charge des urgences médicales et chirurgicales. Notre équipe est disponible pour intervenir rapidement en cas de besoin.",
+        questionKey: "faq.group_services.q4",
+        defaultQuestion: "Quels protocoles de traitement sont proposés aux patients ?",
+        answerKey: "faq.group_services.a4",
+        defaultAnswer: "La clinique propose des protocoles de traitement adaptés à chaque patient, basés sur un diagnostic précis et une prise en charge personnalisée, allant des traitements médicaux aux interventions chirurgicales selon les besoins.",
       },
       {
-        question: "Disposez-vous d'un service de chirurgie ambulatoire ?",
-        answer:
-          "Oui, certaines interventions chirurgicales peuvent être réalisées en ambulatoire, ce qui permet au patient de rentrer chez lui le jour même après l'opération. Le médecin évaluera si cette option est adaptée à votre situation.",
+        questionKey: "faq.group_services.q5",
+        defaultQuestion: "Comment se fait le diagnostic des patients ?",
+        answerKey: "faq.group_services.a5",
+        defaultAnswer: "Le diagnostic des patients est réalisé à travers une consultation médicale, un examen clinique et, si nécessaire, des examens complémentaires (analyses, imagerie médicale) afin d’assurer une évaluation précise et une prise en charge adaptée.",
       },
     ],
   },
@@ -120,6 +143,7 @@ const faqGroups = [
 
 // ── Composant accordéon pour un groupe ─────────────────────────
 function FAQGroup({ group }) {
+  const { t } = useTranslation();
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
@@ -133,7 +157,7 @@ function FAQGroup({ group }) {
           <path d="M4 14H24M24 14L15 5M24 14L15 23" stroke="#FF4949" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
 
-        <h2 className="faq-group-heading">{group.title}</h2>
+        <h2 className="faq-group-heading">{t(group.titleKey, group.defaultTitle)}</h2>
 
         {/* Flèche droite ← (pointe vers la gauche, vers le titre) */}
         <svg className="faq-arrow-svg" width="30" height="30" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -155,7 +179,7 @@ function FAQGroup({ group }) {
                 onClick={() => toggle(i)}
                 aria-expanded={isOpen}
               >
-                <span className="faq-question-text">{item.question}</span>
+                <span className="faq-question-text">{t(item.questionKey, item.defaultQuestion)}</span>
                 <span className={`faq-chevron ${isOpen ? "faq-chevron--up" : ""}`}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                     <path
@@ -171,7 +195,7 @@ function FAQGroup({ group }) {
 
               {isOpen && (
                 <div className="faq-answer">
-                  <p>{item.answer}</p>
+                  <p>{t(item.answerKey, item.defaultAnswer)}</p>
                 </div>
               )}
             </div>

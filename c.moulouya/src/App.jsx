@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import Home from './pages/Home'
 import APropos from './pages/APropos'
 import Header from './components/Header/Header'
@@ -8,6 +10,13 @@ import FAQ from './pages/FAQ'
 import Contact from './pages/Contact'
 
 function App() {
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = i18n.language;
+  }, [i18n.language]);
+
   return (
     <BrowserRouter>
       <Header />

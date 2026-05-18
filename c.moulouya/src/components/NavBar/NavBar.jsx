@@ -1,15 +1,16 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import logoM from "../../assets/logo M.png";
 import langue from "../../assets/langue.png";
 import "./NavBar.css";
 
 const navLinks = [
-  { label: "Accueil", path: "/" },
-  { label: "À Propos", path: "/apropos" },
-  { label: "Spécialités", path: "/specialites" },
-  { label: "FAQ", path: "/faq" },
-  { label: "Contact", path: "/contact" }
+  { key: "nav.home", path: "/" },
+  { key: "nav.about", path: "/apropos" },
+  { key: "nav.specialties", path: "/specialites" },
+  { key: "nav.faq", path: "/faq" },
+  { key: "nav.contact", path: "/contact" }
 ];
 
 const languages = [
@@ -19,16 +20,19 @@ const languages = [
 ];
 
 export default function Navbar() {
+  const { t, i18n } = useTranslation();
   const location = useLocation();
   const [activeLink, setActiveLink] = useState(() => {
     // Initialiser l'onglet actif en fonction de l'URL actuelle au chargement
     const currentPath = window.location.pathname + window.location.hash;
     const matched = navLinks.find(l => l.path === currentPath) || navLinks.find(l => l.path === window.location.pathname);
-    return matched ? matched.label : "Accueil";
+    return matched ? matched.key : "nav.home";
   });
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState(languages[0]);
+  
+  // Find current language from i18n
+  const currentLang = languages.find(l => l.code === i18n.language) || languages[0];
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
   const linksRef = useRef({});
 
@@ -45,7 +49,7 @@ export default function Navbar() {
     }
 
     if (matchedLink) {
-      setActiveLink(matchedLink.label);
+      setActiveLink(matchedLink.key);
     }
   }, [location.pathname, location.hash]);
 
@@ -90,15 +94,15 @@ export default function Navbar() {
           <ul className="nb-nav-pill">
             <span className="nb-nav-indicator" style={indicatorStyle} />
             {navLinks.map((link, index) => (
-              <li key={link.label} className="nb-nav-item">
+              <li key={link.key} className="nb-nav-item">
                 {index > 0 && <span className="nb-sep">|</span>}
                 <Link
                   to={link.path}
-                  ref={(el) => (linksRef.current[link.label] = el)}
-                  className={`nb-nav-link ${activeLink === link.label ? "active" : ""}`}
-                  onClick={() => setActiveLink(link.label)}
+                  ref={(el) => (linksRef.current[link.key] = el)}
+                  className={`nb-nav-link ${activeLink === link.key ? "active" : ""}`}
+                  onClick={() => setActiveLink(link.key)}
                 >
-                  <span className="nb-nav-text">{link.label}</span>
+                  <span className="nb-nav-text">{t(link.key)}</span>
                 </Link>
               </li>
             ))}
@@ -107,7 +111,7 @@ export default function Navbar() {
 
         {/* ── Desktop: CTA ── */}
         <a href="tel:+212661267760" className="nb-cta">
-          <span className="nb-cta-label">RENDEZ-VOUS</span>
+          <span className="nb-cta-label">{t("nav.appointment")}</span>
           <span className="nb-cta-arrow">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
               <path d="M10 6l6 6-6 6" stroke="#0088FF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
@@ -147,7 +151,7 @@ export default function Navbar() {
               onClick={() => setDropdownOpen(!dropdownOpen)}
               aria-label="Langue"
             >
-              <img src={selectedLang.flag} alt={selectedLang.label} className="nb-mobile-flag" />
+              <img src={currentLang.flag} alt={currentLang.label} className="nb-mobile-flag" />
               <span className={`nb-mobile-lang-arrow ${dropdownOpen ? "open" : ""}`}>
                 <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
                   <path d="M2 4L6 8L10 4" stroke="#0088FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -159,8 +163,11 @@ export default function Navbar() {
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
-                    className={`nb-lang-dropdown-item ${selectedLang.code === lang.code ? "active" : ""}`}
-                    onClick={() => { setSelectedLang(lang); setDropdownOpen(false); }}
+                    className={`nb-lang-dropdown-item ${currentLang.code === lang.code ? "active" : ""}`}
+                    onClick={() => { 
+                      i18n.changeLanguage(lang.code);
+                      setDropdownOpen(false); 
+                    }}
                   >
                     <img src={lang.flag} alt={lang.label} className="nb-mobile-flag" />
                     <span>{lang.label}</span>
@@ -176,16 +183,16 @@ export default function Navbar() {
           <div className="nb-mobile-menu">
             {navLinks.map((link) => (
               <Link
-                key={link.label}
+                key={link.key}
                 to={link.path}
-                className={`nb-mobile-link ${activeLink === link.label ? "active" : ""}`}
-                onClick={() => { setActiveLink(link.label); setMenuOpen(false); }}
+                className={`nb-mobile-link ${activeLink === link.key ? "active" : ""}`}
+                onClick={() => { setActiveLink(link.key); setMenuOpen(false); }}
               >
-                {link.label}
+                {t(link.key)}
               </Link>
             ))}
             <a href="tel:+212661267760" className="nb-mobile-cta">
-              RENDEZ-VOUS ›
+              {t("nav.appointment")} ›
             </a>
           </div>
         )}

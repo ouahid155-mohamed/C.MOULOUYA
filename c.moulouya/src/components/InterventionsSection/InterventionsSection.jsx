@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import "./InterventionsSection.css";
 
 const videos = [
@@ -11,16 +12,19 @@ const videos = [
 
 // Texte fixe — ne change JAMAIS quand on navigue entre les vidéos
 const textContent = {
-  tag: "NOS INTERVENTIONS",
-  title: "Des soins adaptés à vos besoins",
+  tagKey: "interventions.tag",
+  defaultTag: "NOS INTERVENTIONS",
+  titleKey: "interventions.title",
+  defaultTitle: "Une prise en charge adaptée à votre état de santé",
   items: [
-    "Chirurgie urologique : traitement des calculs urinaires, prostatectomie, interventions sur la vessie.",
-    "Chirurgie viscérale : appendicectomie, réparation des hernies, traitement des pathologies de la vésicule biliaire.",
-    "Chirurgie orthopédique et traumatologique : prise en charge des fractures, pathologies des articulations, et bien plus.",
+    { key: "interventions.item_1", default: "Chirurgie urologique : traitement des calculs urinaires, prostatectomie, interventions sur la vessie." },
+    { key: "interventions.item_2", default: "Chirurgie viscérale : appendicectomie, réparation des hernies, traitement des pathologies de la vésicule biliaire." },
+    { key: "interventions.item_3", default: "Chirurgie orthopédique et traumatologique : prise en charge des fractures, pathologies des articulations, et bien plus." },
   ],
 };
 
 export default function InterventionsSection() {
+  const { t } = useTranslation();
   const [videoIndex, setVideoIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
@@ -173,12 +177,12 @@ export default function InterventionsSection() {
 
         {/* ── Droite : texte fixe (ne change pas) ── */}
         <div className="is-right">
-          <span className="is-tag">{textContent.tag}</span>
+          <span className="is-tag">{t(textContent.tagKey, textContent.defaultTag)}</span>
           <div className="is-tag-line" />
-          <h3 className="is-title">{textContent.title}</h3>
+          <h3 className="is-title">{t(textContent.titleKey, textContent.defaultTitle)}</h3>
           <ul className="is-list">
             {textContent.items.map((item, i) => (
-              <li key={i} className="is-list-item">{item}</li>
+              <li key={i} className="is-list-item">{t(item.key, item.default)}</li>
             ))}
           </ul>
         </div>

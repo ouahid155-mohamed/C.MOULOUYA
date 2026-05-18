@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import doctors from "../../assets/3 docteurs.png";
 import badge from "../../assets/20ans d'existence.png";
 import calling from "../../assets/Calling hero section.png";
@@ -5,6 +6,7 @@ import localisation from "../../assets/localisation hero section.png";
 import "./HeroSection.css";
 
 export default function HeroSection() {
+  const { t } = useTranslation();
   return (
     <section className="hero-wrapper">
 
@@ -27,7 +29,7 @@ export default function HeroSection() {
             <img src={calling} alt="Urgence" className="hero-card-icon" />
           </div>
           <div className="hero-card-body">
-            <span className="hero-card-label">Urgence 24H/24H</span>
+            <span className="hero-card-label">{t("hero.emergency", "Urgence 24H/24H")}</span>
             <span className="hero-card-value">+212 6 61 26 77 60</span>
           </div>
         </div>
@@ -37,8 +39,8 @@ export default function HeroSection() {
             <img src={localisation} alt="Adresse" className="hero-card-icon" />
           </div>
           <div className="hero-card-body">
-            <span className="hero-card-value">7, Rue De La Paix,</span>
-            <span className="hero-card-value">Berkane, Morocco 63300</span>
+            <span className="hero-card-value">{t("hero.address_line1", "7, Rue De La Paix,")}</span>
+            <span className="hero-card-value">{t("hero.address_line2", "Berkane, Morocco 63300")}</span>
           </div>
         </div>
 
@@ -46,7 +48,7 @@ export default function HeroSection() {
 
       {/* ── Citation bas ── */}
       <div className="hero-quote">
-        “Disponibles 24h/24, Nous vous assurons une prise en charge continue et des soins de qualité“
+        {t("hero.quote", "“Disponibles 24h/24, nous garantissons une excellence médicale continue et des soins performants“")}
       </div>
 
     </section>

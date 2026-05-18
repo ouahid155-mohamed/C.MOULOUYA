@@ -1,0 +1,103 @@
+{
+  "footer": {
+    "contact_title": "Contact Us",
+    "form_name": "Full Name",
+    "form_email": "Email",
+    "form_phone": "Phone Number",
+    "form_message": "Your message",
+    "form_submit": "SEND",
+    "contact_desc": "Contact us for any information or to make an appointment, our team is at your disposal.",
+    "contact_info_label": "CONTACT INFO:",
+    "emergency": "Emergency 24/7",
+    "rights": "© 2026 All rights reserved for"
+  },
+  "contact": {
+    "form": {
+      "lastNameLabel": "Last Name",
+      "lastNamePlaceholder": "Last Name",
+      "firstNameLabel": "First Name",
+      "firstNamePlaceholder": "First Name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "contact@cliniquemoulouya.ma",
+      "phoneLabel": "Phone Number",
+      "phonePlaceholder": "+212.000-0000",
+      "messageLabel": "Message",
+      "submitBtn": "SENT"
+    },
+    "info": {
+      "hoursTitle": "Clinic Hours",
+      "hoursValue": "Available 24/7. We ensure continuous care and quality services",
+      "emailTitle": "Email Address",
+      "phoneTitle": "Phone Number",
+      "emergencyTitle": "Emergency 24/7",
+      "addressTitle": "Clinic Address",
+      "addressLine1": "7, Rue De La Paix, Berkane, Morocco,",
+      "addressLine2": "Oriental 63300"
+    }
+  },
+  "hero": {
+    "emergency": "Emergency 24/7",
+    "address_line1": "7, Rue De La Paix,",
+    "address_line2": "Berkane, Morocco 63300",
+    "quote": "“Available 24/7, we guarantee continuous medical excellence and high-performance care”"
+  },
+  "history": {
+    "tag": "OUR HISTORY",
+    "title": "Health solutions designed for your well-being",
+    "contact_btn": "CONTACT US"
+  },
+  "specialties_detail": {
+    "contact_btn": "Contact us"
+  },
+  "specialties": {
+    "title": "Our Specialties",
+    "desc": "Comprehensive care provided by medical experts in multiple disciplines.",
+    "mobile_title": "Our Medical Specialties",
+    "mobile_desc": "Tailored care, provided by qualified professionals in several disciplines."
+  },
+  "stats": {
+    "tag": "SUCCESS STORY",
+    "desc": "Our journey of excellence is based on medical expertise and quality patient care."
+  },
+  "video": {
+    "title": "Your health deserves a unique experience accompanied by our experts!"
+  },
+  "apropos": {
+    "section1": {
+      "title": "Our History",
+      "subtitle": "Over 20 years of experience serving your health and trust."
+    }
+  },
+  "home": {
+    "section2": {
+      "title": "Our medical experts",
+      "subtitle": "Our medical experts accompany you with competence and care to ensure quality treatment tailored to your needs."
+    },
+    "section1": {
+      "title": "CLINIQUE MOULOUYA AT YOUR SERVICE"
+    },
+    "section3": {
+      "title": "Our Specialties",
+      "subtitle": "Centers of excellence bringing together all our specialties to guarantee you the best care."
+    }
+  },
+  "contact_page": {
+    "title": "Tell Us About Yourself",
+    "subtitle": "Available 24/7, we guarantee permanent care and quality medical services, provided with responsiveness and professionalism."
+  },
+  "faq_page": {
+    "title": "Your Questions, Our Answers",
+    "subtitle": "Our FAQ quickly answers your questions to guide you in your healthcare journey."
+  },
+  "header": {
+    "address": "7, Rue De La Paix, Berkane, Morocco",
+    "emergency": "Emergency 24/7 : +212 6 61 26 77 60"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "specialties": "Specialties",
+    "faq": "FAQ",
+    "contact": "Contact"
+  }
+}

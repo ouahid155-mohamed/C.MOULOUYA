@@ -1,0 +1,24 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "specialties": "Spécialités",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "appointment": "RENDEZ-VOUS"
+  },
+  "header": {
+    "address": "7, Rue De La Paix, Berkane, Morocco, Oriental 63300"
+  },
+  "footer": {
+    "logo_main": "CLINIQUE",
+    "logo_sub": "MOULOUYA",
+    "description": "Votre santé est notre priorité. Une équipe dévouée, des équipements de pointe, et des soins personnalisés à chaque étape de votre parcours médical.",
+    "links_title": "Liens Rapides",
+    "contact_title": "Contact",
+    "schedule_title": "Heures de travail",
+    "schedule_days": "Lundi - Dimanche",
+    "schedule_hours": "24H/24",
+    "copyright": "Tous droits réservés ©2025 Clinique Moulouya"
+  }
+}

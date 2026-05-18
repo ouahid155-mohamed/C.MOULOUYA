@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import "./SpecialitesDetailSection.css";
 import surgeryImg from "../../assets/videos/Group 1000011126.png";
 import groupDeco from "../../assets/Group.png";
@@ -6,28 +7,32 @@ import groupDeco from "../../assets/Group.png";
 const specialites = [
   {
     id: 0,
-    label: "Chirurgie orthopédique\net traumatologique",
-    title: "Chirurgie orthopédique et traumatologique",
-    bold: "Lorem ipsum dolor sit amet.",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Quisque placerat scelerisque tortor ornare ornare Convallis felis.",
+    key: "specialties_detail.orthopedics",
+    defaultLabel: "Chirurgie orthopédique\net traumatologique",
+    defaultTitle: "Chirurgie orthopédique et traumatologique",
+    defaultBold: "Lorem ipsum dolor sit amet.",
+    defaultDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Quisque placerat scelerisque tortor ornare ornare Convallis felis.",
   },
   {
     id: 1,
-    label: "Chirurgie urologique",
-    title: "Chirurgie urologique",
-    bold: "Lorem ipsum dolor sit amet.",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Quisque placerat scelerisque tortor ornare ornare Convallis felis.",
+    key: "specialties_detail.urology",
+    defaultLabel: "Chirurgie urologique",
+    defaultTitle: "Chirurgie urologique",
+    defaultBold: "Lorem ipsum dolor sit amet.",
+    defaultDesc: "Une expertise reconnue pour toutes vos chirurgies urologiques. Prostate, calculs, cancers : nous allions technique de pointe et accompagnement humain.",
   },
   {
     id: 2,
-    label: "Chirurgie viscérale",
-    title: "Chirurgie viscérale",
-    bold: "Lorem ipsum dolor sit amet.",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Quisque placerat scelerisque tortor ornare ornare Convallis felis.",
+    key: "specialties_detail.visceral",
+    defaultLabel: "Chirurgie viscérale",
+    defaultTitle: "Chirurgie viscérale",
+    defaultBold: "Lorem ipsum dolor sit amet.",
+    defaultDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Quisque placerat scelerisque tortor ornare ornare Convallis felis.",
   },
 ];
 
 export default function SpecialitesDetailSection() {
+  const { t } = useTranslation();
   const [active, setActive] = useState(1);
   const [playing, setPlaying] = useState(false);
   const total = specialites.length;
@@ -109,7 +114,14 @@ export default function SpecialitesDetailSection() {
                     if (index === nextIdx) next();
                   }}
                 >
-                  <span className="sds-tab-label">{item.label}</span>
+                  <span className="sds-tab-label">
+                    {t(`${item.key}.label`, item.defaultLabel).split('\n').map((line, i, arr) => (
+                      <span key={i}>
+                        {line}
+                        {i < arr.length - 1 && <br />}
+                      </span>
+                    ))}
+                  </span>
                   {index === active ? (
                     <span className="sds-tab-down-icon">
                       <svg viewBox="0 0 24 24" fill="none">
@@ -185,10 +197,10 @@ export default function SpecialitesDetailSection() {
                       className="sds-info-card"
                       style={{ backgroundImage: `url(${groupDeco})` }}
                     >
-                      <h3 className="sds-card-title">{item.title}</h3>
+                      <h3 className="sds-card-title">{t(`${item.key}.title`, item.defaultTitle)}</h3>
                       <div className="sds-card-divider" />
-                      <p className="sds-card-bold">{item.bold}</p>
-                      <p className="sds-card-desc">{item.desc}</p>
+                      <p className="sds-card-bold">{t(`${item.key}.bold`, item.defaultBold)}</p>
+                      <p className="sds-card-desc">{t(`${item.key}.desc`, item.defaultDesc)}</p>
 
                       <div className="sds-card-footer">
                         <div className="sds-card-nav">
@@ -207,7 +219,7 @@ export default function SpecialitesDetailSection() {
                         </div>
 
                         <button className="sds-contact-btn">
-                          Contact us &nbsp;→
+                          {t("specialties_detail.contact_btn", "Contact us")} &nbsp;→
                         </button>
                       </div>
                     </div>

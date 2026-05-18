@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import doc1 from "../../assets/cheerful-male-doctor-white-gown-por4534trait 3 1.png";
 import doc2 from "../../assets/ewrgt 1.png";
@@ -10,54 +11,64 @@ const doctors = [
     {
         img: doc1,
         name: "Dr. Kamal Adnani",
-        specialty: "Orthopédiste Traumatologue",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing.",
+        key: "doctors.doc1",
+        defaultSpecialty: "Orthopédiste Traumatologue",
+        defaultDesc: "Notre orthopédiste traumatologue traite les blessures, fractures et troubles de l’appareil locomoteur avec expertise, précision et soins adaptés pour assurer une bonne récupération.",
         specialties: [
             {
-                title: "Chirurgie urologique",
-                detail: "lithiase urinaire , chirurgie de la prostate , chirurgie de la vessie",
+                key: "doctors.doc1.spec1",
+                defaultTitle: "Chirurgie urologique",
+                defaultDetail: "lithiase urinaire , chirurgie de la prostate , chirurgie de la vessie",
             },
             {
-                title: "Chirurgie viscérale",
-                detail: "vésicule biliaire , hernie, appendicectomie…",
+                key: "doctors.doc1.spec2",
+                defaultTitle: "Chirurgie viscérale",
+                defaultDetail: "vésicule biliaire , hernie, appendicectomie…",
             },
         ],
     },
     {
         img: doc2,
         name: "Dr. Aziz Laarbi",
-        specialty: "Urologue",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing.",
+        key: "doctors.doc2",
+        defaultSpecialty: "Urologue",
+        defaultDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing.",
         specialties: [
             {
-                title: "Chirurgie urologique",
-                detail: "lithiase urinaire , chirurgie de la prostate , chirurgie de la vessie",
+                key: "doctors.doc2.spec1",
+                defaultTitle: "Chirurgie urologique",
+                defaultDetail: "lithiase urinaire , chirurgie de la prostate , chirurgie de la vessie",
             },
             {
-                title: "Endoscopie",
-                detail: "cystoscopie, urétéroscopie, résection transurétrale…",
+                key: "doctors.doc2.spec2",
+                defaultTitle: "Endoscopie",
+                defaultDetail: "cystoscopie, urétéroscopie, résection transurétrale…",
             },
         ],
     },
     {
         img: doc3,
         name: "Dr. Az-Eddin El Bouhali",
-        specialty: "Anesthésiste - Réanimateur",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing.",
+        key: "doctors.doc3",
+        defaultSpecialty: "Anesthésiste - Réanimateur",
+        defaultDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing.",
         specialties: [
             {
-                title: "Anesthésie générale",
-                detail: "anesthésie locorégionale, sédation, soins intensifs",
+                key: "doctors.doc3.spec1",
+                defaultTitle: "Anesthésie générale",
+                defaultDetail: "anesthésie locorégionale, sédation, soins intensifs",
             },
             {
-                title: "Réanimation",
-                detail: "prise en charge post-opératoire, urgences vitales…",
+                key: "doctors.doc3.spec2",
+                defaultTitle: "Réanimation",
+                defaultDetail: "prise en charge post-opératoire, urgences vitales…",
             },
         ],
     },
 ];
 
 export default function DoctorSlider() {
+    const { t } = useTranslation();
     const location = useLocation();
     const [current, setCurrent] = useState(0);
 
@@ -158,17 +169,17 @@ export default function DoctorSlider() {
                 {/* ── Colonne droite : contenu ── */}
                 <div className="dsl-content">
                     <h2 className="dsl-name">{doc.name}</h2>
-                    <p className="dsl-specialty">{doc.specialty}</p>
-                    <p className="dsl-desc">{doc.desc}</p>
+                    <p className="dsl-specialty">{t(`${doc.key}.specialty`, doc.defaultSpecialty)}</p>
+                    <p className="dsl-desc">{t(`${doc.key}.desc`, doc.defaultDesc)}</p>
                     <hr className="dsl-divider" />
                     <ul className="dsl-list">
                         {doc.specialties.map((s, i) => (
                             <li key={i} className="dsl-list-item">
                                 <div className="dsl-list-header">
                                     <span className="dsl-list-dot" />
-                                    <span className="dsl-list-title">{s.title}</span>
+                                    <span className="dsl-list-title">{t(`${s.key}.title`, s.defaultTitle)}</span>
                                 </div>
-                                <p className="dsl-list-detail">{s.detail}</p>
+                                <p className="dsl-list-detail">{t(`${s.key}.detail`, s.defaultDetail)}</p>
                             </li>
                         ))}
                     </ul>

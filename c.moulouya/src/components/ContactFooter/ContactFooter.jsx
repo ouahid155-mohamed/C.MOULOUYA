@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import softCactusLogo from "../../assets/Group 1000010885.png";
 import urgenceIcon from "../../assets/UrgenceContact.png";
 import emailIcon from "../../assets/EmailContact.png";
@@ -6,6 +7,7 @@ import callIcon from "../../assets/CallContact.png";
 import "./ContactFooter.css";
 
 export default function ContactFooter({ hideForm = false }) {
+    const { t } = useTranslation();
     const [form, setForm] = useState({ nom: "", email: "", tel: "", message: "" });
     const [isVisible, setIsVisible] = useState(false);
 
@@ -53,33 +55,32 @@ export default function ContactFooter({ hideForm = false }) {
 
                     {/* ── Formulaire gauche ─────────────────────────────── */}
                     <div className="cf-form-box">
-                        <h3 className="cf-form-title">Contactez-Nous</h3>
+                        <h3 className="cf-form-title">{t("footer.contact_title", "Contactez-Nous")}</h3>
                         <div className="cf-fields">
-                            <input className="cf-input" type="text" name="nom" placeholder="Nom et Prénom" value={form.nom} onChange={handleChange} />
-                            <input className="cf-input" type="email" name="email" placeholder="E-mail" value={form.email} onChange={handleChange} />
-                            <input className="cf-input" type="tel" name="tel" placeholder="Numéro du téléphone" value={form.tel} onChange={handleChange} />
-                            <input className="cf-input" type="text" name="message" placeholder="Votre message" value={form.message} onChange={handleChange} />
+                            <input className="cf-input" type="text" name="nom" placeholder={t("footer.form_name", "Nom et Prénom")} value={form.nom} onChange={handleChange} />
+                            <input className="cf-input" type="email" name="email" placeholder={t("footer.form_email", "E-mail")} value={form.email} onChange={handleChange} />
+                            <input className="cf-input" type="tel" name="tel" placeholder={t("footer.form_phone", "Numéro du téléphone")} value={form.tel} onChange={handleChange} />
+                            <input className="cf-input" type="text" name="message" placeholder={t("footer.form_message", "Votre message")} value={form.message} onChange={handleChange} />
                         </div>
-                        <button className="cf-submit">ENVOYER</button>
+                        <button className="cf-submit">{t("footer.form_submit", "ENVOYER")}</button>
                     </div>
 
                     {/* ── Infos contact droite ──────────────────────────── */}
                     <div className="cf-info">
-                        <h2 className="cf-info-title">Rester en contact</h2>
+                        <h2 className="cf-info-title">{t("footer.contact_title", "Contactez-nous")}</h2>
                         <p className="cf-info-desc">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                            sed diam nonummy nibh euismod tincidunt.
+                            {t("footer.contact_desc", "Contactez-nous pour toute information ou prise de rendez-vous, notre équipe est à votre écoute.")}
                         </p>
                         <div className="cf-info-line" />
 
-                        <p className="cf-info-label">CONTACT INFO :</p>
+                        <p className="cf-info-label">{t("footer.contact_info_label", "CONTACT INFO :")}</p>
 
                         {/* Urgence */}
                         <div className="cf-contact-item">
                             <div className="cf-contact-icon">
                                 <img src={urgenceIcon} alt="urgence" />
                             </div>
-                            <span>Urgence 24H/24H</span>
+                            <span>{t("footer.emergency", "Urgence 24H/24H")}</span>
                         </div>
 
                         {/* Email */}
@@ -141,7 +142,7 @@ export default function ContactFooter({ hideForm = false }) {
                         </a>
                     </div>
                     <p className="cf-footer-copy">
-                        © 2026 Tous les droits sont réservés pour <a href="https://softcactus.ma/" target="_blank" rel="noopener noreferrer" className="cf-cactus-link">SOFT CACTUS</a>
+                        {t("footer.rights", "© 2026 Tous les droits sont réservés pour")} <a href="https://softcactus.ma/" target="_blank" rel="noopener noreferrer" className="cf-cactus-link">SOFT CACTUS</a>
                     </p>
                 </div>
             </footer>

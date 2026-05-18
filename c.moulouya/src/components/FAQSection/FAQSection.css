@@ -10,12 +10,12 @@
 }
 
 .faq-container {
-  max-width: 1000px;
+  max-width: clamp(600px, 88%, 1100px);
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 clamp(16px, 4vw, 48px);
   display: flex;
   flex-direction: column;
-  gap: 56px;
+  gap: clamp(32px, 5vw, 56px);
 }
 
 /* ══ GROUPE ════════════════════════════════════════════════════ */
@@ -37,7 +37,7 @@
 /* Plus Jakarta Sans 600, 30px, #1376F8 */
 .faq-group-heading {
   font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 30px;
+  font-size: clamp(18px, 2vw, 30px);
   font-weight: 600;
   color: #1376F8;
   margin: 0;
@@ -95,7 +95,7 @@
 /* Plus Jakarta Sans 500, 16px, #565246 — FERMÉ */
 .faq-question-text {
   font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 16px;
+  font-size: clamp(13px, 1.1vw, 16px);
   font-weight: 500;
   color: #565246;
   line-height: 1.5;
@@ -139,7 +139,7 @@
 .faq-answer p {
   margin: 0;
   font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 14.5px;
+  font-size: clamp(12.5px, 1vw, 14.5px);
   font-weight: 400;
   color: #606267;
   line-height: 1.75;
@@ -163,43 +163,14 @@
 /* ── Grand desktop (≥ 1600px) ── */
 @media (min-width: 1600px) {
   .faq-container {
-    max-width: 960px;
-  }
-
-  .faq-group-heading {
-    font-size: 28px;
-  }
-
-  .faq-question-text {
-    font-size: 15.5px;
-  }
-
-  .faq-answer p {
-    font-size: 14px;
-  }
-
-  .faq-arrow-svg {
-    width: 32px;
-    height: 32px;
+    max-width: clamp(900px, 70%, 1300px);
   }
 }
 
 /* ── Laptop standard (1025px – 1440px) ── */
 @media (max-width: 1440px) and (min-width: 1025px) {
   .faq-container {
-    max-width: 760px;
-  }
-
-  .faq-group-heading {
-    font-size: 22px;
-  }
-
-  .faq-question-text {
-    font-size: 13.5px;
-  }
-
-  .faq-answer p {
-    font-size: 12.5px;
+    max-width: clamp(700px, 85%, 1100px);
   }
 }
 

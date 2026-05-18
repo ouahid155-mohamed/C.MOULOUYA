@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import doc1 from "../../assets/cheerful-male-doctor-white-gown-por4534trait 3 1.png";
 import doc2 from "../../assets/ewrgt 1.png";
 import doc3 from "../../assets/qwre 1.png";
 import "./DoctorsSection.css";
 
 const doctors = [
-  { img: doc1, name: "Dr. Kamal ADNANI",       specialty: "Orthopédiste Traumatologue" },
-  { img: doc2, name: "Dr. Aziz LAARBI",         specialty: "Urologue" },
-  { img: doc3, name: "Dr. Az-Eddin EL BOUHALI", specialty: "Anesthésiste - Réanimateur" },
+  { img: doc1, name: "Dr. Kamal ADNANI",       key: "doctors.doc1", defaultSpecialty: "Orthopédiste Traumatologue" },
+  { img: doc2, name: "Dr. Aziz LAARBI",         key: "doctors.doc2", defaultSpecialty: "Urologue" },
+  { img: doc3, name: "Dr. Az-Eddin EL BOUHALI", key: "doctors.doc3", defaultSpecialty: "Anesthésiste - Réanimateur" },
 ];
 
 export default function DoctorsSection() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
 
@@ -60,7 +62,7 @@ export default function DoctorsSection() {
                 <div className="ds-photo-area">
                   <img src={d.img} alt={d.name} className="ds-photo" />
                   <button className="ds-btn" onClick={() => handleMoreInfos(i)}>
-                    <span className="ds-btn-label">Plus d'infos</span>
+                    <span className="ds-btn-label">{t("doctors.more_info", "Plus d'infos")}</span>
                     <span className="ds-btn-circle">
                       <svg viewBox="0 0 24 24" fill="none">
                         <path d="M5 12h14M13 6l6 6-6 6" stroke="#1376F8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -71,7 +73,7 @@ export default function DoctorsSection() {
               </div>
               <div className="ds-info">
                 <span className="ds-name">{d.name}</span>
-                <span className="ds-specialty">{d.specialty}</span>
+                <span className="ds-specialty">{t(`${d.key}.specialty`, d.defaultSpecialty)}</span>
               </div>
             </div>
           </div>
@@ -100,7 +102,7 @@ export default function DoctorsSection() {
               <div className="ds-photo-area">
                 <img src={doc.img} alt={doc.name} className="ds-photo" />
                 <button className="ds-btn" onClick={() => handleMoreInfos(current)}>
-                  <span className="ds-btn-label">Plus d'infos</span>
+                  <span className="ds-btn-label">{t("doctors.more_info", "Plus d'infos")}</span>
                   <span className="ds-btn-circle">
                     <svg viewBox="0 0 24 24" fill="none">
                       <path d="M5 12h14M13 6l6 6-6 6" stroke="#1376F8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -112,7 +114,7 @@ export default function DoctorsSection() {
 
             <div className="ds-info">
               <span className="ds-name">{doc.name}</span>
-              <span className="ds-specialty">{doc.specialty}</span>
+              <span className="ds-specialty">{t(`${doc.key}.specialty`, doc.defaultSpecialty)}</span>
             </div>
 
           </div>

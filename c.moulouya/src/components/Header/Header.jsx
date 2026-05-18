@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import mapPin from "../../assets/Map pin.png";
 import mail from "../../assets/Mail 6.png";
 import tel from "../../assets/Tel.png";
@@ -12,9 +13,11 @@ const languages = [
 ];
 
 export default function Header() {
-  const [selectedLang, setSelectedLang] = useState(languages[0]);
+  const { t, i18n } = useTranslation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const currentLang = languages.find(l => l.code === i18n.language) || languages[0];
 
   return (
     <div className="topbar-wrapper">
@@ -25,7 +28,7 @@ export default function Header() {
 
           <div className="topbar-item">
             <img src={mapPin} alt="adresse" className="topbar-icon" />
-            <span className="topbar-text">7, Rue De La Paix, Berkane, Morocco, Oriental 63300</span>
+            <span className="topbar-text">{t("header.address")}</span>
           </div>
 
           <div className="topbar-divider" />
@@ -45,8 +48,8 @@ export default function Header() {
           {/* Langue desktop */}
           <div className="topbar-lang-wrapper">
             <button className="topbar-lang-btn" onClick={() => setDropdownOpen(!dropdownOpen)}>
-              <img src={selectedLang.flag || langue} alt="langue" className="topbar-flag" />
-              <span className="topbar-lang-label">{selectedLang.label}</span>
+              <img src={currentLang.flag || langue} alt="langue" className="topbar-flag" />
+              <span className="topbar-lang-label">{currentLang.label}</span>
               <svg className={`topbar-chevron ${dropdownOpen ? "open" : ""}`} width="14" height="14" viewBox="0 0 12 12" fill="none">
                 <path d="M2 4L6 8L10 4" stroke="#6B7280" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -56,8 +59,11 @@ export default function Header() {
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
-                    className={`topbar-dropdown-item ${selectedLang.code === lang.code ? "active" : ""}`}
-                    onClick={() => { setSelectedLang(lang); setDropdownOpen(false); }}
+                    className={`topbar-dropdown-item ${currentLang.code === lang.code ? "active" : ""}`}
+                    onClick={() => { 
+                      i18n.changeLanguage(lang.code);
+                      setDropdownOpen(false); 
+                    }}
                   >
                     {lang.flag && <img src={lang.flag} alt={lang.label} className="topbar-flag" />}
                     <span>{lang.label}</span>
@@ -88,8 +94,8 @@ export default function Header() {
             {/* Langue mobile */}
             <div className="topbar-lang-wrapper">
               <button className="topbar-lang-btn" onClick={() => setDropdownOpen(!dropdownOpen)}>
-                <img src={selectedLang.flag || langue} alt="langue" className="topbar-flag" />
-                <span className="topbar-lang-label">{selectedLang.label}</span>
+                <img src={currentLang.flag || langue} alt="langue" className="topbar-flag" />
+                <span className="topbar-lang-label">{currentLang.label}</span>
                 <svg className={`topbar-chevron ${dropdownOpen ? "open" : ""}`} width="12" height="12" viewBox="0 0 12 12" fill="none">
                   <path d="M2 4L6 8L10 4" stroke="#6B7280" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -99,8 +105,11 @@ export default function Header() {
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
-                      className={`topbar-dropdown-item ${selectedLang.code === lang.code ? "active" : ""}`}
-                      onClick={() => { setSelectedLang(lang); setDropdownOpen(false); }}
+                      className={`topbar-dropdown-item ${currentLang.code === lang.code ? "active" : ""}`}
+                      onClick={() => { 
+                        i18n.changeLanguage(lang.code); 
+                        setDropdownOpen(false); 
+                      }}
                     >
                       {lang.flag && <img src={lang.flag} alt={lang.label} className="topbar-flag" />}
                       <span>{lang.label}</span>
@@ -116,7 +125,7 @@ export default function Header() {
             <div className="topbar-mobile-menu">
               <div className="topbar-item">
                 <img src={mapPin} alt="adresse" className="topbar-icon" />
-                <span className="topbar-text">7, Rue De La Paix, Berkane, Morocco, Oriental 63300</span>
+                <span className="topbar-text">{t("header.address")}</span>
               </div>
               <div className="topbar-item">
                 <img src={tel} alt="téléphone" className="topbar-icon" />

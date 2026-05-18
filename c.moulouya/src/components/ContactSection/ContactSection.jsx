@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import urgenceIcon from "../../assets/UrgenceContact.png";
 import emailIcon from "../../assets/EmailContact.png";
 import callIcon from "../../assets/CallContact.png";
@@ -8,6 +9,7 @@ import localisationIcon from "../../assets/localisation.png";
 import "./ContactSection.css";
 
 export default function ContactSection() {
+    const { t } = useTranslation();
     const [form, setForm] = useState({
         nom: "", prenom: "", email: "", tel: "", message: ""
     });
@@ -28,25 +30,25 @@ export default function ContactSection() {
                     {/* Nom + Prénom */}
                     <div className="cs-row">
                         <div className="cs-field">
-                            <label className="cs-label" htmlFor="cs-nom">Nom</label>
+                            <label className="cs-label" htmlFor="cs-nom">{t("contact.form.lastNameLabel", "Nom")}</label>
                             <input
                                 id="cs-nom"
                                 className="cs-input"
                                 type="text"
                                 name="nom"
-                                placeholder="Nom"
+                                placeholder={t("contact.form.lastNamePlaceholder", "Nom")}
                                 value={form.nom}
                                 onChange={handleChange}
                             />
                         </div>
                         <div className="cs-field">
-                            <label className="cs-label" htmlFor="cs-prenom">Prénom</label>
+                            <label className="cs-label" htmlFor="cs-prenom">{t("contact.form.firstNameLabel", "Prénom")}</label>
                             <input
                                 id="cs-prenom"
                                 className="cs-input"
                                 type="text"
                                 name="prenom"
-                                placeholder="Prénom"
+                                placeholder={t("contact.form.firstNamePlaceholder", "Prénom")}
                                 value={form.prenom}
                                 onChange={handleChange}
                             />
@@ -55,13 +57,13 @@ export default function ContactSection() {
 
                     {/* Email */}
                     <div className="cs-field-full">
-                        <label className="cs-label" htmlFor="cs-email">Email</label>
+                        <label className="cs-label" htmlFor="cs-email">{t("contact.form.emailLabel", "Email")}</label>
                         <input
                             id="cs-email"
                             className="cs-input"
                             type="email"
                             name="email"
-                            placeholder="contact@cliniquemoulouya.ma"
+                            placeholder={t("contact.form.emailPlaceholder", "contact@cliniquemoulouya.ma")}
                             value={form.email}
                             onChange={handleChange}
                         />
@@ -69,13 +71,13 @@ export default function ContactSection() {
 
                     {/* Téléphone */}
                     <div className="cs-field-full">
-                        <label className="cs-label" htmlFor="cs-tel">Numéro de téléphone</label>
+                        <label className="cs-label" htmlFor="cs-tel">{t("contact.form.phoneLabel", "Numéro de téléphone")}</label>
                         <input
                             id="cs-tel"
                             className="cs-input"
                             type="tel"
                             name="tel"
-                            placeholder="+212.000-0000"
+                            placeholder={t("contact.form.phonePlaceholder", "+212.000-0000")}
                             value={form.tel}
                             onChange={handleChange}
                         />
@@ -83,12 +85,12 @@ export default function ContactSection() {
 
                     {/* Message */}
                     <div className="cs-field-full cs-field-grow">
-                        <label className="cs-label" htmlFor="cs-message">Message</label>
+                        <label className="cs-label" htmlFor="cs-message">{t("contact.form.messageLabel", "Message")}</label>
                         <textarea
                             id="cs-message"
                             className="cs-textarea"
                             name="message"
-                            placeholder=""
+                            placeholder={t("contact.form.messagePlaceholder", "")}
                             value={form.message}
                             onChange={handleChange}
                         />
@@ -96,7 +98,7 @@ export default function ContactSection() {
 
                     {/* Bas : bouton + réseaux */}
                     <div className="cs-form-footer">
-                        <button className="cs-submit" type="submit">ENVOYÉ</button>
+                        <button className="cs-submit" type="submit">{t("contact.form.submitBtn", "ENVOYÉ")}</button>
                         <div className="cs-socials">
                             <a href="#" className="cs-social-btn" aria-label="Instagram">
                                 <svg viewBox="0 0 24 24" fill="none">
@@ -134,8 +136,8 @@ export default function ContactSection() {
                             </svg>
                         </div>
                         <div className="cs-info-text">
-                            <p className="cs-info-title">Horaires de la clinique</p>
-                            <p className="cs-info-value">Disponibles 24h/24. Nous vous assurons une prise en charge continue et des soins de qualité</p>
+                            <p className="cs-info-title">{t("contact.info.hoursTitle", "Horaires de la clinique")}</p>
+                            <p className="cs-info-value">{t("contact.info.hoursValue", "Disponibles 24h/24. Nous vous assurons une prise en charge continue et des soins de qualité")}</p>
                         </div>
                     </div>
 
@@ -145,7 +147,7 @@ export default function ContactSection() {
                             <img src={emailIcon} alt="Email" />
                         </div>
                         <div className="cs-info-text">
-                            <p className="cs-info-title">Adresse email</p>
+                            <p className="cs-info-title">{t("contact.info.emailTitle", "Adresse email")}</p>
                             <p className="cs-info-value">contact@cliniquemoulouya.ma</p>
                         </div>
                     </div>
@@ -156,7 +158,7 @@ export default function ContactSection() {
                             <img src={telephoneIcon} alt="Téléphone" />
                         </div>
                         <div className="cs-info-text">
-                            <p className="cs-info-title">Numéro de téléphone</p>
+                            <p className="cs-info-title">{t("contact.info.phoneTitle", "Numéro de téléphone")}</p>
                             <p className="cs-info-value">+212 5366 – 168 69</p>
                         </div>
                     </div>
@@ -167,7 +169,7 @@ export default function ContactSection() {
                             <img src={urgenceIcon} alt="Urgence" />
                         </div>
                         <div className="cs-info-text">
-                            <p className="cs-info-title">Urgence 24H/24H</p>
+                            <p className="cs-info-title">{t("contact.info.emergencyTitle", "Urgence 24H/24H")}</p>
                             <p className="cs-info-value">+212 6 61 26 77 60</p>
                         </div>
                     </div>
@@ -192,8 +194,11 @@ export default function ContactSection() {
                                 <img src={mapPinIcon} alt="Localisation" />
                             </div>
                             <div className="cs-map-addr-text">
-                                <p className="cs-map-addr-title">Adresse de la clinique</p>
-                                <p className="cs-map-addr-value">7, Rue De La Paix, Berkane, Morocco,<br />Oriental 63300</p>
+                                <p className="cs-map-addr-title">{t("contact.info.addressTitle", "Adresse de la clinique")}</p>
+                                <p className="cs-map-addr-value">
+                                    {t("contact.info.addressLine1", "7, Rue De La Paix, Berkane, Morocco,")}<br />
+                                    {t("contact.info.addressLine2", "Oriental 63300")}
+                                </p>
                             </div>
                         </div>
                     </div>

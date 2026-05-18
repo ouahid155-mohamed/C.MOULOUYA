@@ -1,10 +1,12 @@
 import { useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import videoBox from "../../assets/videos/Video Box.png";
 import ellipseLeft from "../../assets/Ellipse 1088.png";
 import ellipseRight from "../../assets/Ellipse 1833.png";
 import "./VideoSection.css";
 
 export default function VideoSection() {
+  const { t } = useTranslation();
   const [playing, setPlaying] = useState(false);
   const videoRef = useRef(null);
 
@@ -14,14 +16,11 @@ export default function VideoSection() {
       {/* ── Texte centré ── */}
       <div className="vs-text">
         <h2 className="vs-title">
-          Préparez-vous à vivre une experience <br />
-          unique avec nos experts !
+          {t("video.title", "Votre santé mérite une expérience unique accompagnée par nos experts !").split('unique').reduce((prev, curr, i) => [prev, <br key={i} />, 'unique' + curr])}
         </h2>
         <div className="vs-title-line" />
         <p className="vs-subtitle">
-          votre santé, notre priorité. située au cœur de la région, la clinique moulouya <br />
-          allie expertise médicale et technologies modernes pour vous offrir des <br />
-          soins de qualité dans un environnement chaleureux et sécurisé.
+          {t("video.subtitle", "L'excellence médicale définit notre engagement. La Clinique Moulouya mobilise son plateau technique innovant et des experts qualifiés pour assurer une prise en charge sécurisée, humaine et performante, au service de votre rétablissement.")}
         </p>
       </div>
 

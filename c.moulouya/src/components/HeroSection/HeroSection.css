@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
-/* ══════════════════════════════════════════════════════════════
-   HERO WRAPPER
-══════════════════════════════════════════════════════════════ */
+/* == HERO WRAPPER == */
 .hero-wrapper {
     position: relative;
     width: calc(100% - 64px);
@@ -11,16 +9,13 @@
     height: 480px;
     background: #ffffff;
     border-radius: 0 0 32px 32px;
-    /* Arrondi seulement en bas pour toucher le navbar en haut */
     overflow: hidden;
     font-family: "Poppins", sans-serif;
 }
 
-/* ── Cadre dégradé 1.5px (Ouvert en haut) ── */
 .hero-wrapper::before {
     content: "";
     position: absolute;
-    /* On décale vers le haut pour cacher la bordure supérieure via le overflow:hidden du parent */
     top: -5px;
     left: 0;
     right: 0;
@@ -36,9 +31,7 @@
     z-index: 10;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   CERCLES ROSES — CSS pur
-══════════════════════════════════════════════════════════════ */
+/* == CERCLES ROSES == */
 .hero-circle-1,
 .hero-circle-2,
 .hero-circle-3 {
@@ -74,9 +67,7 @@
     opacity: 0.55;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   BADGE 20 ANS
-══════════════════════════════════════════════════════════════ */
+/* == BADGE 20 ANS == */
 .hero-badge {
     position: absolute;
     top: 28px;
@@ -86,11 +77,7 @@
     filter: drop-shadow(0 4px 14px rgba(19, 118, 248, 0.18));
 }
 
-
-/* ══════════════════════════════════════════════════════════════
-   COLLAGE 3 DOCTEURS
-══════════════════════════════════════════════════════════════ */
-/* Conteneur global */
+/* == COLLAGE 3 DOCTEURS == */
 .hero-collage {
     position: absolute;
     bottom: 0;
@@ -108,10 +95,7 @@
     object-fit: contain;
 }
 
-
-/* ══════════════════════════════════════════════════════════════
-   CARDS
-══════════════════════════════════════════════════════════════ */
+/* == CARDS == */
 .hero-cards {
     position: absolute;
     top: 32px;
@@ -148,15 +132,9 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-
-    /* Border Gradient */
     border: 1.28px solid transparent;
     background: linear-gradient(#eff6ff, #eff6ff) padding-box,
         linear-gradient(135deg, #FF4949 32.4%, #F6FCFF 100%) border-box;
-}
-
-.hero-card-icon-blue {
-    /* Background handled in .hero-card-icon-wrap for gradient border */
 }
 
 .hero-card-icon {
@@ -184,77 +162,38 @@
     line-height: 1.5;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   CITATION
-══════════════════════════════════════════════════════════════ */
+/* == CITATION (desktop) == */
 .hero-quote {
     position: absolute;
-    bottom: 18px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(90deg, #f0f7ff 0%, #f4f9ff 100%);
-    border: 1px solid #94c1ff;
-    border-radius: 999px;
-    padding: 14px 40px;
-    font-size: 15px;
-    font-weight: 500;
-    color: #4B5563;
     white-space: nowrap;
-    box-shadow: 0 4px 24px rgba(19, 118, 248, 0.12);
+    text-align: center;
+    background: rgba(240, 247, 255, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 999px;
+    padding: 12px 28px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1a1a2e;
     z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 16px rgba(19, 118, 248, 0.08);
 }
 
-/* ══════════════════════════════════════════════════════════════
-   RESPONSIVE — Tablette (≤ 1100px)
-══════════════════════════════════════════════════════════════ */
-@media (max-width: 1100px) {
-    .hero-wrapper {
-        height: 440px;
-    }
-
-    .hero-collage {
-        width: auto;
-        height: 410px;
-    }
-
-    .hero-badge {
-        width: 110px;
-        inset-inline-start: 28px;
-        top: 24px;
-    }
-
-    .hero-cards {
-        inset-inline-end: 24px;
-        top: 24px;
-    }
-
-    .hero-card {
-        min-width: 210px;
-        padding: 12px 16px;
-    }
-
-    .hero-circle-3 {
-        width: 700px;
-        height: 700px;
-        bottom: -350px;
-    }
-
-    .hero-circle-2 {
-        width: 530px;
-        height: 530px;
-        bottom: -265px;
-    }
-
-    .hero-circle-1 {
-        width: 370px;
-        height: 370px;
-        bottom: -185px;
-    }
+.hero-quote-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
 }
 
-/* ══════════════════════════════════════════════════════════════
-   RESPONSIVE — Mobile (≤ 768px)
-══════════════════════════════════════════════════════════════ */
+/* == RESPONSIVE - Mobile (max 768px) == */
 @media (max-width: 768px) {
 
     .hero-wrapper {
@@ -274,146 +213,182 @@
         border-radius: 0 0 32px 32px;
     }
 
-    /* ── Cercles centrés sur la zone médiane-basse ── */
     .hero-circle-3 {
-        width: 440px;
-        height: 440px;
-        bottom: -50px;
+        width: 380px;
+        height: 380px;
+        bottom: -80px;
     }
 
     .hero-circle-2 {
-        width: 320px;
-        height: 320px;
-        bottom: 10px;
+        width: 280px;
+        height: 280px;
+        bottom: -30px;
     }
 
     .hero-circle-1 {
-        width: 210px;
-        height: 210px;
-        bottom: 65px;
+        width: 180px;
+        height: 180px;
+        bottom: 20px;
     }
 
     .hero-badge {
         position: absolute;
-        top: 18px;
-        inset-inline-start: 18px;
-        width: 100px;
+        top: 16px;
+        inset-inline-start: 16px;
+        width: 90px;
         margin: 0;
     }
 
-    /* ── Collage mobile : redimensionné pour tenir dans le wrapper ── */
     .hero-collage {
         width: 100%;
-        height: 280px;
-        bottom: 60px;
+        height: 290px;
+        bottom: 50px;
+    }
+
+    .hero-doctors-img {
+        height: 100%;
+        object-fit: contain;
     }
 
     .hero-cards {
         position: absolute;
-        top: 18px;
-        inset-inline-end: 14px;
+        top: 16px;
+        inset-inline-end: 16px;
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
         width: auto;
         margin: 0;
     }
 
     .hero-card {
         min-width: 0;
-        width: 190px;
+        width: 180px;
         flex: none;
-        padding: 10px 12px;
-        gap: 10px;
+        padding: 8px 10px;
+        gap: 8px;
         border-radius: 12px;
     }
 
     .hero-card-icon-wrap {
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
     }
 
     .hero-card-icon {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
     }
 
     .hero-card-label {
-        font-size: 10.5px;
+        font-size: 10px;
     }
 
     .hero-card-value {
-        font-size: 10px;
-        line-height: 1.4;
+        font-size: 9px;
+        line-height: 1.3;
     }
 
     .hero-quote {
         position: absolute;
-        bottom: 14px;
+        bottom: 12px;
         left: 50%;
         transform: translateX(-50%);
         white-space: normal;
         text-align: center;
-        border-radius: 999px;
-        padding: 10px 22px;
+        border-radius: 12px;
+        padding: 10px 16px;
         font-size: 11px;
-        width: calc(100% - 40px);
-        max-width: 420px;
+        line-height: 1.4;
+        width: calc(100% - 32px);
+        max-width: 440px;
         box-sizing: border-box;
+        background: rgba(240, 247, 255, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    .hero-quote-avatar {
+        display: none;
     }
 }
 
-/* ══════════════════════════════════════════════════════════════
-   RESPONSIVE — Petit mobile (≤ 480px)
-══════════════════════════════════════════════════════════════ */
+/* == RESPONSIVE - Petit mobile (max 480px) == */
 @media (max-width: 480px) {
+
     .hero-wrapper {
         height: 420px;
     }
 
     .hero-collage {
-        height: 240px;
-        bottom: 54px;
+        height: 260px;
+        bottom: 46px;
     }
 
     .hero-badge {
-        width: 90px;
-        top: 14px;
+        width: 80px;
+        top: 12px;
         inset-inline-start: 12px;
     }
 
     .hero-cards {
-        inset-inline-end: 8px;
-        top: 14px;
+        inset-inline-end: 10px;
+        top: 12px;
+        gap: 6px;
     }
 
     .hero-card {
-        width: 168px;
-        padding: 9px 10px;
+        width: 162px;
+        padding: 7px 9px;
+        gap: 7px;
+        border-radius: 10px;
+    }
+
+    .hero-card-icon-wrap {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+    }
+
+    .hero-card-icon {
+        width: 14px;
+        height: 14px;
     }
 
     .hero-card-label {
-        font-size: 10.5px;
+        font-size: 9.5px;
     }
 
     .hero-card-value {
-        font-size: 10.5px;
+        font-size: 9px;
+        line-height: 1.25;
     }
 
     .hero-circle-3 {
-        width: 380px;
-        height: 380px;
-        bottom: -40px;
+        width: 320px;
+        height: 320px;
+        bottom: -70px;
     }
 
     .hero-circle-2 {
-        width: 270px;
-        height: 270px;
-        bottom: 15px;
+        width: 240px;
+        height: 240px;
+        bottom: -30px;
     }
 
     .hero-circle-1 {
-        width: 180px;
-        height: 180px;
-        bottom: 60px;
+        width: 160px;
+        height: 160px;
+        bottom: 10px;
+    }
+
+    .hero-quote {
+        bottom: 10px;
+        padding: 8px 14px;
+        font-size: 10.5px;
+        line-height: 1.35;
+        border-radius: 10px;
+        width: calc(100% - 24px);
+        max-width: 380px;
     }
 }

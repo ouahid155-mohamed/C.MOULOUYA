@@ -20,8 +20,8 @@ export default function HeroSection() {
       <img src={badge} alt="20 ans d'existence" className="hero-badge" />
 
       {/* ── Image 3 Docteurs ── */}
-      <div className="hero-collage" style={{ width: 'auto', height: 'auto', bottom: 0 }}>
-        <img src={troisDocteurs} alt="Équipe de chirurgiens" className="hero-doctors-img" style={{ maxHeight: '450px', objectFit: 'contain', display: 'block', margin: '0 auto' }} />
+      <div className="hero-collage">
+        <img src={troisDocteurs} alt="Équipe de chirurgiens" className="hero-doctors-img" />
       </div>
 
       {/* ── Cards droite ── */}
@@ -50,9 +50,9 @@ export default function HeroSection() {
       </div>
 
       {/* ── Citation bas ── */}
-      <div className="hero-quote" style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+      <div className="hero-quote">
         {t("hero.quote", "“Disponibles 24h/24, Nous vous assurons une prise en charge continue et des soins de qualité“")}
-        <img src={quoteIcon} alt="Icon" style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', position: 'absolute', insetInlineEnd: '-24px' }} />
+        <img src={quoteIcon} alt="Icon" className="hero-quote-avatar" />
       </div>
 
     </section>

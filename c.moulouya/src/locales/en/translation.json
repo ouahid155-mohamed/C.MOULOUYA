@@ -1,6 +1,26 @@
 {
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "specialties": "Specialties",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "appointment": "APPOINTMENT"
+  },
+  "header": {
+    "address": "7, Rue De La Paix, Berkane, Morocco, Oriental 63300",
+    "emergency": "Emergency 24/7 : +212 6 61 26 77 60"
+  },
   "footer": {
+    "logo_main": "CLINIQUE",
+    "logo_sub": "MOULOUYA",
+    "description": "Your health is our priority. A dedicated team, state-of-the-art equipment, and personalized care at every step of your medical journey.",
+    "links_title": "Quick Links",
     "contact_title": "Contact Us",
+    "schedule_title": "Working Hours",
+    "schedule_days": "Monday - Sunday",
+    "schedule_hours": "24/7",
+    "copyright": "All rights reserved ©2025 Clinique Moulouya",
     "form_name": "Full Name",
     "form_email": "Email",
     "form_phone": "Phone Number",
@@ -22,7 +42,8 @@
       "phoneLabel": "Phone Number",
       "phonePlaceholder": "+212.000-0000",
       "messageLabel": "Message",
-      "submitBtn": "SENT"
+      "messagePlaceholder": "",
+      "submitBtn": "SEND"
     },
     "info": {
       "hoursTitle": "Clinic Hours",
@@ -44,41 +65,156 @@
   "history": {
     "tag": "OUR HISTORY",
     "title": "Health solutions designed for your well-being",
-    "contact_btn": "CONTACT US"
+    "desc": "For over 20 years, Clinique Moulouya has been a pillar of healthcare in the Oriental region. Founded on values of excellence, commitment, and humanity, our reference clinic offers personalized medical care, where every patient is welcomed with kindness and professionalism.",
+    "contact_btn": "CONTACT US",
+    "need_help": "Need help?"
   },
-  "specialties_detail": {
-    "contact_btn": "Contact us"
+  "stats": {
+    "tag": "SUCCESS STORY",
+    "title": "Our journey of excellence",
+    "desc": "Our journey of excellence is based on medical expertise and quality patient care.",
+    "doctors": "Professional doctors",
+    "operations": "Successful operations",
+    "experience": "Years of experience",
+    "patients": "Satisfied patients"
+  },
+  "video": {
+    "title": "Your health deserves a unique experience accompanied by our experts!",
+    "subtitle": "Medical excellence defines our commitment. Clinique Moulouya mobilizes its innovative technical platform and qualified experts to ensure safe, human, and efficient care, dedicated to your recovery."
+  },
+  "interventions": {
+    "tag": "OUR INTERVENTIONS",
+    "title": "Care adapted to your health condition",
+    "item_1": "Urological surgery: treatment of urinary stones, prostatectomy, bladder interventions.",
+    "item_2": "Visceral surgery: appendectomy, hernia repair, treatment of gallbladder pathologies.",
+    "item_3": "Orthopedic and trauma surgery: management of fractures, joint pathologies, and much more."
+  },
+  "doctors": {
+    "more_info": "More info",
+    "doc1": {
+      "name": "Dr. Kamal ADNANI",
+      "specialty": "Orthopedic Traumatologist",
+      "desc": "Our orthopedic traumatologist treats injuries, fractures and musculoskeletal disorders with expertise, precision and appropriate care to ensure a good recovery.",
+      "spec1": { "title": "Orthopedics – Traumatology", "detail": "Management of fractures, trauma and diseases of bones and joints." },
+      "spec2": { "title": "Orthopedic surgery", "detail": "Surgical treatment of bones, joints and ligaments with modern techniques." }
+    },
+    "doc2": {
+      "name": "Dr. Aziz LAARBI",
+      "specialty": "Urologist",
+      "desc": "Our urologist manages all urinary and genital conditions with expertise, precision and human support at each stage.",
+      "spec1": { "title": "Urological surgery", "detail": "urinary lithiasis, prostate surgery, bladder surgery" },
+      "spec2": { "title": "Endoscopy", "detail": "cystoscopy, ureteroscopy, transurethral resection…" }
+    },
+    "doc3": {
+      "name": "Dr. Az-Eddin EL BOUHALI",
+      "specialty": "Anesthesiologist - Intensivist",
+      "desc": "Our anesthesiologist-intensivist ensures the safety and comfort of the patient before, during and after each surgical intervention.",
+      "spec1": { "title": "General anesthesia", "detail": "locoregional anesthesia, sedation, intensive care" },
+      "spec2": { "title": "Intensive care", "detail": "post-operative care, vital emergencies…" }
+    }
   },
   "specialties": {
     "title": "Our Specialties",
     "desc": "Comprehensive care provided by medical experts in multiple disciplines.",
     "mobile_title": "Our Medical Specialties",
-    "mobile_desc": "Tailored care, provided by qualified professionals in several disciplines."
+    "mobile_desc": "Tailored care, provided by qualified professionals in several disciplines.",
+    "items": {
+      "visceral": { "title": "Visceral surgery", "desc": "Treatment of digestive pathologies with surgical expertise." },
+      "urology": { "title": "Urology", "desc": "Specialized care for urinary and genital diseases." },
+      "oncology": { "title": "Oncological surgery", "desc": "Surgical interventions for cancer treatment." },
+      "orthopedics": { "title": "Orthopedics", "desc": "Management of fractures and joint pathologies." },
+      "anesthesiology": { "title": "Anesthesiology", "desc": "Patient support and safety before and during the operation." },
+      "cardiology": { "title": "Cardiology", "desc": "Monitoring of cardiovascular diseases and specialized examinations." }
+    }
   },
-  "stats": {
-    "tag": "SUCCESS STORY",
-    "desc": "Our journey of excellence is based on medical expertise and quality patient care."
+  "specialties_detail": {
+    "contact_btn": "Contact us",
+    "orthopedics": {
+      "label": "Orthopedic\nand Trauma Surgery",
+      "title": "Orthopedic and trauma surgery",
+      "bold": "Surgery of bones, joints and traumas.",
+      "desc": "Expertise in orthopedic and trauma surgery, for the treatment of fractures and pathologies of bones and joints with modern and effective techniques."
+    },
+    "urology": {
+      "label": "Urological Surgery",
+      "title": "Urological surgery",
+      "bold": "Surgery of the urinary tract.",
+      "desc": "Recognized expertise for all your urological surgeries. Prostate, stones, cancers: we combine cutting-edge technology with human support."
+    },
+    "visceral": {
+      "label": "Visceral Surgery",
+      "title": "Visceral surgery",
+      "bold": "Surgery of the abdomen and digestive organs.",
+      "desc": "Recognized expertise in visceral surgery, dedicated to the treatment of abdominal and digestive pathologies with modern techniques and high-quality care."
+    }
   },
-  "video": {
-    "title": "Your health deserves a unique experience accompanied by our experts!"
+  "faq": {
+    "group_clinique": {
+      "title": "About The Clinic",
+      "q1": "What medical services does the clinic offer?",
+      "a1": "The clinic offers comprehensive care with emergency services and several medical and surgical specialties, including visceral surgery, urology, oncology, orthopedics-traumatology, gynecology-obstetrics, anesthesia-resuscitation, ENT, gastroenterology, digestive endoscopy, and internal medicine.",
+      "q2": "Who are the doctors at the clinic?",
+      "a2": "The clinic has a team of specialist doctors, including Dr. Aziz LAARBI in urological surgery, Dr. Kamal ADNANI in orthopedic and trauma surgery, as well as Dr. Az-Eddin El Bouhali in anesthesia-resuscitation, ensuring expert and specialized patient care.",
+      "q3": "Since when has the clinic been in operation?",
+      "a3": "The clinic has been operating for over 20 years, with confirmed experience in medical and surgical patient care, guaranteeing quality care and recognized expertise in the region.",
+      "q4": "What specialties are available?",
+      "a4": "The clinic offers several medical and surgical specialties, notably emergencies, visceral surgery, urology, oncological surgery, orthopedics-traumatology, gynecology-obstetrics, anesthesia-resuscitation, ENT, gastroenterology, digestive endoscopy, and internal medicine.",
+      "q5": "Is the clinic equipped with modern equipment?",
+      "a5": "Yes, the clinic has a modern technical platform and state-of-the-art medical equipment, allowing for accurate diagnoses and safe, effective patient care.",
+      "q6": "Does the clinic welcome all ages?",
+      "a6": "Yes, the clinic welcomes patients of all ages and provides care adapted to every stage of life, from children to adults, with personalized and safe care.",
+      "q7": "Does the clinic respect hygiene standards?",
+      "a7": "Yes, the clinic applies strict hygiene and safety protocols, in accordance with current medical standards, to ensure safe care and a healthy environment for all patients."
+    },
+    "group_consultation": {
+      "title": "Preparing For Your Consultation",
+      "q1": "What should I bring to the consultation?",
+      "a1": "During your consultation, it is recommended to bring your medical documents (prescriptions, test results, reports), your ID, and any recent examination results to facilitate comprehensive and effective care.",
+      "q2": "Can I bring my old medical reports?",
+      "a2": "Yes, it is highly recommended to bring your old medical reports, analyses, and exams to help the doctor better understand your history and ensure more precise and appropriate care.",
+      "q3": "How do I make an appointment?",
+      "a3": "You can make an appointment by phone or directly at the clinic's reception. Our team will assist you in finding a suitable time slot as soon as possible.",
+      "q4": "Can I come accompanied?",
+      "a4": "Yes, you can come accompanied to your consultation. It is even encouraged if necessary for your comfort and medical support.",
+      "q5": "What should I do if I am late?",
+      "a5": "In case of delay, it is recommended to notify the clinic as soon as possible to reorganize your appointment. Our team will do its best to offer you a new suitable time slot.",
+      "q6": "Can I cancel or reschedule my appointment?",
+      "a6": "Yes, you can cancel or reschedule your appointment by contacting the clinic by phone or at the reception. We kindly ask you to inform us in advance to better organize consultations.",
+      "q7": "Do I need to prepare information before the consultation?",
+      "a7": "Yes, it is advisable to prepare your medical history, current treatments, and past exams to facilitate the diagnosis and ensure more precise and tailored care."
+    },
+    "group_services": {
+      "title": "Services & Care",
+      "q1": "Do you offer home care?",
+      "a1": "Currently, the clinic does not offer home care, but provides comprehensive and tailored care within its departments.",
+      "q2": "Does the clinic perform surgical interventions?",
+      "a2": "Yes, the clinic performs various surgical interventions thanks to a team of specialized surgeons and modern equipment, ensuring safe and effective patient care.",
+      "q3": "What types of treatments do you offer?",
+      "a3": "The clinic offers medical and surgical treatments tailored to each patient, including the management of acute and chronic pathologies, with personalized follow-up by specialists.",
+      "q4": "What treatment protocols are offered to patients?",
+      "a4": "The clinic offers treatment protocols adapted to each patient, based on accurate diagnosis and personalized care, ranging from medical treatments to surgical interventions as needed.",
+      "q5": "How are patients diagnosed?",
+      "a5": "Patient diagnosis is made through a medical consultation, a clinical examination, and, if necessary, additional tests (analyses, medical imaging) to ensure an accurate evaluation and appropriate care."
+    }
+  },
+  "home": {
+    "section1": {
+      "title": "CLINIQUE MOULOUYA AT YOUR SERVICE",
+      "subtitle": "In the heart of the Oriental region, we put our expertise and specialists at your full disposal."
+    },
+    "section2": {
+      "title": "Our medical experts",
+      "subtitle": "Our medical experts accompany you with competence and care to ensure quality treatment tailored to your needs."
+    },
+    "section3": {
+      "title": "Our Specialties",
+      "subtitle": "Centers of excellence bringing together all our specialties to guarantee you the best care."
+    }
   },
   "apropos": {
     "section1": {
       "title": "Our History",
       "subtitle": "Over 20 years of experience serving your health and trust."
-    }
-  },
-  "home": {
-    "section2": {
-      "title": "Our medical experts",
-      "subtitle": "Our medical experts accompany you with competence and care to ensure quality treatment tailored to your needs."
-    },
-    "section1": {
-      "title": "CLINIQUE MOULOUYA AT YOUR SERVICE"
-    },
-    "section3": {
-      "title": "Our Specialties",
-      "subtitle": "Centers of excellence bringing together all our specialties to guarantee you the best care."
     }
   },
   "contact_page": {
@@ -88,40 +224,5 @@
   "faq_page": {
     "title": "Your Questions, Our Answers",
     "subtitle": "Our FAQ quickly answers your questions to guide you in your healthcare journey."
-  },
-  "header": {
-    "address": "7, Rue De La Paix, Berkane, Morocco",
-    "emergency": "Emergency 24/7 : +212 6 61 26 77 60"
-  },
-  "nav": {
-    "home": "Home",
-    "about": "About Us",
-    "specialties": "Specialties",
-    "faq": "FAQ",
-    "contact": "Contact"
-  },
-  "doctors": {
-    "more_info": "More Info",
-    "doc1": {
-      "name": "Dr. Kamal Adnani",
-      "specialty": "Orthopedic Traumatologist",
-      "desc": "Our orthopedic traumatologist treats injuries, fractures and musculoskeletal disorders with expertise, precision and appropriate care to ensure a good recovery.",
-      "spec1": { "title": "Orthopedics – Traumatology", "detail": "Management of fractures, trauma and diseases of bones and joints." },
-      "spec2": { "title": "Orthopedic surgery", "detail": "Surgical treatment of bones, joints and ligaments with modern techniques." }
-    },
-    "doc2": {
-      "name": "Dr. Aziz Laarbi",
-      "specialty": "Urologist",
-      "desc": "Our urologist manages all urinary and genital conditions with expertise, precision and human support at each stage.",
-      "spec1": { "title": "Urological surgery", "detail": "urinary lithiasis, prostate surgery, bladder surgery" },
-      "spec2": { "title": "Endoscopy", "detail": "cystoscopy, ureteroscopy, transurethral resection…" }
-    },
-    "doc3": {
-      "name": "Dr. Az-Eddin El Bouhali",
-      "specialty": "Anesthesiologist - Intensivist",
-      "desc": "Our anesthesiologist-intensivist ensures the safety and comfort of the patient before, during and after each surgical intervention.",
-      "spec1": { "title": "General anesthesia", "detail": "locoregional anesthesia, sedation, intensive care" },
-      "spec2": { "title": "Intensive care", "detail": "post-operative care, vital emergencies…" }
-    }
   }
 }

@@ -133,7 +133,7 @@ export default function Navbar() {
         <a href="tel:+212661267760" className="nb-cta">
           <span className="nb-cta-label">{t("nav.appointment")}</span>
           <span className="nb-cta-arrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{ transform: i18n.language === 'ar' ? 'scaleX(-1)' : 'none' }}>
               <path d="M10 6l6 6-6 6" stroke="#0088FF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
@@ -212,7 +212,7 @@ export default function Navbar() {
               </Link>
             ))}
             <a href="tel:+212661267760" className="nb-mobile-cta">
-              {t("nav.appointment")} ›
+              {i18n.language === 'ar' ? '‹ ' : ''}{t("nav.appointment")}{i18n.language !== 'ar' ? ' ›' : ''}
             </a>
           </div>
         )}

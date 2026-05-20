@@ -26,8 +26,8 @@ const specialites = [
     key: "specialties_detail.visceral",
     defaultLabel: "Chirurgie viscérale",
     defaultTitle: "Chirurgie viscérale",
-    defaultBold: "Lorem ipsum dolor sit amet.",
-    defaultDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Quisque placerat scelerisque tortor ornare ornare Convallis felis.",
+    defaultBold: "Chirurgie de l’abdomen et des organes digestifs.",
+    defaultDesc: "Une expertise reconnue en chirurgie viscérale, dédiée au traitement des pathologies abdominales et digestives avec des techniques modernes et une prise en charge de qualité.",
   },
 ];
 

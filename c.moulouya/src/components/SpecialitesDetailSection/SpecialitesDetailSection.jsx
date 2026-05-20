@@ -10,15 +10,15 @@ const specialites = [
     key: "specialties_detail.orthopedics",
     defaultLabel: "Chirurgie orthopédique\net traumatologique",
     defaultTitle: "Chirurgie orthopédique et traumatologique",
-    defaultBold: "Lorem ipsum dolor sit amet.",
-    defaultDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat scelerisque tortor ornare ornare. Quisque placerat scelerisque tortor ornare ornare Convallis felis.",
+    defaultBold: "Chirurgie des os, des articulations et des traumatismes.",
+    defaultDesc: "Une expertise en chirurgie orthopédique et traumatologique, pour le traitement des fractures et des pathologies des os et des articulations avec des techniques modernes et efficaces.",
   },
   {
     id: 1,
     key: "specialties_detail.urology",
     defaultLabel: "Chirurgie urologique",
     defaultTitle: "Chirurgie urologique",
-    defaultBold: "Lorem ipsum dolor sit amet.",
+    defaultBold: "Chirurgie des voies urinaires.",
     defaultDesc: "Une expertise reconnue pour toutes vos chirurgies urologiques. Prostate, calculs, cancers : nous allions technique de pointe et accompagnement humain.",
   },
   {

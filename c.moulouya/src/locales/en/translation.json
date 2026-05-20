@@ -99,5 +99,29 @@
     "specialties": "Specialties",
     "faq": "FAQ",
     "contact": "Contact"
+  },
+  "doctors": {
+    "more_info": "More Info",
+    "doc1": {
+      "name": "Dr. Kamal Adnani",
+      "specialty": "Orthopedic Traumatologist",
+      "desc": "Our orthopedic traumatologist treats injuries, fractures and musculoskeletal disorders with expertise, precision and appropriate care to ensure a good recovery.",
+      "spec1": { "title": "Orthopedics – Traumatology", "detail": "Management of fractures, trauma and diseases of bones and joints." },
+      "spec2": { "title": "Orthopedic surgery", "detail": "Surgical treatment of bones, joints and ligaments with modern techniques." }
+    },
+    "doc2": {
+      "name": "Dr. Aziz Laarbi",
+      "specialty": "Urologist",
+      "desc": "Our urologist manages all urinary and genital conditions with expertise, precision and human support at each stage.",
+      "spec1": { "title": "Urological surgery", "detail": "urinary lithiasis, prostate surgery, bladder surgery" },
+      "spec2": { "title": "Endoscopy", "detail": "cystoscopy, ureteroscopy, transurethral resection…" }
+    },
+    "doc3": {
+      "name": "Dr. Az-Eddin El Bouhali",
+      "specialty": "Anesthesiologist - Intensivist",
+      "desc": "Our anesthesiologist-intensivist ensures the safety and comfort of the patient before, during and after each surgical intervention.",
+      "spec1": { "title": "General anesthesia", "detail": "locoregional anesthesia, sedation, intensive care" },
+      "spec2": { "title": "Intensive care", "detail": "post-operative care, vital emergencies…" }
+    }
   }
 }

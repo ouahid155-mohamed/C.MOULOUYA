@@ -8,6 +8,25 @@ const videos = [
   "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-2-@main/Clinique%20Moulouya%203.mp4",
   "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-2-@main/Clinique%20Moulouya%204.mp4",
   "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-2-@main/Clinique%20Moulouya%205.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-3--@main/Clinique Moulouya 9.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-3--@main/Clinique Moulouya 10.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-3--@main/Clinique Moulouya 12.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-4--@main/Clinique Moulouya 13.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-4--@main/Clinique Moulouya 14.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-4--@main/Clinique Moulouya 15.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-4--@main/Clinique Moulouya 16.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-5--@main/Clinique Moulouya 17.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-5--@main/Clinique Moulouya 18.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-5--@main/Clinique Moulouya.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-5--@main/Clinique Moulouya00.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-5--@main/Clinique Moulouya21.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-5--@main/Clinique Moulouya22.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-6--@main/Clinique Moulouya23.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-6--@main/Clinique Moulouya24.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-6--@main/Clinique Moulouya25.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-6--@main/Clinique Moulouya26.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-6--@main/Clinique Moulouya27.mp4",
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-6--@main/Clinique Moulouya28.mp4",
 ];
 
 // Texte fixe — ne change JAMAIS quand on navigue entre les vidéos
@@ -24,7 +43,7 @@ const textContent = {
 };
 
 export default function InterventionsSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [videoIndex, setVideoIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
@@ -36,8 +55,10 @@ export default function InterventionsSection() {
   const scrollToSlide = (index) => {
     if (trackRef.current) {
       isProgrammaticScroll.current = true;
+      const isRtl = i18n.language === "ar";
+      const scrollMultiplier = isRtl ? -1 : 1;
       trackRef.current.scrollTo({
-        left: index * trackRef.current.clientWidth,
+        left: scrollMultiplier * index * trackRef.current.clientWidth,
         behavior: "smooth",
       });
       setVideoIndex(index);
@@ -50,8 +71,8 @@ export default function InterventionsSection() {
   const handleScroll = () => {
     if (!trackRef.current || isProgrammaticScroll.current) return;
     const track = trackRef.current;
-    const index = Math.round(track.scrollLeft / track.clientWidth);
-    if (index !== videoIndex) {
+    const index = Math.round(Math.abs(track.scrollLeft) / track.clientWidth);
+    if (index !== videoIndex && index >= 0 && index < videos.length) {
       setVideoIndex(index);
     }
   };
@@ -70,6 +91,11 @@ export default function InterventionsSection() {
     });
     setIsPlaying(false);
   }, [videoIndex]);
+
+  // Adjust scroll position dynamically when language (RTL/LTR) changes
+  useEffect(() => {
+    scrollToSlide(videoIndex);
+  }, [i18n.language]);
 
   const prev = () => scrollToSlide((videoIndex - 1 + videos.length) % videos.length);
   const next = () => scrollToSlide((videoIndex + 1) % videos.length);
@@ -137,7 +163,11 @@ export default function InterventionsSection() {
             <div className="is-controls">
               <button className="is-btn is-btn-nav" onClick={prev} aria-label="Précédent">
                 <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M19 12H5M5 12L11 6M5 12L11 18" stroke="#1376F8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  {i18n.language === "ar" ? (
+                    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#1376F8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  ) : (
+                    <path d="M19 12H5M5 12L11 6M5 12L11 18" stroke="#1376F8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  )}
                 </svg>
               </button>
 
@@ -156,21 +186,30 @@ export default function InterventionsSection() {
 
               <button className="is-btn is-btn-nav" onClick={next} aria-label="Suivant">
                 <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#1376F8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  {i18n.language === "ar" ? (
+                    <path d="M19 12H5M5 12L11 6M5 12L11 18" stroke="#1376F8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  ) : (
+                    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#1376F8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  )}
                 </svg>
               </button>
             </div>
 
-            {/* Indicateurs de progression */}
+            {/* Indicateurs de progression (limité à 5 points glissants) */}
             <div className="is-dots">
-              {videos.map((_, i) => (
-                <button
-                  key={i}
-                  className={`is-dot${i === videoIndex ? " is-dot-active" : ""}`}
-                  onClick={() => scrollToSlide(i)}
-                  aria-label={`Vidéo ${i + 1}`}
-                />
-              ))}
+              {(() => {
+                const totalDots = 5;
+                const startIndex = Math.max(0, Math.min(videos.length - totalDots, videoIndex - 2));
+                const visibleIndices = Array.from({ length: totalDots }, (_, i) => startIndex + i);
+                return visibleIndices.map((i) => (
+                  <button
+                    key={i}
+                    className={`is-dot${i === videoIndex ? " is-dot-active" : ""}`}
+                    onClick={() => scrollToSlide(i)}
+                    aria-label={`Vidéo ${i + 1}`}
+                  />
+                ));
+              })()}
             </div>
           </div>
         </div>

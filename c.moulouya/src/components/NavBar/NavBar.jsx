@@ -60,10 +60,23 @@ export default function Navbar() {
         setIndicatorStyle({ left: activeEl.offsetLeft, width: activeEl.offsetWidth });
       }
     };
+    
+    // Execute immediately for instant tab switching
     updateIndicator();
+    
+    // Scheduled updates to measure positions accurately after browser RTL layout reflow and font rendering
+    const timer1 = setTimeout(updateIndicator, 50);
+    const timer2 = setTimeout(updateIndicator, 150);
+    const timer3 = setTimeout(updateIndicator, 300);
+    
     window.addEventListener("resize", updateIndicator);
-    return () => window.removeEventListener("resize", updateIndicator);
-  }, [activeLink]);
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+      window.removeEventListener("resize", updateIndicator);
+    };
+  }, [activeLink, i18n.language]);
 
   return (
     <>
@@ -71,10 +84,17 @@ export default function Navbar() {
 
         {/* ── Desktop: right dark background ── */}
         <div className="nb-right-bg-wrapper">
-          <svg width="30" height="66" viewBox="0 0 30 66" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ overflow: "visible" }}>
-            <path d="M0 0 L15 33 L0 66 L30 66 L30 0 Z" fill="#0A2E72" />
-            <path d="M0 0 L15 33 L0 66" stroke="white" strokeWidth="3" strokeLinejoin="round" />
-          </svg>
+          {i18n.language === 'ar' ? (
+            <svg width="30" height="66" viewBox="0 0 30 66" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ overflow: "visible" }}>
+              <path d="M30 0 L15 33 L30 66 L0 66 L0 0 Z" fill="#0A2E72" />
+              <path d="M30 0 L15 33 L30 66" stroke="white" strokeWidth="3" strokeLinejoin="round" />
+            </svg>
+          ) : (
+            <svg width="30" height="66" viewBox="0 0 30 66" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ overflow: "visible" }}>
+              <path d="M0 0 L15 33 L0 66 L30 66 L30 0 Z" fill="#0A2E72" />
+              <path d="M0 0 L15 33 L0 66" stroke="white" strokeWidth="3" strokeLinejoin="round" />
+            </svg>
+          )}
           <div className="nb-dark-fill"></div>
         </div>
 

@@ -60,7 +60,7 @@ export default function DoctorsSection() {
             <div className="ds-outer-card">
               <div className="ds-photo-border">
                 <div className="ds-photo-area">
-                  <img src={d.img} alt={d.name} className="ds-photo" />
+                  <img src={d.img} alt={t(`${d.key}.name`, d.name)} className="ds-photo" />
                   <button className="ds-btn" onClick={() => handleMoreInfos(i)}>
                     <span className="ds-btn-label">{t("doctors.more_info", "Plus d'infos")}</span>
                     <span className="ds-btn-circle">
@@ -72,7 +72,7 @@ export default function DoctorsSection() {
                 </div>
               </div>
               <div className="ds-info">
-                <span className="ds-name">{d.name}</span>
+                <span className="ds-name">{t(`${d.key}.name`, d.name)}</span>
                 <span className="ds-specialty">{t(`${d.key}.specialty`, d.defaultSpecialty)}</span>
               </div>
             </div>
@@ -100,7 +100,7 @@ export default function DoctorsSection() {
 
             <div className="ds-photo-border">
               <div className="ds-photo-area">
-                <img src={doc.img} alt={doc.name} className="ds-photo" />
+                <img src={doc.img} alt={t(`${doc.key}.name`, doc.name)} className="ds-photo" />
                 <button className="ds-btn" onClick={() => handleMoreInfos(current)}>
                   <span className="ds-btn-label">{t("doctors.more_info", "Plus d'infos")}</span>
                   <span className="ds-btn-circle">
@@ -113,7 +113,7 @@ export default function DoctorsSection() {
             </div>
 
             <div className="ds-info">
-              <span className="ds-name">{doc.name}</span>
+              <span className="ds-name">{t(`${doc.key}.name`, doc.name)}</span>
               <span className="ds-specialty">{t(`${doc.key}.specialty`, doc.defaultSpecialty)}</span>
             </div>
 

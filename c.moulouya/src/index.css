@@ -122,3 +122,11 @@ code {
   outline: none !important;
   box-shadow: none !important;
 }
+
+/* ── Alignement global en mode RTL (Arabe) ── */
+html[dir="rtl"] input,
+html[dir="rtl"] textarea,
+html[dir="rtl"] input::placeholder,
+html[dir="rtl"] textarea::placeholder {
+  text-align: right;
+}

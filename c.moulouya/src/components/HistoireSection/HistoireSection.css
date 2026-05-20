@@ -103,7 +103,7 @@
 .fillet-tl-top {
     width: 34px;
     /* Fix sub-pixel gap by overlapping left */
-    top: 12px;
+    top: 10px;
     right: -32px;
     background: radial-gradient(circle at bottom right, transparent 32px, #ffffff 32.5px);
 }
@@ -112,14 +112,14 @@
     height: 34px;
     /* Fix sub-pixel gap by overlapping top */
     bottom: -32px;
-    left: 12px;
+    left: 10px;
     background: radial-gradient(circle at bottom right, transparent 32px, #ffffff 32.5px);
 }
 
 .fillet-br-bottom {
     width: 34px;
     /* Fix sub-pixel gap by overlapping right */
-    bottom: 12px;
+    bottom: 10px;
     left: -32px;
     background: radial-gradient(circle at top left, transparent 32px, #ffffff 32.5px);
 }
@@ -128,7 +128,7 @@
     height: 34px;
     /* Fix sub-pixel gap by overlapping bottom */
     top: -32px;
-    right: 12px;
+    right: 10px;
     background: radial-gradient(circle at top left, transparent 32px, #ffffff 32.5px);
 }
 

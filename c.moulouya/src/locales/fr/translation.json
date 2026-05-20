@@ -8,17 +8,221 @@
     "appointment": "RENDEZ-VOUS"
   },
   "header": {
-    "address": "7, Rue De La Paix, Berkane, Morocco, Oriental 63300"
+    "address": "7, Rue De La Paix, Berkane, Morocco, Oriental 63300",
+    "emergency": "Urgences 24H/24 : +212 6 61 26 77 60"
   },
   "footer": {
     "logo_main": "CLINIQUE",
     "logo_sub": "MOULOUYA",
     "description": "Votre santé est notre priorité. Une équipe dévouée, des équipements de pointe, et des soins personnalisés à chaque étape de votre parcours médical.",
     "links_title": "Liens Rapides",
-    "contact_title": "Contact",
+    "contact_title": "Contactez-Nous",
     "schedule_title": "Heures de travail",
     "schedule_days": "Lundi - Dimanche",
     "schedule_hours": "24H/24",
-    "copyright": "Tous droits réservés ©2025 Clinique Moulouya"
+    "copyright": "Tous droits réservés ©2025 Clinique Moulouya",
+    "form_name": "Nom et Prénom",
+    "form_email": "E-mail",
+    "form_phone": "Numéro du téléphone",
+    "form_message": "Votre message",
+    "form_submit": "ENVOYER",
+    "contact_desc": "Contactez-nous pour toute information ou prise de rendez-vous, notre équipe est à votre écoute.",
+    "contact_info_label": "CONTACT INFO :",
+    "emergency": "Urgence 24H/24H",
+    "rights": "© 2026 Tous les droits sont réservés pour"
+  },
+  "contact": {
+    "form": {
+      "lastNameLabel": "Nom",
+      "lastNamePlaceholder": "Nom",
+      "firstNameLabel": "Prénom",
+      "firstNamePlaceholder": "Prénom",
+      "emailLabel": "Email",
+      "emailPlaceholder": "contact@cliniquemoulouya.ma",
+      "phoneLabel": "Numéro de téléphone",
+      "phonePlaceholder": "+212.000-0000",
+      "messageLabel": "Message",
+      "messagePlaceholder": "",
+      "submitBtn": "ENVOYÉ"
+    },
+    "info": {
+      "hoursTitle": "Horaires de la clinique",
+      "hoursValue": "Disponibles 24h/24. Nous vous assurons une prise en charge continue et des soins de qualité",
+      "emailTitle": "Adresse email",
+      "phoneTitle": "Numéro de téléphone",
+      "emergencyTitle": "Urgence 24H/24H",
+      "addressTitle": "Adresse de la clinique",
+      "addressLine1": "7, Rue De La Paix, Berkane, Morocco,",
+      "addressLine2": "Oriental 63300"
+    }
+  },
+  "hero": {
+    "emergency": "Urgence 24H/24H",
+    "address_line1": "7, Rue De La Paix,",
+    "address_line2": "Berkane, Morocco 63300",
+    "quote": "\u201cDisponibles 24h/24, nous garantissons une excellence médicale continue et des soins performants\u201d"
+  },
+  "history": {
+    "tag": "NOTRE HISTOIRE",
+    "title": "Des solutions de santé pensées pour votre bien-être",
+    "desc": "Depuis plus de 20 ans, la Clinique Moulouya est un pilier des soins de santé dans la région de l'Oriental. Fondée sur des valeurs d'excellence, d'engagement et d'humanité, notre clinique de référence offre une prise en charge médicale personnalisée, où chaque patient est accueilli avec bienveillance et professionnalisme.",
+    "contact_btn": "CONTACTEZ-NOUS",
+    "need_help": "Besoin d'aide ?"
+  },
+  "stats": {
+    "tag": "HISTOIRE DE RÉUSSITE",
+    "title": "Notre parcours d'excellence",
+    "desc": "Notre parcours d'excellence repose sur l'expertise médicale et la qualité des soins au service des patients.",
+    "doctors": "Médecins professionnels",
+    "operations": "Opérations réussies",
+    "experience": "Des années d'expérience",
+    "patients": "Patients satisfaits"
+  },
+  "video": {
+    "title": "Votre santé mérite une expérience unique accompagnée par nos experts !",
+    "subtitle": "L'excellence médicale définit notre engagement. La Clinique Moulouya mobilise son plateau technique innovant et des experts qualifiés pour assurer une prise en charge sécurisée, humaine et performante, au service de votre rétablissement."
+  },
+  "interventions": {
+    "tag": "NOS INTERVENTIONS",
+    "title": "Une prise en charge adaptée à votre état de santé",
+    "item_1": "Chirurgie urologique : traitement des calculs urinaires, prostatectomie, interventions sur la vessie.",
+    "item_2": "Chirurgie viscérale : appendicectomie, réparation des hernies, traitement des pathologies de la vésicule biliaire.",
+    "item_3": "Chirurgie orthopédique et traumatologique : prise en charge des fractures, pathologies des articulations, et bien plus."
+  },
+  "doctors": {
+    "more_info": "Plus d'infos",
+    "doc1": {
+      "name": "Dr. Kamal ADNANI",
+      "specialty": "Orthopédiste Traumatologue",
+      "desc": "Notre orthopédiste traumatologue traite les blessures, fractures et troubles de l'appareil locomoteur avec expertise, précision et soins adaptés pour assurer une bonne récupération.",
+      "spec1": { "title": "Orthopédie – Traumatologie", "detail": "Prise en charge des fractures, traumatismes et maladies des os et des articulations." },
+      "spec2": { "title": "Chirurgie orthopédique", "detail": "Traitement chirurgical des os, articulations et ligaments avec techniques modernes." }
+    },
+    "doc2": {
+      "name": "Dr. Aziz LAARBI",
+      "specialty": "Urologue",
+      "desc": "Notre urologue prend en charge l'ensemble des pathologies urinaires et génitales avec expertise, précision et un accompagnement humain à chaque étape.",
+      "spec1": { "title": "Chirurgie urologique", "detail": "lithiase urinaire, chirurgie de la prostate, chirurgie de la vessie" },
+      "spec2": { "title": "Endoscopie", "detail": "cystoscopie, urétéroscopie, résection transurétrale…" }
+    },
+    "doc3": {
+      "name": "Dr. Az-Eddin EL BOUHALI",
+      "specialty": "Anesthésiste - Réanimateur",
+      "desc": "Notre anesthésiste-réanimateur assure la sécurité et le confort du patient avant, pendant et après chaque intervention chirurgicale.",
+      "spec1": { "title": "Anesthésie générale", "detail": "anesthésie locorégionale, sédation, soins intensifs" },
+      "spec2": { "title": "Réanimation", "detail": "prise en charge post-opératoire, urgences vitales…" }
+    }
+  },
+  "specialties": {
+    "title": "Nos Spécialités",
+    "desc": "Une prise en charge complète réalisée par des experts médicaux dans plusieurs disciplines.",
+    "mobile_title": "Nos Spécialités Médicales",
+    "mobile_desc": "Des soins adaptés, assurés par des professionnels qualifiés dans plusieurs disciplines.",
+    "items": {
+      "visceral": { "title": "Chirurgie viscérale", "desc": "Traitement des pathologies digestives avec expertise chirurgicale." },
+      "urology": { "title": "Urologie", "desc": "Soins spécialisés pour les maladies urinaires et génitales." },
+      "oncology": { "title": "Chirurgie oncologique", "desc": "Interventions chirurgicales pour le traitement des cancers." },
+      "orthopedics": { "title": "Orthopédie", "desc": "Prise en charge des fractures et pathologies des articulations." },
+      "anesthesiology": { "title": "Anesthésiologie", "desc": "Accompagnement et sécurité du patient avant et pendant l'opération." },
+      "cardiology": { "title": "Cardiologie", "desc": "Suivi des maladies cardiovasculaires et examens spécialisés." }
+    }
+  },
+  "specialties_detail": {
+    "contact_btn": "Contactez-nous",
+    "orthopedics": {
+      "label": "Chirurgie orthopédique\net traumatologique",
+      "title": "Chirurgie orthopédique et traumatologique",
+      "bold": "Une expertise reconnue en orthopédie.",
+      "desc": "Notre équipe prend en charge l'ensemble des pathologies osseuses et articulaires, des fractures aux troubles musculo-squelettiques, avec des techniques chirurgicales modernes et un suivi personnalisé."
+    },
+    "urology": {
+      "label": "Chirurgie urologique",
+      "title": "Chirurgie urologique",
+      "bold": "Une expertise reconnue pour toutes vos chirurgies urologiques.",
+      "desc": "Prostate, calculs, cancers : nous allions technique de pointe et accompagnement humain."
+    },
+    "visceral": {
+      "label": "Chirurgie viscérale",
+      "title": "Chirurgie viscérale",
+      "bold": "Une prise en charge digestive complète.",
+      "desc": "Notre équipe de chirurgie viscérale traite les pathologies de l'abdomen avec précision et sécurité, de la vésicule biliaire aux hernies en passant par les interventions d'urgence."
+    }
+  },
+  "faq": {
+    "group_clinique": {
+      "title": "À Propos De La Clinique",
+      "q1": "Quels services médicaux propose la clinique ?",
+      "a1": "La clinique propose une prise en charge complète avec des services d'urgences et plusieurs spécialités médicales et chirurgicales, dont la chirurgie viscérale, l'urologie, l'oncologie, l'orthopédie-traumatologie, la gynécologie-obstétrique, l'anesthésie-réanimation, l'ORL, la gastro-entérologie, l'endoscopie digestive et la médecine interne.",
+      "q2": "Qui sont les médecins de la clinique ?",
+      "a2": "La clinique dispose d'une équipe de médecins spécialistes, dont le Dr Aziz LAARBI en chirurgie urologique et le Dr Kamal ADNANI en chirurgie orthopédique et traumatologique, assurant une prise en charge experte et spécialisée des patients.",
+      "q3": "Depuis quand la clinique est-elle en activité ?",
+      "a3": "La clinique est en activité depuis plus de 20 ans, avec une expérience confirmée dans la prise en charge médicale et chirurgicale des patients, garantissant des soins de qualité et une expertise reconnue dans la région.",
+      "q4": "Quelles spécialités sont disponibles ?",
+      "a4": "La clinique propose plusieurs spécialités médicales et chirurgicales, notamment les urgences, la chirurgie viscérale, l'urologie, la chirurgie oncologique, l'orthopédie-traumatologie, la gynécologie-obstétrique, l'anesthésie-réanimation, l'ORL, la gastro-entérologie, l'endoscopie digestive et la médecine interne.",
+      "q5": "La clinique est-elle équipée de matériel moderne ?",
+      "a5": "Oui, la clinique dispose d'un plateau technique moderne et d'équipements médicaux de pointe, permettant des diagnostics précis et une prise en charge sûre et efficace des patients.",
+      "q6": "La clinique accueille-t-elle tous les âges ?",
+      "a6": "Oui, la clinique accueille des patients de tous âges et assure une prise en charge adaptée à chaque étape de la vie, de l'enfant à l'adulte, avec des soins personnalisés et sécurisés.",
+      "q7": "La clinique respecte-t-elle les normes d'hygiène ?",
+      "a7": "Oui, la clinique applique des protocoles stricts d'hygiène et de sécurité, conformes aux normes médicales en vigueur, afin de garantir des soins sûrs et un environnement sain pour tous les patients."
+    },
+    "group_consultation": {
+      "title": "Préparer Votre Consultation",
+      "q1": "Que faut-il apporter lors de la consultation ?",
+      "a1": "Lors de votre consultation, il est recommandé d'apporter vos documents médicaux (ordonnances, analyses, comptes rendus), votre carte d'identité et tout résultat d'examen récent pour faciliter une prise en charge complète et efficace.",
+      "q2": "Puis-je apporter mes anciens rapports médicaux ?",
+      "a2": "Oui, il est fortement recommandé d'apporter vos anciens rapports médicaux, analyses et examens afin d'aider le médecin à mieux comprendre votre historique et assurer une prise en charge plus précise et adaptée.",
+      "q3": "Comment prendre rendez-vous ?",
+      "a3": "Vous pouvez prendre rendez-vous par téléphone ou directement à l'accueil de la clinique. Notre équipe vous accompagne pour vous proposer un créneau adapté dans les meilleurs délais.",
+      "q4": "Puis-je venir accompagné(e) ?",
+      "a4": "Oui, vous pouvez venir accompagné(e) lors de votre consultation. Cela est même encouragé si nécessaire pour votre confort et votre accompagnement médical.",
+      "q5": "Que faire en cas de retard ?",
+      "a5": "En cas de retard, il est recommandé de prévenir la clinique dès que possible afin de réorganiser votre rendez-vous. Notre équipe fera de son mieux pour vous proposer un nouveau créneau adapté.",
+      "q6": "Puis-je annuler ou reporter mon rendez-vous ?",
+      "a6": "Oui, vous pouvez annuler ou reporter votre rendez-vous en contactant la clinique par téléphone ou en vous présentant à l'accueil. Nous vous invitons à prévenir à l'avance afin de mieux organiser les consultations.",
+      "q7": "Dois-je préparer des informations avant la consultation ?",
+      "a7": "Oui, il est conseillé de préparer vos antécédents médicaux, traitements en cours et anciens examens afin de faciliter le diagnostic et assurer une prise en charge plus précise et adaptée."
+    },
+    "group_services": {
+      "title": "Services & Soins",
+      "q1": "Proposez-vous des soins à domicile ?",
+      "a1": "Actuellement, la clinique ne propose pas de soins à domicile, mais assure une prise en charge complète et adaptée au sein de ses services.",
+      "q2": "La clinique réalise-t-elle des interventions chirurgicales ?",
+      "a2": "Oui, la clinique réalise différentes interventions chirurgicales grâce à une équipe de chirurgiens spécialisés et des équipements modernes, assurant une prise en charge sûre et efficace des patients.",
+      "q3": "Quels types de traitements proposez-vous ?",
+      "a3": "La clinique propose des traitements médicaux et chirurgicaux adaptés à chaque patient, incluant la prise en charge des pathologies aiguës et chroniques, avec un suivi personnalisé assuré par des spécialistes.",
+      "q4": "Quels protocoles de traitement sont proposés aux patients ?",
+      "a4": "La clinique propose des protocoles de traitement adaptés à chaque patient, basés sur un diagnostic précis et une prise en charge personnalisée, allant des traitements médicaux aux interventions chirurgicales selon les besoins.",
+      "q5": "Comment se fait le diagnostic des patients ?",
+      "a5": "Le diagnostic des patients est réalisé à travers une consultation médicale, un examen clinique et, si nécessaire, des examens complémentaires (analyses, imagerie médicale) afin d'assurer une évaluation précise et une prise en charge adaptée."
+    }
+  },
+  "home": {
+    "section1": {
+      "title": "LA CLINIQUE MOULOUYA À VOTRE SERVICE",
+      "subtitle": "Au cœur de la région de l'Oriental, nous mettons notre expertise et nos spécialistes à votre entière disposition."
+    },
+    "section2": {
+      "title": "Nos experts médicaux",
+      "subtitle": "Nos experts médicaux vous accompagnent avec compétence et attention pour garantir des soins de qualité et une prise en charge adaptée à vos besoins."
+    },
+    "section3": {
+      "title": "Nos Spécialités",
+      "subtitle": "Des pôles d'excellence réunissant toutes nos spécialités pour vous garantir le meilleur soin."
+    }
+  },
+  "apropos": {
+    "section1": {
+      "title": "Notre Histoire",
+      "subtitle": "Plus de 20 ans d'expérience au service de votre santé et de votre confiance."
+    }
+  },
+  "contact_page": {
+    "title": "Parlez-Nous De Vous",
+    "subtitle": "Disponibles 24h/24, nous garantissons une prise en charge permanente et des services médicaux de qualité, assurés avec réactivité et professionnalisme."
+  },
+  "faq_page": {
+    "title": "Vos Questions, Nos Réponses",
+    "subtitle": "Notre FAQ répond rapidement à vos questions pour vous guider dans votre parcours de soins."
   }
 }

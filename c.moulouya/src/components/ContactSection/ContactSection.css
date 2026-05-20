@@ -254,6 +254,10 @@
     overflow: hidden;
     position: relative;
     flex: 1;
+    /* Force rounded corners clipping in WebKit/Blink */
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+    will-change: transform;
 }
 
 .cs-map-frame {
@@ -261,8 +265,9 @@
     height: 100%;
     border: none;
     display: block;
-    border-radius: inherit;
+    border-radius: 7px; /* slightly smaller to fit perfectly inside the 1px border */
     object-fit: cover;
+    will-change: transform;
 }
 
 .cs-map-address {
@@ -376,4 +381,28 @@
         padding: 12px 24px;
         font-size: 13px;
     }
+}
+
+/* ── Alignement global en mode RTL (Arabe) pour le formulaire principal ── */
+html[dir="rtl"] .cs-input,
+html[dir="rtl"] .cs-textarea {
+    text-align: right !important;
+}
+
+html[dir="rtl"] .cs-input::placeholder,
+html[dir="rtl"] .cs-textarea::placeholder {
+    text-align: right !important;
+}
+
+html[dir="rtl"] .cs-input[type="tel"] {
+    text-align: right !important;
+    direction: ltr !important;
+}
+
+html[dir="rtl"] .cs-input[type="tel"]::placeholder,
+html[dir="rtl"] .cs-input[type="tel"]::-webkit-input-placeholder,
+html[dir="rtl"] .cs-input[type="tel"]::-moz-placeholder,
+html[dir="rtl"] .cs-input[type="tel"]:-ms-input-placeholder {
+    text-align: right !important;
+    direction: rtl !important;
 }

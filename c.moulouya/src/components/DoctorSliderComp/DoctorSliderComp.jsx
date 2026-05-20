@@ -17,13 +17,13 @@ const doctors = [
         specialties: [
             {
                 key: "doctors.doc1.spec1",
-                defaultTitle: "Chirurgie urologique",
-                defaultDetail: "lithiase urinaire , chirurgie de la prostate , chirurgie de la vessie",
+                defaultTitle: "Orthopédie – Traumatologie",
+                defaultDetail: "Prise en charge des fractures, traumatismes et maladies des os et des articulations.",
             },
             {
                 key: "doctors.doc1.spec2",
-                defaultTitle: "Chirurgie viscérale",
-                defaultDetail: "vésicule biliaire , hernie, appendicectomie…",
+                defaultTitle: "Chirurgie orthopédique",
+                defaultDetail: "Traitement chirurgical des os, articulations et ligaments avec techniques modernes.",
             },
         ],
     },
@@ -68,7 +68,9 @@ const doctors = [
 ];
 
 export default function DoctorSlider() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const isRtl = i18n.dir() === 'rtl';
+    const dirMultiplier = isRtl ? 1 : -1;
     const location = useLocation();
     const [current, setCurrent] = useState(0);
 
@@ -140,10 +142,10 @@ export default function DoctorSlider() {
                     <div className="dsl-arch-wrap">
                         <div className="dsl-arch-bg" />
                         <div className="dsl-photo-viewport">
-                            <div className="dsl-photo-track" style={{ transform: `translateX(-${current * 100}%)` }}>
+                            <div className="dsl-photo-track" style={{ transform: `translateX(${dirMultiplier * current * 100}%)` }}>
                                 {doctors.map((d, i) => (
                                     <div className="dsl-photo-slide" key={i}>
-                                        <img src={d.img} alt={d.name} className="dsl-photo" draggable="false" />
+                                        <img src={d.img} alt={t(`${d.key}.name`, d.name)} className="dsl-photo" draggable="false" />
                                     </div>
                                 ))}
                             </div>
@@ -151,24 +153,45 @@ export default function DoctorSlider() {
                     </div>
 
                     {/* Flèches mobiles — gauche et droite de l'image */}
-                    <button className="dsl-mobile-btn dsl-mobile-prev" onClick={prev} aria-label="Précédent">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <line x1="19" y1="12" x2="5" y2="12"></line>
-                            <polyline points="12 19 5 12 12 5"></polyline>
-                        </svg>
-                    </button>
-                    <button className="dsl-mobile-btn dsl-mobile-next" onClick={next} aria-label="Suivant">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </button>
+                    {isRtl ? (
+                        <>
+                            {/* Bouton de gauche : pointe à gauche (<-) et va vers le SUIVANT */}
+                            <button className="dsl-mobile-btn dsl-mobile-prev" onClick={next} aria-label="Suivant">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                            </button>
+                            {/* Bouton de droite : pointe à droite (->) et va vers le PRÉCÉDENT */}
+                            <button className="dsl-mobile-btn dsl-mobile-next" onClick={prev} aria-label="Précédent">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <button className="dsl-mobile-btn dsl-mobile-prev" onClick={prev} aria-label="Précédent">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                            </button>
+                            <button className="dsl-mobile-btn dsl-mobile-next" onClick={next} aria-label="Suivant">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                        </>
+                    )}
 
                 </div>
 
                 {/* ── Colonne droite : contenu ── */}
                 <div className="dsl-content">
-                    <h2 className="dsl-name">{doc.name}</h2>
+                    <h2 className="dsl-name">{t(`${doc.key}.name`, doc.name)}</h2>
                     <p className="dsl-specialty">{t(`${doc.key}.specialty`, doc.defaultSpecialty)}</p>
                     <p className="dsl-desc">{t(`${doc.key}.desc`, doc.defaultDesc)}</p>
                     <hr className="dsl-divider" />
@@ -189,18 +212,39 @@ export default function DoctorSlider() {
             {/* ── Contrôles (Flèches à gauche, Dots à droite) ── */}
             <div className="dsl-footer-nav">
                 <div className="dsl-nav">
-                    <button className="dsl-nav-btn" onClick={prev} aria-label="Précédent">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <line x1="19" y1="12" x2="5" y2="12"></line>
-                            <polyline points="12 19 5 12 12 5"></polyline>
-                        </svg>
-                    </button>
-                    <button className="dsl-nav-btn" onClick={next} aria-label="Suivant">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </button>
+                    {isRtl ? (
+                        <>
+                            {/* Bouton de DROITE : pointe à DROITE (->) et va vers le PRÉCÉDENT */}
+                            <button className="dsl-nav-btn" onClick={prev} aria-label="Précédent">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                            {/* Bouton de GAUCHE : pointe à GAUCHE (<-) et va vers le SUIVANT */}
+                            <button className="dsl-nav-btn" onClick={next} aria-label="Suivant">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <button className="dsl-nav-btn" onClick={prev} aria-label="Précédent">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                            </button>
+                            <button className="dsl-nav-btn" onClick={next} aria-label="Suivant">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </button>
+                        </>
+                    )}
                 </div>
 
                 <div className="dsl-dots-nav">

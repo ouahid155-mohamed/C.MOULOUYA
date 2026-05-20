@@ -13,7 +13,9 @@ const allSpecialites = [
 
 
 export default function SpecialitiesSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRtl = i18n.dir() === 'rtl';
+  const dirMultiplier = isRtl ? 1 : -1;
   // Desktop logic
   const [currentIndex, setCurrentIndex] = useState(0);
   const totalCards = allSpecialites.length;
@@ -68,18 +70,31 @@ export default function SpecialitiesSection() {
               </p>
             </div>
             <div className="sp-banner-nav">
-              <button className="sp-nav-btn" onClick={prevDesktop}>
-                <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </button>
-              <button className="sp-nav-btn" onClick={nextDesktop}>
-                <svg viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </button>
+              {isRtl ? (
+                <>
+                  <button className="sp-nav-btn" onClick={prevDesktop} aria-label="Précédent">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </button>
+                  <button className="sp-nav-btn" onClick={nextDesktop} aria-label="Suivant">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button className="sp-nav-btn" onClick={prevDesktop} aria-label="Précédent">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </button>
+                  <button className="sp-nav-btn" onClick={nextDesktop} aria-label="Suivant">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </button>
+                </>
+              )}
             </div>
           </div>
           <div className="sp-cards-container">
             <div 
               className="sp-cards-track" 
-              style={{ transform: `translateX(-${currentIndex * 33.333}%)` }}
+              style={{ transform: `translateX(${dirMultiplier * currentIndex * 33.333}%)` }}
             >
               {allSpecialites.map((item, i) => (
                 <div className="sp-card-wrapper" key={i}>
@@ -110,18 +125,31 @@ export default function SpecialitiesSection() {
             onTouchEnd={onTouchEndHandler}
           >
             {/* Boutons de navigation flottants */}
-            <button className="sp-mobile-nav-btn sp-prev" onClick={prevMobile}>
-              <svg viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </button>
-            <button className="sp-mobile-nav-btn sp-next" onClick={nextMobile}>
-              <svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </button>
+            {isRtl ? (
+              <>
+                <button className="sp-mobile-nav-btn sp-prev" onClick={nextMobile} aria-label="Suivant">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </button>
+                <button className="sp-mobile-nav-btn sp-next" onClick={prevMobile} aria-label="Précédent">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </button>
+              </>
+            ) : (
+              <>
+                <button className="sp-mobile-nav-btn sp-prev" onClick={prevMobile} aria-label="Précédent">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </button>
+                <button className="sp-mobile-nav-btn sp-next" onClick={nextMobile} aria-label="Suivant">
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </button>
+              </>
+            )}
 
             {/* Track des cartes */}
             <div className="sp-mobile-track-wrapper">
               <div 
                 className="sp-mobile-track" 
-                style={{ transform: `translateX(calc(-${mobileIndex * 82}% + 9%))` }}
+                style={{ transform: `translateX(calc(${dirMultiplier * mobileIndex * 82}% ${isRtl ? '-' : '+'} 9%))` }}
               >
                 {allSpecialites.map((item, i) => (
                   <div className={`sp-mobile-card-slot ${i === mobileIndex ? "active" : ""}`} key={i}>

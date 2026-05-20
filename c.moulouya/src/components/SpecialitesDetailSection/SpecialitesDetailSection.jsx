@@ -32,7 +32,9 @@ const specialites = [
 ];
 
 export default function SpecialitesDetailSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRtl = i18n.dir() === 'rtl';
+  const dirMultiplier = isRtl ? 1 : -1;
   const [active, setActive] = useState(1);
   const [playing, setPlaying] = useState(false);
   const total = specialites.length;
@@ -85,7 +87,7 @@ export default function SpecialitesDetailSection() {
           {/* Arrow left */}
           <button className="sds-arrow-btn" onClick={prev} aria-label="Précédent">
             <svg viewBox="0 0 24 24" fill="none">
-              <path d="M15 18l-6-6 6-6" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d={isRtl ? "M9 18l6-6-6-6" : "M15 18l-6-6 6-6"} stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
 
@@ -143,7 +145,7 @@ export default function SpecialitesDetailSection() {
           {/* Arrow right */}
           <button className="sds-arrow-btn" onClick={next} aria-label="Suivant">
             <svg viewBox="0 0 24 24" fill="none">
-              <path d="M9 18l6-6-6-6" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d={isRtl ? "M15 18l-6-6 6-6" : "M9 18l6-6-6-6"} stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         </div>
@@ -189,7 +191,7 @@ export default function SpecialitesDetailSection() {
             <div className="sds-card-viewport">
               <div 
                 className="sds-card-track"
-                style={{ transform: `translateX(-${active * 100}%)` }}
+                style={{ transform: `translateX(${dirMultiplier * active * 100}%)` }}
               >
                 {specialites.map((item) => (
                   <div className="sds-card-slot" key={item.id}>
@@ -207,19 +209,19 @@ export default function SpecialitesDetailSection() {
                           {/* Flèche gauche — outline */}
                           <button className="sds-card-nav-btn" onClick={prevCard} aria-label="Précédent">
                             <svg viewBox="0 0 24 24" fill="none">
-                              <path d="M15 18l-6-6 6-6" stroke="#374151" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                              <path d={isRtl ? "M9 18l6-6-6-6" : "M15 18l-6-6 6-6"} stroke="#374151" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                           </button>
                           {/* Flèche droite — fond bleu */}
                           <button className="sds-card-nav-btn sds-card-nav-btn--blue" onClick={nextCard} aria-label="Suivant">
                             <svg viewBox="0 0 24 24" fill="none">
-                              <path d="M9 18l6-6-6-6" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                              <path d={isRtl ? "M15 18l-6-6 6-6" : "M9 18l6-6-6-6"} stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                           </button>
                         </div>
 
                         <button className="sds-contact-btn">
-                          {t("specialties_detail.contact_btn", "Contact us")} &nbsp;→
+                          {t("specialties_detail.contact_btn", "Contact us")} &nbsp;{isRtl ? "←" : "→"}
                         </button>
                       </div>
                     </div>

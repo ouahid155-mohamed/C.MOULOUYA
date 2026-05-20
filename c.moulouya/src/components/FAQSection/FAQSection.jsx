@@ -143,7 +143,8 @@ const faqGroups = [
 
 // ── Composant accordéon pour un groupe ─────────────────────────
 function FAQGroup({ group }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRtl = i18n.dir() === 'rtl';
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
@@ -154,14 +155,14 @@ function FAQGroup({ group }) {
       <div className="faq-group-title">
         {/* Flèche gauche → (pointe vers la droite, vers le titre) */}
         <svg className="faq-arrow-svg" width="30" height="30" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 14H24M24 14L15 5M24 14L15 23" stroke="#FF4949" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d={isRtl ? "M24 14H4M4 14L13 5M4 14L13 23" : "M4 14H24M24 14L15 5M24 14L15 23"} stroke="#FF4949" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
 
         <h2 className="faq-group-heading">{t(group.titleKey, group.defaultTitle)}</h2>
 
         {/* Flèche droite ← (pointe vers la gauche, vers le titre) */}
         <svg className="faq-arrow-svg" width="30" height="30" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M24 14H4M4 14L13 5M4 14L13 23" stroke="#FF4949" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d={isRtl ? "M4 14H24M24 14L15 5M24 14L15 23" : "M24 14H4M4 14L13 5M4 14L13 23"} stroke="#FF4949" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </div>
 

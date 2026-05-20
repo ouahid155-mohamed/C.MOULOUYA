@@ -56,7 +56,9 @@
     font-weight: 400;
     color: #6B7280;
     line-height: 1.75;
-    margin: 0;
+    margin: 0 auto;
+    max-width: 1000px;
+    text-wrap: balance;
 }
 
 /* ══════════════════════════════════════════════════════════════

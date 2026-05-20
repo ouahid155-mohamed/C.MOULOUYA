@@ -80,26 +80,34 @@
 .hero-badge {
     position: absolute;
     top: 28px;
-    left: 52px;
+    inset-inline-start: 52px;
     width: 130px;
     z-index: 4;
     filter: drop-shadow(0 4px 14px rgba(19, 118, 248, 0.18));
 }
 
+
 /* ══════════════════════════════════════════════════════════════
-   3 DOCTEURS
+   COLLAGE 3 DOCTEURS
 ══════════════════════════════════════════════════════════════ */
-.hero-doctors {
+/* Conteneur global */
+.hero-collage {
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    height: 460px;
     width: auto;
-    object-fit: contain;
+    height: 450px;
     z-index: 3;
-    mix-blend-mode: normal;
+    display: flex;
+    justify-content: center;
 }
+
+.hero-doctors-img {
+    height: 100%;
+    object-fit: contain;
+}
+
 
 /* ══════════════════════════════════════════════════════════════
    CARDS
@@ -107,7 +115,7 @@
 .hero-cards {
     position: absolute;
     top: 32px;
-    right: 52px;
+    inset-inline-end: 52px;
     display: flex;
     flex-direction: column;
     gap: 14px;
@@ -204,19 +212,19 @@
         height: 440px;
     }
 
-    .hero-doctors {
+    .hero-collage {
+        width: auto;
         height: 410px;
-        bottom: 0;
     }
 
     .hero-badge {
         width: 110px;
-        left: 28px;
+        inset-inline-start: 28px;
         top: 24px;
     }
 
     .hero-cards {
-        right: 24px;
+        inset-inline-end: 24px;
         top: 24px;
     }
 
@@ -288,24 +296,22 @@
     .hero-badge {
         position: absolute;
         top: 18px;
-        left: 18px;
+        inset-inline-start: 18px;
         width: 100px;
         margin: 0;
     }
 
-    .hero-doctors {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        height: 300px;
-        width: auto;
+    /* ── Collage mobile : redimensionné pour tenir dans le wrapper ── */
+    .hero-collage {
+        width: 100%;
+        height: 280px;
+        bottom: 60px;
     }
 
     .hero-cards {
         position: absolute;
         top: 18px;
-        right: 14px;
+        inset-inline-end: 14px;
         flex-direction: column;
         gap: 10px;
         width: auto;
@@ -364,18 +370,19 @@
         height: 420px;
     }
 
-    .hero-doctors {
-        height: 270px;
+    .hero-collage {
+        height: 240px;
+        bottom: 54px;
     }
 
     .hero-badge {
         width: 90px;
         top: 14px;
-        left: 12px;
+        inset-inline-start: 12px;
     }
 
     .hero-cards {
-        right: 8px;
+        inset-inline-end: 8px;
         top: 14px;
     }
 

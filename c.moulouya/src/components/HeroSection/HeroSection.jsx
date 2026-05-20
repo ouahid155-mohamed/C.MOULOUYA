@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
-import troisDocteurs from "../../assets/3 docteurs.png";
-import quoteIcon from "../../assets/Ellipse 1833.png";
+import doctors from "../../assets/3 docteurs.png";
 import badge from "../../assets/20ans d'existence.png";
 import calling from "../../assets/Calling hero section.png";
 import localisation from "../../assets/localisation hero section.png";
@@ -19,10 +18,8 @@ export default function HeroSection() {
       {/* ── Badge 20 ans ── */}
       <img src={badge} alt="20 ans d'existence" className="hero-badge" />
 
-      {/* ── Image 3 Docteurs ── */}
-      <div className="hero-collage">
-        <img src={troisDocteurs} alt="Équipe de chirurgiens" className="hero-doctors-img" />
-      </div>
+      {/* ── 3 Docteurs ── */}
+      <img src={doctors} alt="Équipe médicale Clinique Moulouya" className="hero-doctors" />
 
       {/* ── Cards droite ── */}
       <div className="hero-cards">
@@ -51,8 +48,7 @@ export default function HeroSection() {
 
       {/* ── Citation bas ── */}
       <div className="hero-quote">
-        {t("hero.quote", "“Disponibles 24h/24, Nous vous assurons une prise en charge continue et des soins de qualité“")}
-        <img src={quoteIcon} alt="Icon" className="hero-quote-avatar" />
+        {t("hero.quote", "“Disponibles 24h/24, nous garantissons une excellence médicale continue et des soins performants“")}
       </div>
 
     </section>

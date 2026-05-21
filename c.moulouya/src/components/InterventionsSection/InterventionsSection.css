@@ -422,7 +422,7 @@
     /* Wrapper : padding simple, laisse de l'espace en bas pour le débordement de la vidéo */
     .is-wrapper {
         margin-top: 20px;
-        padding: 0px 18px 131px;
+        padding: 0px 12px 120px;
         overflow: visible;
         touch-action: pan-y;
     }
@@ -432,14 +432,14 @@
         flex-direction: column;
         align-items: center;
         gap: 0;
-        background: transparent !important;
+        background: #ffffff !important;
         border-radius: 40px;
-        padding: 0px 24px 8px;
+        padding: 20px 16px 0 16px;
         box-shadow: none !important;
         overflow: visible;
         position: relative;
         /* Cadre bleu fin et précis comme sur l'image */
-        border: 1.5px solid #1376F8;
+        border: 2px solid #1376F8;
     }
 
     /* Supprimer le pseudo-élément dégradé sur mobile */
@@ -451,39 +451,40 @@
     .is-right {
         order: -1;
         border-radius: 0;
-        padding: 0;
+        padding: 5px 16px 8px 16px;
         min-height: auto;
         z-index: 1;
         background: transparent;
-        margin-top: -15px;
+        margin-top: -30px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .is-tag {
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 800;
         color: #1376F8;
-        margin-bottom: 4px;
+        margin-bottom: 6px;
         letter-spacing: 0.03em;
     }
 
     .is-tag-line {
-        width: 100%;
-        max-width: 250px;
+        width: 100px;
         height: 2px;
         background: #1376F8;
         margin-bottom: 12px;
     }
 
     .is-title {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 700;
         color: #5C5C5C;
-        margin-bottom: 14px;
-        line-height: 1.35;
+        margin-bottom: 12px;
+        line-height: 1.4;
     }
 
     .is-list {
-        gap: 10px;
+        gap: 12px;
         list-style: none;
         padding: 0;
         margin: 0;
@@ -492,9 +493,9 @@
     }
 
     .is-list-item {
-        font-size: 13.5px;
-        line-height: 1.5;
-        padding-left: 18px;
+        font-size: 13px;
+        line-height: 1.45;
+        padding-left: 16px;
         color: #4B5563;
         list-style: none;
         position: relative;
@@ -513,70 +514,119 @@
 
     /* Vidéo : Centrée, débordant vers le bas, avec coins arrondis et ombre élégante */
     .is-left-wrapper {
-        width: 72%;
-        max-width: 320px;
-        height: 420px;
-        margin: 8px auto -150px !important;
+        width: 340px;
+        height: 450px;
+        margin: 0 auto -120px !important;
         align-self: center;
-        border-radius: 24px;
+        border-radius: 40px;
         z-index: 5;
-        overflow: visible;
+        overflow: hidden;
         background: transparent !important;
         padding: 0;
         box-sizing: border-box;
+        position: relative;
+    }
+
+    /* Cadre blanc comme sur desktop */
+    .is-left-wrapper::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 40px;
+        padding: 2px;
+        background: #ffffff;
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: 4;
+        pointer-events: none;
     }
 
     .is-left {
-        border-radius: 24px;
+        border-radius: 40px;
         height: 100%;
         width: 100%;
-        padding: 0;
-        background: transparent !important;
+        padding: 12px;
+        background: #ffffff;
         box-sizing: border-box;
-        overflow: visible;
+        overflow: hidden;
         position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        z-index: 3;
     }
 
     .is-video-track {
-        height: 90%;
+        display: flex;
+        height: 100%;
         width: 100%;
-        /* ← prend toute la largeur du is-left (qui a déjà le padding) */
-        border-radius: 20px;
         overflow: hidden;
-        box-shadow: none !important;
-        background: transparent !important;
+        scroll-snap-type: none;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .is-video-track::-webkit-scrollbar {
+        display: none;
     }
 
     .is-video-slot {
+        flex: 0 0 100%;
         height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        scroll-snap-align: center;
     }
 
     .is-image {
-        width: 85%;
-        height: 92%;
-        border-radius: 20px;
-        margin: auto;
+        width: 107%;
+        height: 107%;
         object-fit: cover;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16) !important;
+        display: block;
+        margin: 0 auto;
+        border-radius: 24px;
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18) !important;
     }
 
     .is-bg-rect {
-        display: none;
+        position: absolute;
+        border-radius: 40px;
+        object-fit: cover;
+        pointer-events: none;
+        border: 1px solid rgba(19, 118, 248, 0.2);
+    }
+
+    .is-rect-1 {
+        width: 100%;
+        height: 100%;
+        top: -20px;
+        left: -20px;
+        z-index: 1;
+        opacity: 0.5;
+    }
+
+    .is-rect-2 {
+        width: 100%;
+        height: 100%;
+        top: -40px;
+        left: -40px;
+        z-index: 0;
+        opacity: 0.2;
     }
 
     /* Dots en haut de la vidéo */
     .is-dots {
-        top: 32px !important;
+        top: 28px !important;
         z-index: 6;
     }
 
     .is-dot {
         width: 8px;
         height: 8px;
-        background: rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.5);
         border: none;
         cursor: pointer;
         padding: 0;
@@ -586,16 +636,16 @@
 
     .is-dot-active {
         background: #ffffff;
-        transform: scale(1.2);
+        transform: scale(1.15);
     }
 
     /* Bouton mute */
     .is-btn-mute {
-        top: 42px !important;
-        right: 32px !important;
+        top: 18px !important;
+        right: 24px !important;
         width: 32px;
         height: 32px;
-        background: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(4px);
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         border: none;
@@ -616,14 +666,14 @@
 
     /* Contrôles en bas de la vidéo */
     .is-controls {
-        bottom: 48px !important;
-        gap: 20px;
+        bottom: 42px !important;
+        gap: 42px;
         z-index: 6;
     }
 
     .is-btn {
-        width: 36px;
-        height: 36px;
+        width: 34px;
+        height: 34px;
         background: #ffffff;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         display: flex;
@@ -637,17 +687,17 @@
     }
 
     .is-btn svg {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
     }
 
     .is-btn-play {
-        width: 50px;
-        height: 50px;
+        width: 48px;
+        height: 48px;
     }
 
     .is-btn-play svg {
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
     }
 }

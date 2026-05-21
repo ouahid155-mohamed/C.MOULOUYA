@@ -70,7 +70,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 40px 60px 30px;
+    padding: 20px 60px 30px;
     box-sizing: border-box;
 }
 
@@ -308,11 +308,11 @@
     }
 
     .vs-video-container {
-        padding: 40px 24px 25px;
+        padding: 15px 24px 15px;
     }
 
     .vs-blue-bg {
-        height: 60%;
+        height: 48%;
     }
 
     .vs-deco {

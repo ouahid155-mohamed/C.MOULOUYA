@@ -30,7 +30,7 @@
 
 .vs-text {
     text-align: center;
-    padding: 10px 24px 32px;
+    padding: 10px 24px 10px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -70,7 +70,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 0 60px 80px;
+    padding: 40px 60px 30px;
     box-sizing: border-box;
 }
 
@@ -88,14 +88,14 @@
 .vs-deco-left {
     /* centre du cercle aligné sur le bord gauche de la vidéo */
     left: calc(48% - 570px);
-    top: 50%;
+    top: 56%;
     transform: translateY(-50%) rotate(-17.86deg);
 }
 
 .vs-deco-right {
     /* centre du cercle aligné sur le bord droit de la vidéo */
     right: calc(48% - 570px);
-    top: 50%;
+    top: 56%;
     transform: translateY(-50%) rotate(-17.86deg);
 }
 
@@ -105,13 +105,13 @@
     z-index: 2;
     width: 100%;
     max-width: 950px;
-    border-radius: 22px;
+    aspect-ratio: 16 / 9;
+    border-radius: 26px;
     overflow: hidden;
     cursor: pointer;
-    box-shadow: none;
     transition: all 0.3s ease;
-    background: transparent;
-    padding: 0;
+    background: #ffffff;
+    padding: 10px;
     box-sizing: border-box;
 }
 
@@ -121,7 +121,7 @@
 
 .vs-video-box.vs-video-playing {
     background: #ffffff;
-    padding: 12px;
+    padding: 10px;
     cursor: default;
 }
 
@@ -131,18 +131,18 @@
 
 .vs-video-thumb {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     object-fit: cover;
-    border-radius: 22px;
+    border-radius: 16px;
 }
 
 .vs-video-active {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
-    object-fit: contain;
-    border-radius: 12px;
+    object-fit: cover;
+    border-radius: 16px;
     background: #000;
 }
 
@@ -179,14 +179,14 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 52%;
+    height: 56%;
     background: linear-gradient(135deg, #1376F8 0%, #041f52 100%);
     z-index: 0;
 }
 
 /* ══════════════════════════════════════════════════════════════
    RESPONSIVE — Desktop Fluide (Adaptation aux dimensions PC)
-══════════════════════════════════════════════════════════════ */
+   ══════════════════════════════════════════════════════════════ */
 
 /* ── Grands écrans (Full HD / 2K) ── */
 @media (min-width: 1600px) {
@@ -228,7 +228,7 @@
 
 /* ══════════════════════════════════════════════════════════════
    RESPONSIVE — Tablette (≤ 900px)
-══════════════════════════════════════════════════════════════ */
+   ══════════════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
     .vs-title {
         font-size: 28px;
@@ -239,67 +239,117 @@
     }
 
     .vs-text {
-        padding: 40px 24px 24px;
+        padding: 20px 24px 10px;
     }
 
     .vs-video-container {
-        padding: 0 32px;
+        padding: 45px 40px 35px;
+    }
+
+    .vs-video-box {
+        border-radius: 20px;
+        padding: 8px;
+    }
+
+    .vs-video-thumb {
+        border-radius: 12px;
+    }
+
+    .vs-video-active {
+        border-radius: 12px;
+    }
+
+    .vs-deco {
+        display: block;
+        width: 220px;
+        height: 220px;
+    }
+
+    .vs-deco-left {
+        left: calc(50% - 380px);
+        top: 55%;
+        transform: translateY(-50%) rotate(-17.86deg);
+    }
+
+    .vs-deco-right {
+        right: calc(50% - 380px);
+        top: 55%;
+        transform: translateY(-50%) rotate(-17.86deg);
     }
 }
 
 /* ══════════════════════════════════════════════════════════════
    RESPONSIVE — Mobile (≤ 600px)
-══════════════════════════════════════════════════════════════ */
+   ══════════════════════════════════════════════════════════════ */
 @media (max-width: 600px) {
     .vs-title {
         font-size: 18px;
-        line-height: 1.4;
-        margin: 0 0 8px;
+        line-height: 1.35;
+        margin: 0 0 10px;
     }
 
     .vs-title-line {
-        margin: 0 auto 16px;
+        width: 120px;
+        margin: 0 auto 18px;
     }
 
     .vs-subtitle {
-        font-size: 12px;
-        line-height: 1.7;
+        font-size: 12.5px;
+        line-height: 1.75;
+        max-width: 320px;
     }
 
     .vs-text {
-        padding: 15px 16px 15px;
+        padding: 10px 20px 10px;
     }
 
     .vs-text br {
-        display: none;
+        display: block;
     }
 
     .vs-video-container {
-        padding: 30px 16px 15px;
+        padding: 40px 24px 25px;
+    }
+
+    .vs-blue-bg {
+        height: 60%;
     }
 
     .vs-deco {
         display: block;
-        width: 140px;
-        height: 140px;
+        width: 130px;
+        height: 130px;
     }
 
     .vs-deco-left {
-        left: -40px;
-        top: 45%;
+        left: -35px;
+        top: 56%;
+        transform: translateY(-50%) rotate(-17.86deg);
     }
 
     .vs-deco-right {
-        right: -40px;
-        top: 45%;
+        right: -35px;
+        top: 56%;
+        transform: translateY(-50%) rotate(-17.86deg);
     }
 
-    .vs-video-box, .vs-video-box.vs-video-playing {
-        border-radius: 10px; /* Les coins rétrécissent proportionnellement comme l'image */
+    .vs-video-box {
+        border-radius: 16px;
+        max-width: 100%;
+        padding: 6px;
     }
 
-    .vs-video-thumb, .vs-video-active {
-        border-radius: 6px;
+    .vs-video-box.vs-video-playing {
+        border-radius: 16px;
+        padding: 6px;
+    }
+
+    .vs-video-thumb {
+        border-radius: 10px;
+    }
+
+    .vs-video-active {
+        border-radius: 10px;
     }
 
     .vs-play-btn {
@@ -312,6 +362,3 @@
         height: 44px;
     }
 }
-
-
-

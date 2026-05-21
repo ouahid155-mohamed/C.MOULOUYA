@@ -253,6 +253,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: -20px;
 }
 
 /* Tag */
@@ -418,112 +419,145 @@
 ══════════════════════════════════════════════════════════════ */
 @media (max-width: 800px) {
 
-    /* Wrapper : espace en bas très réduit pour le débordement */
+    /* Wrapper : padding simple, laisse de l'espace en bas pour le débordement de la vidéo */
     .is-wrapper {
-        margin-top: 8px;
-        padding: 0px 20px 180px;
+        margin-top: 20px;
+        padding: 0px 20px 160px;
         overflow: visible;
         touch-action: pan-y;
     }
 
-    /* Container : cadre dégradé qui contient tout */
+    /* Container : avec cadre bleu transparent, overflow visible pour permettre le débordement */
     .is-container {
         flex-direction: column;
         gap: 0;
-        background: transparent;
+        background: transparent !important;
         border-radius: 40px;
-        padding: 45px 25px 40px;
-        box-shadow: none;
+        padding: 30px 24px 20px;
+        box-shadow: none !important;
         overflow: visible;
         position: relative;
+        /* Cadre bleu fin et précis comme sur l'image */
+        border: 1.5px solid #1376F8;
     }
 
-    /* Pseudo-élément pour la bordure dégradée (le cadre bleu) */
+    /* Supprimer le pseudo-élément dégradé sur mobile */
     .is-container::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 40px;
-        padding: 2px;
-        background: linear-gradient(82.26deg, #204BCF 1%, rgba(16, 38, 105, 0.4) 99.38%);
-        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        z-index: 0;
-        pointer-events: none;
-        transform: none;
+        display: none;
     }
 
-    /* Texte en haut */
+    /* Texte en haut, avec padding interne */
     .is-right {
         order: -1;
         border-radius: 0;
-        padding: 0 0 40px 0;
+        padding: 0;
         min-height: auto;
         z-index: 1;
         background: transparent;
+        margin-top: -15px;
     }
 
     .is-tag {
-        font-size: 26px;
+        font-size: 22px;
         font-weight: 800;
         color: #1376F8;
+        margin-bottom: 4px;
+        letter-spacing: 0.03em;
     }
 
     .is-tag-line {
-        width: 100px;
-        height: 2.5px;
+        width: 100%;
+        max-width: 250px;
+        height: 2px;
         background: #1376F8;
-        margin-bottom: 20px;
+        margin-bottom: 12px;
     }
 
     .is-title {
-        font-size: 22px;
+        font-size: 18px;
         font-weight: 700;
-        color: #374151;
-        margin-bottom: 20px;
+        color: #5C5C5C;
+        margin-bottom: 14px;
+        line-height: 1.35;
     }
 
     .is-list {
-        gap: 16px;
+        gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
     }
 
     .is-list-item {
-        font-size: 17px;
+        font-size: 13.5px;
         line-height: 1.5;
-        padding-left: 22px;
+        padding-left: 18px;
+        color: #4B5563;
+        list-style: none;
+        position: relative;
     }
 
-    /* Image : Moitié dedans, moitié dehors, centrée avec espace côtés */
+    .is-list-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 5px;
+        height: 5px;
+        background: #5C5C5C;
+        border-radius: 50%;
+    }
+
+    /* Vidéo : Centrée, débordant vers le bas, avec coins arrondis et ombre élégante */
     .is-left-wrapper {
         order: 1;
-        width: 95%;
-        max-width: 380px;
-        height: 500px;
-        margin: 0 auto -220px;
-        /* Moitié dehors */
-        border-radius: 40px;
-        z-index: 2;
-        overflow: hidden;
+        width: 88%;
+        max-width: 320px;
+        height: 420px;
+        margin: 20px auto -150px;
+        /* Débordement négatif de 150px vers le bas */
+        border-radius: 24px;
+        z-index: 5;
+        overflow: visible;
         background: transparent;
-        transform: translateX(-4px);
+        transform: none;
+        flex-shrink: 0;
+        box-shadow: none;
     }
 
     .is-left {
-        border-radius: 40px;
+        border-radius: 24px;
         height: 100%;
         width: 100%;
         padding: 0;
-        background: #ffffff;
+        background: transparent;
         box-sizing: border-box;
+        overflow: visible;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .is-video-track {
+        height: 90%;
+        width: 90%;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
+    }
+
+    .is-video-slot {
+        height: 100%;
     }
 
     .is-image {
-        width: 89%;
+        width: 100%;
         height: 100%;
-        border-radius: 24px;
-        margin: 0 auto;
+        border-radius: 20px;
+        margin: 0;
         object-fit: cover;
     }
 
@@ -531,8 +565,87 @@
         display: none;
     }
 
+    /* Dots en haut de la vidéo */
+    .is-dots {
+        top: 18px;
+        z-index: 6;
+    }
+
+    .is-dot {
+        width: 8px;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.4);
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        border-radius: 50%;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .is-dot-active {
+        background: #ffffff;
+        transform: scale(1.2);
+    }
+
+    /* Bouton mute */
+    .is-btn-mute {
+        top: 16px;
+        right: 16px;
+        width: 32px;
+        height: 32px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(4px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 6;
+        padding: 0;
+        transition: all 0.3s ease;
+    }
+
+    .is-btn-mute svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* Contrôles en bas de la vidéo */
     .is-controls {
-        bottom: 30px;
-        gap: 30px;
+        bottom: 24px;
+        gap: 20px;
+        z-index: 6;
+    }
+
+    .is-btn {
+        width: 36px;
+        height: 36px;
+        background: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+    }
+
+    .is-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .is-btn-play {
+        width: 50px;
+        height: 50px;
+    }
+
+    .is-btn-play svg {
+        width: 22px;
+        height: 22px;
     }
 }

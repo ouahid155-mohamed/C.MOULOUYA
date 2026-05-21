@@ -36,7 +36,7 @@
 }
 
 .vs-title {
-    font-size: 29px;
+    font-size: 26px;
     font-weight: 700;
     color: #1376F8;
     line-height: 1.35;
@@ -70,7 +70,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 20px 60px 30px;
+    padding: 20px 60px 25px;
     box-sizing: border-box;
 }
 
@@ -243,7 +243,7 @@
     }
 
     .vs-video-container {
-        padding: 45px 40px 35px;
+        padding: 45px 40px 30px;
     }
 
     .vs-video-box {
@@ -308,7 +308,7 @@
     }
 
     .vs-video-container {
-        padding: 15px 24px 15px;
+        padding: 15px 16px 15px;
     }
 
     .vs-blue-bg {
@@ -316,21 +316,7 @@
     }
 
     .vs-deco {
-        display: block;
-        width: 130px;
-        height: 130px;
-    }
-
-    .vs-deco-left {
-        left: -35px;
-        top: 56%;
-        transform: translateY(-50%) rotate(-17.86deg);
-    }
-
-    .vs-deco-right {
-        right: -35px;
-        top: 56%;
-        transform: translateY(-50%) rotate(-17.86deg);
+        display: none;
     }
 
     .vs-video-box {

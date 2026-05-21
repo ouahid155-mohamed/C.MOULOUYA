@@ -95,22 +95,40 @@
       "name": "Dr. Kamal ADNANI",
       "specialty": "Orthopédiste Traumatologue",
       "desc": "Notre orthopédiste traumatologue traite les blessures, fractures et troubles de l'appareil locomoteur avec expertise, précision et soins adaptés pour assurer une bonne récupération.",
-      "spec1": { "title": "Orthopédie – Traumatologie", "detail": "Prise en charge des fractures, traumatismes et maladies des os et des articulations." },
-      "spec2": { "title": "Chirurgie orthopédique", "detail": "Traitement chirurgical des os, articulations et ligaments avec techniques modernes." }
+      "spec1": {
+        "title": "Orthopédie – Traumatologie",
+        "detail": "Prise en charge des fractures, traumatismes et maladies des os et des articulations."
+      },
+      "spec2": {
+        "title": "Chirurgie orthopédique",
+        "detail": "Traitement chirurgical des os, articulations et ligaments avec techniques modernes."
+      }
     },
     "doc2": {
       "name": "Dr. Aziz LAARBI",
       "specialty": "Urologue",
       "desc": "Notre urologue prend en charge l'ensemble des pathologies urinaires et génitales avec expertise, précision et un accompagnement humain à chaque étape.",
-      "spec1": { "title": "Chirurgie urologique", "detail": "lithiase urinaire, chirurgie de la prostate, chirurgie de la vessie" },
-      "spec2": { "title": "Endoscopie", "detail": "cystoscopie, urétéroscopie, résection transurétrale…" }
+      "spec1": {
+        "title": "Chirurgie urologique",
+        "detail": "lithiase urinaire, chirurgie de la prostate, chirurgie de la vessie"
+      },
+      "spec2": {
+        "title": "Endoscopie",
+        "detail": "cystoscopie, urétéroscopie, résection transurétrale…"
+      }
     },
     "doc3": {
       "name": "Dr. Az-Eddin EL BOUHALI",
       "specialty": "Anesthésiste - Réanimateur",
       "desc": "Notre anesthésiste-réanimateur assure la sécurité et le confort du patient avant, pendant et après chaque intervention chirurgicale.",
-      "spec1": { "title": "Anesthésie générale", "detail": "anesthésie locorégionale, sédation, soins intensifs" },
-      "spec2": { "title": "Réanimation", "detail": "prise en charge post-opératoire, urgences vitales…" }
+      "spec1": {
+        "title": "Anesthésie générale",
+        "detail": "anesthésie locorégionale, sédation, soins intensifs"
+      },
+      "spec2": {
+        "title": "Réanimation",
+        "detail": "prise en charge post-opératoire, urgences vitales…"
+      }
     }
   },
   "specialties": {
@@ -119,12 +137,30 @@
     "mobile_title": "Nos Spécialités Médicales",
     "mobile_desc": "Des soins adaptés, assurés par des professionnels qualifiés dans plusieurs disciplines.",
     "items": {
-      "visceral": { "title": "Chirurgie viscérale", "desc": "Traitement des pathologies digestives avec expertise chirurgicale." },
-      "urology": { "title": "Urologie", "desc": "Soins spécialisés pour les maladies urinaires et génitales." },
-      "oncology": { "title": "Chirurgie oncologique", "desc": "Interventions chirurgicales pour le traitement des cancers." },
-      "orthopedics": { "title": "Orthopédie", "desc": "Prise en charge des fractures et pathologies des articulations." },
-      "anesthesiology": { "title": "Anesthésiologie", "desc": "Accompagnement et sécurité du patient avant et pendant l'opération." },
-      "cardiology": { "title": "Cardiologie", "desc": "Suivi des maladies cardiovasculaires et examens spécialisés." }
+      "visceral": {
+        "title": "Chirurgie viscérale",
+        "desc": "Traitement des pathologies digestives avec expertise chirurgicale."
+      },
+      "urology": {
+        "title": "Urologie",
+        "desc": "Soins spécialisés pour les maladies urinaires et génitales."
+      },
+      "oncology": {
+        "title": "Chirurgie oncologique",
+        "desc": "Interventions chirurgicales pour le traitement des cancers."
+      },
+      "orthopedics": {
+        "title": "Orthopédie",
+        "desc": "Prise en charge des fractures et pathologies des articulations."
+      },
+      "anesthesiology": {
+        "title": "Anesthésiologie",
+        "desc": "Accompagnement et sécurité du patient avant et pendant l'opération."
+      },
+      "cardiology": {
+        "title": "Cardiologie",
+        "desc": "Suivi des maladies cardiovasculaires et examens spécialisés."
+      }
     }
   },
   "specialties_detail": {

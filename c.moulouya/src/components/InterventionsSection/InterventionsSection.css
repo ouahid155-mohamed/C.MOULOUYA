@@ -422,7 +422,7 @@
     /* Wrapper : padding simple, laisse de l'espace en bas pour le débordement de la vidéo */
     .is-wrapper {
         margin-top: 20px;
-        padding: 0px 20px 160px;
+        padding: 0px 18px 131px;
         overflow: visible;
         touch-action: pan-y;
     }
@@ -430,10 +430,11 @@
     /* Container : avec cadre bleu transparent, overflow visible pour permettre le débordement */
     .is-container {
         flex-direction: column;
+        align-items: center;
         gap: 0;
         background: transparent !important;
         border-radius: 40px;
-        padding: 30px 24px 20px;
+        padding: 0px 24px 8px;
         box-shadow: none !important;
         overflow: visible;
         position: relative;
@@ -512,19 +513,17 @@
 
     /* Vidéo : Centrée, débordant vers le bas, avec coins arrondis et ombre élégante */
     .is-left-wrapper {
-        order: 1;
-        width: 88%;
+        width: 72%;
         max-width: 320px;
         height: 420px;
-        margin: 20px auto -150px;
-        /* Débordement négatif de 150px vers le bas */
+        margin: 8px auto -150px !important;
+        align-self: center;
         border-radius: 24px;
         z-index: 5;
         overflow: visible;
-        background: transparent;
-        transform: none;
-        flex-shrink: 0;
-        box-shadow: none;
+        background: transparent !important;
+        padding: 0;
+        box-sizing: border-box;
     }
 
     .is-left {
@@ -532,7 +531,7 @@
         height: 100%;
         width: 100%;
         padding: 0;
-        background: transparent;
+        background: transparent !important;
         box-sizing: border-box;
         overflow: visible;
         position: relative;
@@ -543,10 +542,12 @@
 
     .is-video-track {
         height: 90%;
-        width: 90%;
+        width: 100%;
+        /* ← prend toute la largeur du is-left (qui a déjà le padding) */
         border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
+        box-shadow: none !important;
+        background: transparent !important;
     }
 
     .is-video-slot {
@@ -554,11 +555,12 @@
     }
 
     .is-image {
-        width: 100%;
-        height: 100%;
+        width: 85%;
+        height: 92%;
         border-radius: 20px;
-        margin: 0;
+        margin: auto;
         object-fit: cover;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16) !important;
     }
 
     .is-bg-rect {
@@ -567,7 +569,7 @@
 
     /* Dots en haut de la vidéo */
     .is-dots {
-        top: 18px;
+        top: 32px !important;
         z-index: 6;
     }
 
@@ -589,8 +591,8 @@
 
     /* Bouton mute */
     .is-btn-mute {
-        top: 16px;
-        right: 16px;
+        top: 42px !important;
+        right: 32px !important;
         width: 32px;
         height: 32px;
         background: rgba(255, 255, 255, 0.9);
@@ -614,7 +616,7 @@
 
     /* Contrôles en bas de la vidéo */
     .is-controls {
-        bottom: 24px;
+        bottom: 48px !important;
         gap: 20px;
         z-index: 6;
     }

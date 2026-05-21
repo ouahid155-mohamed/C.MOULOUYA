@@ -251,42 +251,45 @@
 /* ══════════════════════════════════════════════════════════════
    RESPONSIVE — Tablette (≤ 1024px)
 ══════════════════════════════════════════════════════════════ */
-@media (max-width: 1024px) {
+@media (max-width: 1024px) and (min-width: 769px) {
     .ss-wrapper {
         padding: 16px 28px;
     }
-
-    .ss-inner {
-        gap: 32px;
-        padding: 28px 36px;
-    }
-
-    .ss-left {
-        flex: 0 0 260px;
-    }
-
-    .ss-title {
-        font-size: 24px;
-    }
-
-    .ss-card-value {
-        font-size: 22px;
-    }
 }
+
+.ss-inner {
+    gap: 32px;
+    padding: 28px 36px;
+}
+
+.ss-left {
+    flex: 0 0 260px;
+}
+
+.ss-title {
+    font-size: 24px;
+}
+
+.ss-card-value {
+    font-size: 22px;
+}
+
 
 /* ══════════════════════════════════════════════════════════════
    RESPONSIVE — Mobile (≤ 768px)
 ══════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
     .ss-wrapper {
-        padding: 8px 0;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
     .ss-inner {
+        border-radius: 0 !important;
         flex-direction: column;
-        padding: 32px 24px;
+        padding: 32px 20px;
         gap: 28px;
-        border-radius: 24px;
+        max-width: 100% !important;
     }
 
     .ss-left {
@@ -346,5 +349,35 @@
 
     .ss-card-label {
         font-size: 10.5px;
+    }
+}
+
+/* ── Très petit mobile (≤ 420px) ── */
+@media (max-width: 420px) {
+    .ss-inner {
+        flex-direction: column;
+        /* ← colonne seulement sur très petit écran */
+        padding: 16px 12px;
+    }
+
+    .ss-left {
+        width: 100%;
+        flex: none;
+    }
+
+    .ss-grid {
+        width: 100%;
+    }
+
+    .ss-title {
+        font-size: 16px;
+    }
+
+    .ss-card-value {
+        font-size: 16px;
+    }
+
+    .ss-card-label {
+        font-size: 9px;
     }
 }

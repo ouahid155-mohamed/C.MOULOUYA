@@ -130,3 +130,22 @@ html[dir="rtl"] input::placeholder,
 html[dir="rtl"] textarea::placeholder {
   text-align: right;
 }
+
+/* ── Fix mobile : supprime tout espace latéral global ── */
+@media (max-width: 768px) {
+  #root {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-x: hidden;
+  }
+
+  body {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-x: hidden;
+  }
+
+  h2.faq-group-heading {
+    font-size: 20px;
+  }
+}

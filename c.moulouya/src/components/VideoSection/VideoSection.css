@@ -353,7 +353,7 @@
 
     .vs-video-thumb {
         border-radius: 5px;
-        transform: none;
+        transform: translateY(4px);
     }
 
     .vs-video-active {

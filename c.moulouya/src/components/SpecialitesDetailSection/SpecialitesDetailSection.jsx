@@ -33,7 +33,7 @@ const specialites = [
 
 export default function SpecialitesDetailSection() {
   const { t, i18n } = useTranslation();
-  const isRtl = i18n.dir() === 'rtl';
+  const isRtl = i18n.language === 'ar';
   const dirMultiplier = isRtl ? 1 : -1;
   const [active, setActive] = useState(1);
   const [playing, setPlaying] = useState(false);
@@ -151,7 +151,7 @@ export default function SpecialitesDetailSection() {
         </div>
 
         {/* ── Contenu principal ── */}
-        <div className={`sds-content ${playing ? "sds-playing" : ""}`}>
+        <div className={`sds-content ${playing ? "sds-playing" : ""} ${isRtl ? "sds-rtl" : ""}`}>
 
           {/* Image à gauche avec bouton play centré */}
           <div className="sds-media-block">

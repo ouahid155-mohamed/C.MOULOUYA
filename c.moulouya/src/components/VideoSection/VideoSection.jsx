@@ -33,13 +33,8 @@ export default function VideoSection() {
           {!playing && (
             <>
               <img src={videoBox} alt="Vidéo Clinique Moulouya" className="vs-video-thumb" />
-              {/* Bouton play */}
-              <button className="vs-play-btn" aria-label="Lire la vidéo">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="12" fill="white" fillOpacity="0.9" />
-                  <path d="M10 8.5L16 12L10 15.5V8.5Z" fill="#1376F8" />
-                </svg>
-              </button>
+              {/* Bouton play (accessible, sans icône superposée) */}
+              <button className="vs-play-btn" aria-label="Lire la vidéo" />
             </>
           )}
 

@@ -135,6 +135,8 @@
     display: block;
     object-fit: cover;
     border-radius: 16px;
+    transform: translateY(9px);
+    
 }
 
 .vs-video-active {
@@ -170,7 +172,6 @@
 .vs-play-btn svg {
     width: 56px;
     height: 56px;
-    filter: drop-shadow(0 4px 12px rgba(19, 118, 248, 0.4));
 }
 
 /* ── Fond dégradé bleu en bas ── */
@@ -283,24 +284,25 @@
    ══════════════════════════════════════════════════════════════ */
 @media (max-width: 600px) {
     .vs-title {
-        font-size: 18px;
+        font-size: 21px;
         line-height: 1.35;
-        margin: 0 0 10px;
+        margin: 0 0 8px;
     }
 
     .vs-title-line {
         width: 120px;
-        margin: 0 auto 18px;
+        margin: 0 auto 16px;
     }
 
     .vs-subtitle {
         font-size: 12.5px;
         line-height: 1.75;
         max-width: 320px;
+        margin: 0 auto 6px;
     }
 
     .vs-text {
-        padding: 10px 20px 10px;
+        padding: 4px 16px 6px;
     }
 
     .vs-text br {
@@ -308,7 +310,9 @@
     }
 
     .vs-video-container {
-        padding: 15px 16px 15px;
+        padding: 8px 18px 12px;
+        justify-content: center;
+        align-items: center;
     }
 
     .vs-blue-bg {
@@ -316,35 +320,74 @@
     }
 
     .vs-deco {
-        display: none;
+        display: block;
+        width: 160px;
+        height: 160px;
+    }
+
+    .vs-deco-left {
+        left: calc(50% - 280px);
+        top: 50%;
+        transform: translateY(-34%) rotate(-17.86deg);
+    }
+
+    .vs-deco-right {
+        right: calc(50% - 280px);
+        top: 50%;
+        transform: translateY(-34%) rotate(-17.86deg);
     }
 
     .vs-video-box {
-        border-radius: 16px;
+        border-radius: 13px;
         max-width: 100%;
         padding: 6px;
     }
 
     .vs-video-box.vs-video-playing {
-        border-radius: 16px;
+        border-radius: 22px;
         padding: 6px;
     }
 
     .vs-video-thumb {
-        border-radius: 10px;
+        border-radius: 18px;
+        transform: translateY(3px);
     }
 
     .vs-video-active {
-        border-radius: 10px;
+        border-radius: 18px;
     }
 
     .vs-play-btn {
-        width: 44px;
-        height: 44px;
+        width: 84px;
+        height: 84px;
+    }
+
+    .vs-play-btn::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: #ffffff;
+        box-shadow: 0 4px 12px rgba(4, 31, 82, 0.22);
+        transform: translate(-50%, -50%);
+    }
+
+    .vs-play-btn::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-top: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+        border-left: 10px solid #1376F8;
+        transform: translate(-35%, -50%);
     }
 
     .vs-play-btn svg {
-        width: 44px;
-        height: 44px;
+        width: 84px;
+        height: 84px;
     }
 }

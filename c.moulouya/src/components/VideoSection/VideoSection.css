@@ -310,7 +310,7 @@
     }
 
     .vs-video-container {
-        padding: 8px 18px 12px;
+        padding: 18px 0 25px;
         justify-content: center;
         align-items: center;
     }
@@ -321,73 +321,52 @@
 
     .vs-deco {
         display: block;
-        width: 160px;
-        height: 160px;
+        width: 140px;
+        height: 140px;
     }
 
     .vs-deco-left {
-        left: calc(50% - 280px);
-        top: 50%;
-        transform: translateY(-34%) rotate(-17.86deg);
+        left: calc(50% - 286px);
+        top: 52%;
+        transform: translateY(-50%) rotate(-17.86deg);
     }
 
     .vs-deco-right {
-        right: calc(50% - 280px);
-        top: 50%;
-        transform: translateY(-34%) rotate(-17.86deg);
+        right: calc(50% - 286px);
+        top: 52%;
+        transform: translateY(-50%) rotate(-17.86deg);
     }
 
     .vs-video-box {
-        border-radius: 13px;
-        max-width: 100%;
-        padding: 6px;
+        width: calc(100vw - 56px);
+        max-width: none;
+        border-radius: 8px;
+        padding: 5px;
+        background: #ffffff;
     }
 
     .vs-video-box.vs-video-playing {
-        border-radius: 22px;
-        padding: 6px;
+        border-radius: 8px;
+        padding: 5px;
+        background: #ffffff;
     }
 
     .vs-video-thumb {
-        border-radius: 18px;
-        transform: translateY(3px);
+        border-radius: 5px;
+        transform: none;
     }
 
     .vs-video-active {
-        border-radius: 18px;
+        border-radius: 5px;
     }
 
     .vs-play-btn {
-        width: 84px;
-        height: 84px;
-    }
-
-    .vs-play-btn::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        background: #ffffff;
-        box-shadow: 0 4px 12px rgba(4, 31, 82, 0.22);
-        transform: translate(-50%, -50%);
-    }
-
-    .vs-play-btn::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        border-top: 7px solid transparent;
-        border-bottom: 7px solid transparent;
-        border-left: 10px solid #1376F8;
-        transform: translate(-35%, -50%);
+        width: 36px;
+        height: 36px;
     }
 
     .vs-play-btn svg {
-        width: 84px;
-        height: 84px;
+        width: 36px;
+        height: 36px;
     }
 }

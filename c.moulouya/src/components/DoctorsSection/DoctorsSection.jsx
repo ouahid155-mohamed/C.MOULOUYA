@@ -15,7 +15,7 @@ const doctors = [
 export default function DoctorsSection() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(1);
 
   const handleMoreInfos = (index) => {
     navigate("/apropos", { state: { doctorIndex: index } });
@@ -62,7 +62,7 @@ export default function DoctorsSection() {
                 <div className="ds-photo-area">
                   <img src={d.img} alt={t(`${d.key}.name`, d.name)} className="ds-photo" />
                   <button className="ds-btn" onClick={() => handleMoreInfos(i)}>
-                    <span className="ds-btn-label">{t("doctors.more_info", "Plus d'infos")}</span>
+                    <span className="ds-btn-label">{t("doctors.more_info", "Découvrir")}</span>
                     <span className="ds-btn-circle">
                       <svg viewBox="0 0 24 24" fill="none">
                         <path d="M5 12h14M13 6l6 6-6 6" stroke="#1376F8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -102,7 +102,7 @@ export default function DoctorsSection() {
               <div className="ds-photo-area">
                 <img src={doc.img} alt={t(`${doc.key}.name`, doc.name)} className="ds-photo" />
                 <button className="ds-btn" onClick={() => handleMoreInfos(current)}>
-                  <span className="ds-btn-label">{t("doctors.more_info", "Plus d'infos")}</span>
+                  <span className="ds-btn-label">{t("doctors.more_info", "Découvrir")}</span>
                   <span className="ds-btn-circle">
                     <svg viewBox="0 0 24 24" fill="none">
                       <path d="M5 12h14M13 6l6 6-6 6" stroke="#1376F8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>

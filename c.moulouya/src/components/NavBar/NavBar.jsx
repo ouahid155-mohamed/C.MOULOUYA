@@ -36,6 +36,21 @@ export default function Navbar() {
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
   const linksRef = useRef({});
 
+  useEffect(() => {
+    if (!dropdownOpen) return;
+
+    const handleOutsidePointerDown = (event) => {
+      if (!event.target.closest(".nb-mobile-lang-wrapper")) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handleOutsidePointerDown);
+    return () => {
+      document.removeEventListener("pointerdown", handleOutsidePointerDown);
+    };
+  }, [dropdownOpen]);
+
   // Synchroniser l'onglet actif avec l'URL (incluant les ancres)
   useEffect(() => {
     const currentPath = location.pathname + location.hash;
@@ -99,7 +114,12 @@ export default function Navbar() {
         </div>
 
         {/* ── Desktop: Logo ── */}
-        <Link to="/" className="nb-logo nb-logo-desktop" style={{ textDecoration: 'none' }}>
+        <Link
+          to="/"
+          className="nb-logo nb-logo-desktop"
+          onClick={() => setActiveLink("nav.home")}
+          style={{ textDecoration: 'none' }}
+        >
           <div className="nb-logo-icon">
             <img src={logoM} alt="Clinique Moulouya" />
           </div>
@@ -154,7 +174,15 @@ export default function Navbar() {
           </button>
 
           {/* Logo – centre */}
-          <Link to="/" className="nb-logo nb-logo-mobile" onClick={() => setMenuOpen(false)} style={{ textDecoration: 'none' }}>
+          <Link
+            to="/"
+            className="nb-logo nb-logo-mobile"
+            onClick={() => {
+              setActiveLink("nav.home");
+              setMenuOpen(false);
+            }}
+            style={{ textDecoration: 'none' }}
+          >
             <div className="nb-logo-icon">
               <img src={logoM} alt="Clinique Moulouya" />
             </div>

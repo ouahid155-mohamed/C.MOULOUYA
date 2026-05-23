@@ -422,7 +422,7 @@ html {
         display: flex;
         align-items: center;
         gap: 8px;
-        pointer-events: none;
+        pointer-events: auto;
     }
 
     .nb-logo-mobile .nb-logo-icon {

@@ -142,12 +142,11 @@ const faqGroups = [
 ];
 
 // ── Composant accordéon pour un groupe ─────────────────────────
-function FAQGroup({ group }) {
+function FAQGroup({ group, openItemKey, onToggleItem }) {
   const { t, i18n } = useTranslation();
   const isRtl = i18n.dir() === 'rtl';
-  const [openIndex, setOpenIndex] = useState(null);
 
-  const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
+  const getItemKey = (i) => `${group.id}-${i}`;
 
   return (
     <div className="faq-group">
@@ -169,7 +168,8 @@ function FAQGroup({ group }) {
       {/* Liste des questions */}
       <div className="faq-list">
         {group.items.map((item, i) => {
-          const isOpen = openIndex === i;
+          const itemKey = getItemKey(i);
+          const isOpen = openItemKey === itemKey;
           return (
             <div
               key={i}
@@ -177,7 +177,7 @@ function FAQGroup({ group }) {
             >
               <button
                 className="faq-question"
-                onClick={() => toggle(i)}
+                onClick={() => onToggleItem(itemKey)}
                 aria-expanded={isOpen}
               >
                 <span className="faq-question-text">{t(item.questionKey, item.defaultQuestion)}</span>
@@ -209,11 +209,27 @@ function FAQGroup({ group }) {
 
 // ── Composant principal ─────────────────────────────────────────
 export default function FAQSection() {
+  const [openItemKey, setOpenItemKey] = useState(null);
+  const groupOrder = ["consultation", "clinique", "services"];
+  const orderedFaqGroups = [...faqGroups].sort(
+    (firstGroup, secondGroup) =>
+      groupOrder.indexOf(firstGroup.id) - groupOrder.indexOf(secondGroup.id)
+  );
+
+  const toggleItem = (itemKey) => {
+    setOpenItemKey((currentKey) => (currentKey === itemKey ? null : itemKey));
+  };
+
   return (
     <section className="faq-wrapper">
       <div className="faq-container">
-        {faqGroups.map((group) => (
-          <FAQGroup key={group.id} group={group} />
+        {orderedFaqGroups.map((group) => (
+          <FAQGroup
+            key={group.id}
+            group={group}
+            openItemKey={openItemKey}
+            onToggleItem={toggleItem}
+          />
         ))}
       </div>
     </section>

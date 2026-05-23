@@ -14,7 +14,7 @@ export default function HistoireSection() {
         {/* ── GAUCHE : Collage de 3 images ── */}
         <div className="hs-images">
           <div className="hs-img-main-wrapper">
-            <img src={aboutMain} alt="Soins clinique" className="hs-img-main" />
+            <img src={aboutBr} alt="Soins clinique" className="hs-img-main" />
           </div>
           
           <div className="hs-img-tl-wrapper">
@@ -24,7 +24,7 @@ export default function HistoireSection() {
           </div>
           
           <div className="hs-img-br-wrapper">
-            <img src={aboutBr} alt="Opération" className="hs-img-br" />
+            <img src={aboutMain} alt="Opération" className="hs-img-br" />
             <div className="hs-fillet fillet-br-bottom"></div>
             <div className="hs-fillet fillet-br-right"></div>
           </div>

@@ -43,7 +43,7 @@
       "phonePlaceholder": "+212.000-0000",
       "messageLabel": "Message",
       "messagePlaceholder": "",
-      "submitBtn": "ENVOYÉ"
+      "submitBtn": "ENVOYER"
     },
     "info": {
       "hoursTitle": "Horaires de la clinique",
@@ -90,7 +90,7 @@
     "item_3": "Chirurgie orthopédique et traumatologique : prise en charge des fractures, pathologies des articulations, et bien plus."
   },
   "doctors": {
-    "more_info": "Plus d'infos",
+    "more_info": "Découvrir",
     "doc1": {
       "name": "Dr. Kamal ADNANI",
       "specialty": "Orthopédiste Traumatologue",

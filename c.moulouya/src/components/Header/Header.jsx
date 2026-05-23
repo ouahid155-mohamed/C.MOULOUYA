@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import mapPin from "../../assets/Map pin.png";
 import mail from "../../assets/Mail 6.png";
@@ -18,6 +18,21 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const currentLang = languages.find(l => l.code === i18n.language) || languages[0];
+
+  useEffect(() => {
+    if (!dropdownOpen) return;
+
+    const handleOutsidePointerDown = (event) => {
+      if (!event.target.closest(".topbar-lang-wrapper")) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handleOutsidePointerDown);
+    return () => {
+      document.removeEventListener("pointerdown", handleOutsidePointerDown);
+    };
+  }, [dropdownOpen]);
 
   return (
     <div className="topbar-wrapper">

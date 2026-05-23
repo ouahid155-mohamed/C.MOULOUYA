@@ -98,7 +98,7 @@ export default function ContactSection() {
 
                     {/* Bas : bouton + réseaux */}
                     <div className="cs-form-footer">
-                        <button className="cs-submit" type="submit">{t("contact.form.submitBtn", "ENVOYÉ")}</button>
+                        <button className="cs-submit" type="submit">{t("contact.form.submitBtn", "ENVOYER")}</button>
                         <div className="cs-socials">
                             <a href="#" className="cs-social-btn" aria-label="Instagram">
                                 <svg viewBox="0 0 24 24" fill="none">
@@ -114,10 +114,22 @@ export default function ContactSection() {
                                         strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </a>
-                            <a href="#" className="cs-social-btn" aria-label="LinkedIn">
-                                <svg viewBox="5.5 5.5 13 13" fill="none">
-                                    <path d="M8 12v5M8 8v1" stroke="#1376F8" strokeWidth="2.5" strokeLinecap="round" />
-                                    <path d="M12 17v-3a2.5 2.5 0 015 0v3M12 12v5" stroke="#1376F8" strokeWidth="2.5" strokeLinecap="round" />
+                            <a href="#" className="cs-social-btn" aria-label="TikTok">
+                                <svg className="cs-tiktok-icon" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M14 4v9.1a4.1 4.1 0 11-4.1-4.1"
+                                        stroke="#1376F8"
+                                        strokeWidth="2.3"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                    <path
+                                        d="M14 4c.5 3 2.3 4.8 5 5"
+                                        stroke="#1376F8"
+                                        strokeWidth="2.3"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
                                 </svg>
                             </a>
                         </div>

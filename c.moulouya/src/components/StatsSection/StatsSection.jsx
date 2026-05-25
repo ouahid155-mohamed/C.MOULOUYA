@@ -9,9 +9,9 @@ import "./StatsSection.css";
 const stats = [
     {
         icon: <img src={icon3} alt="Médecins" />,
-        value: "30+",
+        value: "10+",
         labelKey: "stats.doctors",
-        defaultLabel: "Médecins professionnels",
+        defaultLabel: "Médecins Spécialistes",
     },
     {
         icon: <img src={icon1} alt="Opérations" />,
@@ -29,7 +29,7 @@ const stats = [
         icon: <img src={icon2} alt="Patients" />,
         value: "1000+",
         labelKey: "stats.patients",
-        defaultLabel: "Patients satisfaits",
+        defaultLabel: "Patients guéris",
     },
 ];
 

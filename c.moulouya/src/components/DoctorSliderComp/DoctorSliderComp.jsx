@@ -72,7 +72,7 @@ export default function DoctorSlider() {
     const isRtl = i18n.dir() === 'rtl';
     const dirMultiplier = isRtl ? 1 : -1;
     const location = useLocation();
-    const [current, setCurrent] = useState(0);
+    const [current, setCurrent] = useState(1);
 
     useEffect(() => {
         if (location.state && typeof location.state.doctorIndex === 'number') {

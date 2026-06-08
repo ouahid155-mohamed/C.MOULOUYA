@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useCmsContent } from "../../context/CmsContext";
 import "./SpecialitesDetailSection.css";
 import surgeryImg from "../../assets/videos/Group 1000011126.png";
 import groupDeco from "../../assets/Group.png";
+
+const DEFAULT_SPECIALTY_VIDEO =
+  "https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-3--@main/Clinique%20Moulouya%208.mp4";
 
 const specialites = [
   {
@@ -33,6 +37,7 @@ const specialites = [
 
 export default function SpecialitesDetailSection() {
   const { t, i18n } = useTranslation();
+  const { getCmsMedia } = useCmsContent();
   const isRtl = i18n.language === 'ar';
   const dirMultiplier = isRtl ? 1 : -1;
   const [active, setActive] = useState(1);
@@ -47,6 +52,8 @@ export default function SpecialitesDetailSection() {
   const current = specialites[active];
   const prevIdx = (active - 1 + total) % total;
   const nextIdx = (active + 1) % total;
+  const specialtyVideo = getCmsMedia("specialty_video", DEFAULT_SPECIALTY_VIDEO);
+  const specialtyThumbnail = getCmsMedia("specialty_video_thumbnail", surgeryImg);
 
   // ── Swipe logic ──
   const [touchStart, setTouchStart] = useState(null);
@@ -152,7 +159,7 @@ export default function SpecialitesDetailSection() {
             <div className="sds-video-container" onClick={() => !playing && setPlaying(true)}>
               {playing ? (
                 <video
-                  src="https://cdn.jsdelivr.net/gh/ouahid155-mohamed/C.MOULOUYA-assets-3--@main/Clinique%20Moulouya%208.mp4"
+                  src={specialtyVideo}
                   className="sds-surgery-img"
                   controls
                   autoPlay
@@ -160,7 +167,7 @@ export default function SpecialitesDetailSection() {
                 />
               ) : (
                 <>
-                  <img src={surgeryImg} alt="Chirurgie" className="sds-surgery-img" />
+                  <img src={specialtyThumbnail} alt="Chirurgie" className="sds-surgery-img" />
                   {/* Bouton play centré avec anneau blanc */}
                   <button className="sds-play-btn" aria-label="Lire la vidéo">
                     <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">

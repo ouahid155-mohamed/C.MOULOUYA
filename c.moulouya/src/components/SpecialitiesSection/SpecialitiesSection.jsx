@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useCmsContent } from "../../context/CmsContext";
 import "./SpecialitiesSection.css";
 
 const allSpecialites = [
@@ -14,12 +15,26 @@ const allSpecialites = [
 
 export default function SpecialitiesSection() {
   const { t, i18n } = useTranslation();
+  const { specialties: cmsSpecialties, getCmsText } = useCmsContent();
   const isRtl = i18n.dir() === 'rtl';
+  const lang = i18n.language?.startsWith("ar") ? "ar" : i18n.language?.startsWith("en") ? "en" : "fr";
   const dirMultiplier = isRtl ? 1 : -1;
+
+  // Build list of specialties dynamically
+  const specialtiesList = cmsSpecialties && cmsSpecialties.length > 0
+    ? cmsSpecialties.map(s => ({
+        title: lang === "ar" ? s.title_ar : lang === "en" ? (s.title_en || s.title_fr) : s.title_fr,
+        desc: lang === "ar" ? s.description_ar : lang === "en" ? (s.description_en || s.description_fr) : s.description_fr
+      }))
+    : allSpecialites.map(item => ({
+        title: t(`${item.key}.title`, item.defaultTitle),
+        desc: t(`${item.key}.desc`, item.defaultDesc)
+      }));
+
   // Desktop logic
   const [currentIndex, setCurrentIndex] = useState(0);
-  const totalCards = allSpecialites.length;
-  const maxIndex = totalCards - 3; // Show 3 cards at a time
+  const totalCards = specialtiesList.length;
+  const maxIndex = Math.max(0, totalCards - 3); // Show 3 cards at a time
 
   const nextDesktop = () => {
     setCurrentIndex((prev) => (prev + 1) % (maxIndex + 1));
@@ -29,13 +44,13 @@ export default function SpecialitiesSection() {
   };
 
   // Mobile logic
-  const [mobileIndex, setMobileIndex] = useState(1); // Start with Urologie as per image
+  const [mobileIndex, setMobileIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const minSwipeDistance = 50;
 
-  const prevMobile = () => setMobileIndex((c) => (c - 1 + allSpecialites.length) % allSpecialites.length);
-  const nextMobile = () => setMobileIndex((c) => (c + 1) % allSpecialites.length);
+  const prevMobile = () => setMobileIndex((c) => (c - 1 + specialtiesList.length) % specialtiesList.length);
+  const nextMobile = () => setMobileIndex((c) => (c + 1) % specialtiesList.length);
 
   const onTouchStartHandler = (e) => {
     setTouchEnd(null);
@@ -64,9 +79,9 @@ export default function SpecialitiesSection() {
         <div className="sp-desktop-only">
           <div className="sp-banner">
             <div className="sp-banner-left">
-              <h2 className="sp-banner-title">{t("specialties.title", "Nos Spécialités")}</h2>
+              <h2 className="sp-banner-title">{getCmsText("specialties.title", t("specialties.title", "Nos Spécialités"))}</h2>
               <p className="sp-banner-desc">
-                {t("specialties.desc", "Une prise en charge complète réalisée par des experts médicaux dans plusieurs disciplines.")}
+                {getCmsText("specialties.desc", t("specialties.desc", "Une prise en charge complète réalisée par des experts médicaux dans plusieurs disciplines."))}
               </p>
             </div>
             <div className="sp-banner-nav">
@@ -94,14 +109,14 @@ export default function SpecialitiesSection() {
           <div className="sp-cards-container">
             <div 
               className="sp-cards-track" 
-              style={{ transform: `translateX(${dirMultiplier * currentIndex * 33.333}%)` }}
+              style={{ transform: `translateX(${dirMultiplier * currentIndex * (totalCards > 3 ? 33.333 : 0)}%)` }}
             >
-              {allSpecialites.map((item, i) => (
+              {specialtiesList.map((item, i) => (
                 <div className="sp-card-wrapper" key={i}>
                   <div className="sp-card">
-                    <span className="sp-card-title">{t(`${item.key}.title`, item.defaultTitle)}</span>
+                    <span className="sp-card-title">{item.title}</span>
                     <div className="sp-card-line" />
-                    <p className="sp-card-desc">{t(`${item.key}.desc`, item.defaultDesc)}</p>
+                    <p className="sp-card-desc">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -112,9 +127,9 @@ export default function SpecialitiesSection() {
         {/* ── Version Mobile (Slider avec "peeking" des cartes adjacentes) ── */}
         <div className="sp-mobile-only">
           <div className="sp-mobile-header">
-            <h2 className="sp-mobile-title">{t("specialties.mobile_title", "Nos Spécialités Médicales")}</h2>
+            <h2 className="sp-mobile-title">{getCmsText("specialties.mobile_title", t("specialties.mobile_title", "Nos Spécialités Médicales"))}</h2>
             <p className="sp-mobile-subtitle">
-              {t("specialties.mobile_desc", "Des soins adaptés, assurés par des professionnels qualifiés dans plusieurs disciplines.")}
+              {getCmsText("specialties.mobile_desc", t("specialties.mobile_desc", "Des soins adaptés, assurés par des professionnels qualifiés dans plusieurs disciplines."))}
             </p>
           </div>
           
@@ -151,12 +166,12 @@ export default function SpecialitiesSection() {
                 className="sp-mobile-track" 
                 style={{ transform: `translateX(calc(${dirMultiplier * mobileIndex * 82}% ${isRtl ? '-' : '+'} 9%))` }}
               >
-                {allSpecialites.map((item, i) => (
+                {specialtiesList.map((item, i) => (
                   <div className={`sp-mobile-card-slot ${i === mobileIndex ? "active" : ""}`} key={i}>
                     <div className="sp-card sp-mobile-card">
-                      <span className="sp-card-title">{t(`${item.key}.title`, item.defaultTitle)}</span>
+                      <span className="sp-card-title">{item.title}</span>
                       <div className="sp-card-line" />
-                      <p className="sp-card-desc">{t(`${item.key}.desc`, item.defaultDesc)}</p>
+                      <p className="sp-card-desc">{item.desc}</p>
                     </div>
                   </div>
                 ))}

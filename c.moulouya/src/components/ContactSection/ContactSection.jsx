@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useCmsContent } from "../../context/CmsContext";
+import axios from "axios";
 import urgenceIcon from "../../assets/UrgenceContact.png";
 import emailIcon from "../../assets/EmailContact.png";
-import callIcon from "../../assets/CallContact.png";
 import telephoneIcon from "../../assets/telephone (1) 1.png";
 import mapPinIcon from "../../assets/Group 1000011086.png";
 import localisationIcon from "../../assets/localisation.png";
@@ -10,24 +11,56 @@ import "./ContactSection.css";
 
 export default function ContactSection() {
     const { t } = useTranslation();
+    const { getCmsContact, socials } = useCmsContent();
     const [form, setForm] = useState({
         nom: "", prenom: "", email: "", tel: "", message: ""
     });
+    const [success, setSuccess] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
+    const [error, setError] = useState("");
+
+    const phone1 = getCmsContact("phone_1", "+212 6 61 26 77 60");
+    const phone2 = getCmsContact("phone_2", "+212 5366 - 168 69");
+    const email = getCmsContact("email", "contact@cliniquemoulouya.ma");
+    const hours = getCmsContact(
+        "hours",
+        t("contact.info.hoursValue", "Disponibles 24h/24. Nous vous assurons une prise en charge continue et des soins de qualite")
+    );
+    const address = getCmsContact("address", "7, Rue De La Paix, Berkane, Morocco, Oriental 63300");
+    const [addressLine1, ...addressRest] = address.split(",");
+    const addressLine2 = addressRest.join(",").trim();
+    const instagramUrl = socials?.instagram || "#";
+    const facebookUrl = socials?.facebook || "#";
+    const tiktokUrl = socials?.tiktok || "#";
 
     const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // TODO: envoyer le formulaire
+        setError("");
+        setSubmitting(true);
+        try {
+            await axios.post("http://127.0.0.1:8000/api/contact", {
+                nom: `${form.nom} ${form.prenom}`.trim(),
+                email: form.email,
+                tel: form.tel,
+                message: form.message
+            });
+            setSuccess(true);
+            setForm({ nom: "", prenom: "", email: "", tel: "", message: "" });
+            setTimeout(() => setSuccess(false), 4000);
+        } catch (err) {
+            setError("Une erreur est survenue. Veuillez reessayer.");
+            console.error(err);
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (
         <section className="cs-wrapper">
             <div className="cs-layout">
-
-                {/* ── Formulaire gauche ─────────────────────────────── */}
                 <form className="cs-form-box" onSubmit={handleSubmit}>
-
-                    {/* Nom + Prénom */}
                     <div className="cs-row">
                         <div className="cs-field">
                             <label className="cs-label" htmlFor="cs-nom">{t("contact.form.lastNameLabel", "Nom")}</label>
@@ -42,20 +75,19 @@ export default function ContactSection() {
                             />
                         </div>
                         <div className="cs-field">
-                            <label className="cs-label" htmlFor="cs-prenom">{t("contact.form.firstNameLabel", "Prénom")}</label>
+                            <label className="cs-label" htmlFor="cs-prenom">{t("contact.form.firstNameLabel", "Prenom")}</label>
                             <input
                                 id="cs-prenom"
                                 className="cs-input"
                                 type="text"
                                 name="prenom"
-                                placeholder={t("contact.form.firstNamePlaceholder", "Prénom")}
+                                placeholder={t("contact.form.firstNamePlaceholder", "Prenom")}
                                 value={form.prenom}
                                 onChange={handleChange}
                             />
                         </div>
                     </div>
 
-                    {/* Email */}
                     <div className="cs-field-full">
                         <label className="cs-label" htmlFor="cs-email">{t("contact.form.emailLabel", "Email")}</label>
                         <input
@@ -69,9 +101,8 @@ export default function ContactSection() {
                         />
                     </div>
 
-                    {/* Téléphone */}
                     <div className="cs-field-full">
-                        <label className="cs-label" htmlFor="cs-tel">{t("contact.form.phoneLabel", "Numéro de téléphone")}</label>
+                        <label className="cs-label" htmlFor="cs-tel">{t("contact.form.phoneLabel", "Numero de telephone")}</label>
                         <input
                             id="cs-tel"
                             className="cs-input"
@@ -83,7 +114,6 @@ export default function ContactSection() {
                         />
                     </div>
 
-                    {/* Message */}
                     <div className="cs-field-full cs-field-grow">
                         <label className="cs-label" htmlFor="cs-message">{t("contact.form.messageLabel", "Message")}</label>
                         <textarea
@@ -96,50 +126,55 @@ export default function ContactSection() {
                         />
                     </div>
 
-                    {/* Bas : bouton + réseaux */}
-                    <div className="cs-form-footer">
-                        <button className="cs-submit" type="submit">{t("contact.form.submitBtn", "ENVOYER")}</button>
-                        <div className="cs-socials">
-                            <a href="#" className="cs-social-btn" aria-label="Instagram">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <rect x="2" y="2" width="20" height="20" rx="5" stroke="#1376F8" strokeWidth="2" />
-                                    <circle cx="12" cy="12" r="5" stroke="#1376F8" strokeWidth="2" />
-                                    <circle cx="17.5" cy="6.5" r="1.2" fill="#1376F8" />
-                                </svg>
-                            </a>
-                            <a href="#" className="cs-social-btn" aria-label="Facebook">
-                                <svg viewBox="0 0 24 24" fill="none">
-                                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
-                                        fill="#1376F8" stroke="#1376F8" strokeWidth="1"
-                                        strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </a>
-                            <a href="#" className="cs-social-btn" aria-label="TikTok">
-                                <svg className="cs-tiktok-icon" viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M14 4v9.1a4.1 4.1 0 11-4.1-4.1"
-                                        stroke="#1376F8"
-                                        strokeWidth="2.3"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                    <path
-                                        d="M14 4c.5 3 2.3 4.8 5 5"
-                                        stroke="#1376F8"
-                                        strokeWidth="2.3"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    />
-                                </svg>
-                            </a>
+                    <div className="cs-form-footer" style={{ flexDirection: "column", alignItems: "stretch", gap: "16px" }}>
+                        {error && <p style={{ color: "#dc2626", fontSize: "13px", margin: "0" }}>{error}</p>}
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "100%" }}>
+                            <button
+                                className={`cs-submit ${success ? "cs-submit--success" : ""}`}
+                                type="submit"
+                                disabled={submitting}
+                            >
+                                {submitting ? "Envoi..." : success ? "Message envoye" : t("contact.form.submitBtn", "ENVOYER")}
+                            </button>
+                            <div className="cs-socials">
+                                <a href={instagramUrl} className="cs-social-btn" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" stroke="#1376F8" strokeWidth="2" />
+                                        <circle cx="12" cy="12" r="5" stroke="#1376F8" strokeWidth="2" />
+                                        <circle cx="17.5" cy="6.5" r="1.2" fill="#1376F8" />
+                                    </svg>
+                                </a>
+                                <a href={facebookUrl} className="cs-social-btn" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+                                            fill="#1376F8" stroke="#1376F8" strokeWidth="1"
+                                            strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </a>
+                                <a href={tiktokUrl} className="cs-social-btn" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+                                    <svg className="cs-tiktok-icon" viewBox="0 0 24 24" fill="none">
+                                        <path
+                                            d="M14 4v9.1a4.1 4.1 0 11-4.1-4.1"
+                                            stroke="#1376F8"
+                                            strokeWidth="2.3"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                        <path
+                                            d="M14 4c.5 3 2.3 4.8 5 5"
+                                            stroke="#1376F8"
+                                            strokeWidth="2.3"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </form>
 
-                {/* ── Infos contact droite ──────────────────────────── */}
                 <div className="cs-info-col">
-
-                    {/* Horaires */}
                     <div className="cs-info-card">
                         <div className="cs-info-icon">
                             <svg viewBox="0 0 24 24" fill="none">
@@ -149,50 +184,46 @@ export default function ContactSection() {
                         </div>
                         <div className="cs-info-text">
                             <p className="cs-info-title">{t("contact.info.hoursTitle", "Horaires de la clinique")}</p>
-                            <p className="cs-info-value">{t("contact.info.hoursValue", "Disponibles 24h/24. Nous vous assurons une prise en charge continue et des soins de qualité")}</p>
+                            <p className="cs-info-value">{hours}</p>
                         </div>
                     </div>
 
-                    {/* Email */}
                     <div className="cs-info-card">
                         <div className="cs-info-icon">
                             <img src={emailIcon} alt="Email" />
                         </div>
                         <div className="cs-info-text">
                             <p className="cs-info-title">{t("contact.info.emailTitle", "Adresse email")}</p>
-                            <p className="cs-info-value">contact@cliniquemoulouya.ma</p>
+                            <p className="cs-info-value">{email}</p>
                         </div>
                     </div>
 
-                    {/* Téléphone */}
                     <div className="cs-info-card">
                         <div className="cs-info-icon">
-                            <img src={telephoneIcon} alt="Téléphone" />
+                            <img src={telephoneIcon} alt="Telephone" />
                         </div>
                         <div className="cs-info-text">
-                            <p className="cs-info-title">{t("contact.info.phoneTitle", "Numéro de téléphone")}</p>
-                            <p className="cs-info-value">+212 5366 – 168 69</p>
+                            <p className="cs-info-title">{t("contact.info.phoneTitle", "Numero de telephone")}</p>
+                            <p className="cs-info-value">{phone2}</p>
                         </div>
                     </div>
 
-                    {/* Urgence */}
                     <div className="cs-info-card">
                         <div className="cs-info-icon">
                             <img src={urgenceIcon} alt="Urgence" />
                         </div>
                         <div className="cs-info-text">
                             <p className="cs-info-title">{t("contact.info.emergencyTitle", "Urgence 24H/24H")}</p>
-                            <p className="cs-info-value">+212 6 61 26 77 60</p>
+                            <p className="cs-info-value">{phone1}</p>
                         </div>
                     </div>
 
-                    {/* Map Google */}
                     <div className="cs-map-box">
-                        <img 
+                        <img
                             src={localisationIcon}
                             alt="Carte de la clinique"
                             className="cs-map-frame"
-                            style={{ objectFit: 'cover' }}
+                            style={{ objectFit: "cover" }}
                         />
                         <a
                             href="https://maps.app.goo.gl/c2Z5afyGVR4yqN2Z7"
@@ -208,13 +239,12 @@ export default function ContactSection() {
                             <div className="cs-map-addr-text">
                                 <p className="cs-map-addr-title">{t("contact.info.addressTitle", "Adresse de la clinique")}</p>
                                 <p className="cs-map-addr-value">
-                                    {t("contact.info.addressLine1", "7, Rue De La Paix, Berkane, Morocco,")}<br />
-                                    {t("contact.info.addressLine2", "Oriental 63300")}
+                                    {addressLine1.trim()}<br />
+                                    {addressLine2}
                                 </p>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>

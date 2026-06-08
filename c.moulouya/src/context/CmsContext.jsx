@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { API_BASE_URL, API_HEADERS } from "../api/apiConfig";
 
 const CmsContext = createContext(null);
 
@@ -15,7 +16,9 @@ export function CmsProvider({ children }) {
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/cms/content")
+    fetch(`${API_BASE_URL}/cms/content`, {
+      headers: API_HEADERS,
+    })
       .then((res) => {
         if (!res.ok) throw new Error("HTTP error " + res.status);
         return res.json();

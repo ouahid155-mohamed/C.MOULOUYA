@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useCmsContent } from "../../context/CmsContext";
+import { API_BASE_URL, API_HEADERS } from "../../api/apiConfig";
 import axios from "axios";
 import softCactusLogo from "../../assets/Group 1000010885.png";
 import urgenceIcon from "../../assets/UrgenceContact.png";
@@ -25,7 +26,7 @@ export default function ContactFooter({ hideForm = false }) {
         setError("");
         setSubmitting(true);
         try {
-            await axios.post("http://127.0.0.1:8000/api/contact", form);
+            await axios.post(`${API_BASE_URL}/contact`, form, { headers: API_HEADERS });
             setSuccess(true);
             setForm({ nom: "", email: "", tel: "", message: "" });
             setTimeout(() => setSuccess(false), 4000);

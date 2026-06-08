@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useCmsContent } from "../../context/CmsContext";
+import { API_BASE_URL, API_HEADERS } from "../../api/apiConfig";
 import axios from "axios";
 import urgenceIcon from "../../assets/UrgenceContact.png";
 import emailIcon from "../../assets/EmailContact.png";
@@ -40,12 +41,16 @@ export default function ContactSection() {
         setError("");
         setSubmitting(true);
         try {
-            await axios.post("http://127.0.0.1:8000/api/contact", {
-                nom: `${form.nom} ${form.prenom}`.trim(),
-                email: form.email,
-                tel: form.tel,
-                message: form.message
-            });
+            await axios.post(
+                `${API_BASE_URL}/contact`,
+                {
+                    nom: `${form.nom} ${form.prenom}`.trim(),
+                    email: form.email,
+                    tel: form.tel,
+                    message: form.message
+                },
+                { headers: API_HEADERS }
+            );
             setSuccess(true);
             setForm({ nom: "", prenom: "", email: "", tel: "", message: "" });
             setTimeout(() => setSuccess(false), 4000);

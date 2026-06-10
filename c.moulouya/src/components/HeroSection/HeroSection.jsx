@@ -18,8 +18,9 @@ export default function HeroSection() {
     "address",
     "7, Rue De La Paix, Berkane, Morocco 63300"
   );
-  const [address1, ...addressRest] = address.split(",");
-  const address2 = addressRest.join(",").trim();
+  const addressParts = address.split(",").map((part) => part.trim()).filter(Boolean);
+  const address1 = `${addressParts.slice(0, 3).join(", ")}${addressParts.length > 3 ? "," : ""}`;
+  const address2 = addressParts.slice(3).join(", ");
 
   return (
     <section className="hero-wrapper">

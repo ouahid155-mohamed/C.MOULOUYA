@@ -164,7 +164,7 @@
     bottom: 24px;
     left: 50%;
     transform: translateX(-50%);
-    white-space: normal;
+    white-space: nowrap;
     text-align: center;
     background: rgba(240, 247, 255, 0.75);
     backdrop-filter: blur(12px);
@@ -181,8 +181,8 @@
     justify-content: center;
     gap: 10px;
     box-shadow: 0 8px 32px rgba(19, 118, 248, 0.12);
-    width: 90%;
-    max-width: 580px;
+    width: fit-content;
+    max-width: calc(100% - 64px);
     box-sizing: border-box;
 }
 

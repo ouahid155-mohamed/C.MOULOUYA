@@ -1,0 +1,6 @@
+{
+    "Auth": true,
+    "Profile": true,
+    "Contact": true,
+    "CMS": true
+}

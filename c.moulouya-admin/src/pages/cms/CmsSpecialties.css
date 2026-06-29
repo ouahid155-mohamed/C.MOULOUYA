@@ -211,9 +211,6 @@
   border-radius: 16px;
   width: 100%;
   max-width: 600px;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
@@ -249,8 +246,6 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  overflow-y: auto;
-  flex: 1;
 }
 
 .sp-modal-fields-row {
@@ -315,10 +310,9 @@
   display: flex;
   justify-content: flex-end;
   gap: 12px;
+  margin-top: 10px;
   border-top: 1px solid var(--border);
-  padding: 16px 24px;
-  background: white;
-  flex-shrink: 0;
+  padding-top: 20px;
 }
 
 .sp-cancel-btn {

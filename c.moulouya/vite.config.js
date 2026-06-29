@@ -10,6 +10,6 @@ export default defineConfig({
   ],
   server: {
     // Cette option permet à Vite d'accepter les requêtes venant de ngrok
-    allowedHosts: ['.ngrok-free.app', '.ngrok-free.dev'] 
+    allowedHosts: ['.ngrok-free.app'] 
   }
 })

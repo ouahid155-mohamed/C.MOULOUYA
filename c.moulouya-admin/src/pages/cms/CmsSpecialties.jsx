@@ -185,7 +185,7 @@ export default function CmsSpecialties() {
               <button className="sp-close-modal" onClick={() => setModalOpen(false)}>×</button>
             </div>
             
-            <form id="sp-modal-form-id" onSubmit={handleSubmit} className="sp-modal-form">
+            <form onSubmit={handleSubmit} className="sp-modal-form">
               <div className="sp-modal-fields-row">
                 <div className="sp-modal-field">
                   <label>Titre (FR)</label>
@@ -271,16 +271,16 @@ export default function CmsSpecialties() {
                   </label>
                 </div>
               </div>
-            </form>
 
-            <div className="sp-modal-actions">
-              <button type="button" className="sp-cancel-btn" onClick={() => setModalOpen(false)}>
-                Annuler
-              </button>
-              <button type="submit" form="sp-modal-form-id" className="sp-save-btn" disabled={saving}>
-                {saving ? "Enregistrement..." : "Enregistrer"}
-              </button>
-            </div>
+              <div className="sp-modal-actions">
+                <button type="button" className="sp-cancel-btn" onClick={() => setModalOpen(false)}>
+                  Annuler
+                </button>
+                <button type="submit" className="sp-save-btn" disabled={saving}>
+                  {saving ? "Enregistrement..." : "Enregistrer"}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

@@ -147,7 +147,7 @@ export default function CmsTexts() {
           {activeTexts.map((t) => (
             <div className="tx-card" key={t.key}>
               <h3 className="tx-card-label">{getLabelForKey(t.key)}</h3>
-
+              <span className="tx-card-key-badge">{t.key}</span>
               
               <div className="tx-fields-row">
                 {/* Français */}

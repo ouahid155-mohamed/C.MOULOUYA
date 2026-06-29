@@ -1,7 +1,13 @@
 import axios from "axios";
 
+const normalizeApiBaseUrl = (value) => {
+  const raw = (value || "").trim().replace(/\/+$/, "");
+  const base = raw || (import.meta.env.DEV ? "http://localhost:8000" : "/api");
+  return base.endsWith("/api") ? base : `${base}/api`;
+};
+
 const api = axios.create({
-  baseURL: "https://overflow-balsamic-jot.ngrok-free.dev/api",
+  baseURL: normalizeApiBaseUrl(import.meta.env.VITE_API_BASE_URL),
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",

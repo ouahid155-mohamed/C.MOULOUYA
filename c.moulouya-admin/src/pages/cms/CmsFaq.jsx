@@ -224,7 +224,7 @@ export default function CmsFaq() {
               <button className="fq-close-modal" onClick={() => setModalOpen(false)}>×</button>
             </div>
 
-            <form onSubmit={handleSubmit} className="fq-modal-form">
+            <form id="fq-modal-form-id" onSubmit={handleSubmit} className="fq-modal-form">
               <div className="fq-modal-fields-row">
                 <div className="fq-modal-field">
                   <label>Groupe / catégorie</label>
@@ -320,16 +320,16 @@ export default function CmsFaq() {
                   <span>Actif (visible sur le site)</span>
                 </label>
               </div>
-
-              <div className="fq-modal-actions">
-                <button type="button" className="fq-cancel-btn" onClick={() => setModalOpen(false)}>
-                  Annuler
-                </button>
-                <button type="submit" className="fq-save-btn" disabled={saving}>
-                  {saving ? "Enregistrement..." : "Enregistrer"}
-                </button>
-              </div>
             </form>
+
+            <div className="fq-modal-actions">
+              <button type="button" className="fq-cancel-btn" onClick={() => setModalOpen(false)}>
+                Annuler
+              </button>
+              <button type="submit" form="fq-modal-form-id" className="fq-save-btn" disabled={saving}>
+                {saving ? "Enregistrement..." : "Enregistrer"}
+              </button>
+            </div>
           </div>
         </div>
       )}

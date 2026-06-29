@@ -106,7 +106,7 @@ export default function CmsMedia() {
           <div className="me-card" key={media.key}>
             <div className="me-card-header">
               <h3 className="me-card-title">{MEDIA_LABELS[media.key] || media.key}</h3>
-              <span className="me-card-key">{media.key}</span>
+
             </div>
 
             <div className="me-preview-box">
